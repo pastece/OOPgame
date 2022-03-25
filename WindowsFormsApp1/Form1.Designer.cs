@@ -35,6 +35,7 @@ namespace WindowsFormsApp1
             this.label2 = new System.Windows.Forms.Label();
             this.BoardGame = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.btnExitForm1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox1
@@ -92,6 +93,17 @@ namespace WindowsFormsApp1
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // btnExitForm1
+            // 
+            this.btnExitForm1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnExitForm1.Location = new System.Drawing.Point(536, 388);
+            this.btnExitForm1.Name = "btnExitForm1";
+            this.btnExitForm1.Size = new System.Drawing.Size(122, 29);
+            this.btnExitForm1.TabIndex = 6;
+            this.btnExitForm1.Text = "Exit";
+            this.btnExitForm1.UseVisualStyleBackColor = true;
+            this.btnExitForm1.Click += new System.EventHandler(this.btnExitForm1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -99,6 +111,7 @@ namespace WindowsFormsApp1
             this.BackColor = System.Drawing.SystemColors.Info;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(689, 448);
+            this.Controls.Add(this.btnExitForm1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.BoardGame);
             this.Controls.Add(this.label2);
@@ -108,7 +121,7 @@ namespace WindowsFormsApp1
             this.KeyPreview = true;
             this.Name = "Form1";
             this.Text = "Form1";
-          
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -123,6 +136,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label BoardGame;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnExitForm1;
     }
 }
 

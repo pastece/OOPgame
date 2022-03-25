@@ -42,6 +42,26 @@ namespace WindowsFormsApp1
             }
         }
 
-       
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult secim = new DialogResult();
+            secim = MessageBox.Show("Do you want to close the program ? ", "Close", MessageBoxButtons.YesNo);
+
+            if(secim == DialogResult.Yes)
+            {
+                Application.ExitThread();
+            }
+            else if(secim == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+
+        }
+
+        private void btnExitForm1_Click(object sender, EventArgs e)
+        {
+            Form1 kapat = new Form1();
+            Application.ExitThread();
+        }
     }
 }
