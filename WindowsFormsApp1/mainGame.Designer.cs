@@ -53,7 +53,7 @@ namespace WindowsFormsApp1
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "mainGame";
             this.Text = "mainGame";
-            this.Load += new System.EventHandler(this.mainGame_Load);
+            
             this.ResumeLayout(false);
 
         }

@@ -17,10 +17,7 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
-        private void mainGame_Load(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void settingb_Click(object sender, EventArgs e)
         {
