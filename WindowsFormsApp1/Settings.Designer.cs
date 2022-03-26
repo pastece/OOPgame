@@ -57,7 +57,7 @@ namespace WindowsFormsApp1
             this.DiffLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.DiffLbl.Location = new System.Drawing.Point(6, 21);
             this.DiffLbl.Name = "DiffLbl";
-            this.DiffLbl.Size = new System.Drawing.Size(156, 39);
+            this.DiffLbl.Size = new System.Drawing.Size(151, 38);
             this.DiffLbl.TabIndex = 0;
             this.DiffLbl.Text = "Difficulty";
             // 
@@ -172,7 +172,7 @@ namespace WindowsFormsApp1
             this.shapeLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.shapeLbl.Location = new System.Drawing.Point(6, 26);
             this.shapeLbl.Name = "shapeLbl";
-            this.shapeLbl.Size = new System.Drawing.Size(121, 39);
+            this.shapeLbl.Size = new System.Drawing.Size(116, 38);
             this.shapeLbl.TabIndex = 5;
             this.shapeLbl.Text = "Shape";
             // 
@@ -254,6 +254,7 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.settingGB);
             this.Name = "Settings";
             this.Text = "Settings";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Settings_FormClosing);
             this.settingGB.ResumeLayout(false);
             this.settingGB.PerformLayout();
             this.shapeGB.ResumeLayout(false);

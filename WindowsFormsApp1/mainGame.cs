@@ -25,5 +25,33 @@ namespace WindowsFormsApp1
             this.Hide();
             skip.Show();
         }
+
+        private void btnExitMain_Click(object sender, EventArgs e)
+        {
+            mainGame kapat = new mainGame();
+            Application.ExitThread();
+        }
+
+        private void mainGame_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult secim = new DialogResult();
+            secim = MessageBox.Show("Do you want to close the program ? ", "Close", MessageBoxButtons.YesNo);
+
+            if (secim == DialogResult.Yes)
+            {
+                Application.ExitThread();
+            }
+            else if (secim == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        private void logoutb_Click(object sender, EventArgs e)
+        {
+            Form1 form1 = new Form1();
+            this.Hide();
+            form1.Show();
+        }
     }
 }
