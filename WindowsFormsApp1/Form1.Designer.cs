@@ -85,7 +85,8 @@ namespace WindowsFormsApp1
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(249, 261);
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button1.Location = new System.Drawing.Point(250, 261);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(178, 29);
             this.button1.TabIndex = 5;
@@ -95,10 +96,10 @@ namespace WindowsFormsApp1
             // 
             // btnExitForm1
             // 
-            this.btnExitForm1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnExitForm1.Location = new System.Drawing.Point(536, 388);
+            this.btnExitForm1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnExitForm1.Location = new System.Drawing.Point(249, 296);
             this.btnExitForm1.Name = "btnExitForm1";
-            this.btnExitForm1.Size = new System.Drawing.Size(122, 29);
+            this.btnExitForm1.Size = new System.Drawing.Size(178, 29);
             this.btnExitForm1.TabIndex = 6;
             this.btnExitForm1.Text = "Exit";
             this.btnExitForm1.UseVisualStyleBackColor = true;
