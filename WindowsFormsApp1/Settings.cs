@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,9 @@ namespace WindowsFormsApp1
 {
     public partial class Settings : Form
     {
+        int row;
+        int column;
+        string path = @".\save_settings.txt";
         public Settings()
         {
             InitializeComponent();
@@ -19,10 +23,10 @@ namespace WindowsFormsApp1
 
         private void customBtn_Click(object sender, EventArgs e)
         {
-            label1.Visible = true;
-            label2.Visible = true;
-            textBox1.Visible = true;
-            textBox2.Visible = true;
+            labelRow.Visible = true;
+            labelColumn.Visible = true;
+            textBoxRow.Visible = true;
+            textBoxColumn.Visible = true;
             confirmBtn.Visible = true;
         }
 
@@ -47,5 +51,74 @@ namespace WindowsFormsApp1
                 e.Cancel = true;
             }
         }
+
+        private void cmboxDiffuculty_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmboxDiffuculty.Text == "Easy")
+            {
+                row = 3;
+                column = 3;
+            }
+            if (cmboxDiffuculty.Text == "Medium")
+            {
+                row = 4;
+                column = 4;
+            }
+            if (cmboxDiffuculty.Text == "Hard")
+            {
+                row = 5;
+                column = 5;
+            }
+        }
+
+        private void confirmBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                row = int.Parse(textBoxRow.Text);
+                column = int.Parse(textBoxColumn.Text);
+            }
+            catch (Exception)
+            {
+                DialogResult error = new DialogResult();
+                error = MessageBox.Show("You have to enter a number", "Error", MessageBoxButtons.OK);
+            }
+        }
+
+        private void saveBtn_Click(object sender, EventArgs e)
+        {
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
+
+            string shape="";
+            if (squareBox.Checked) shape += "Square ";
+            if (triangleBox.Checked) shape += "Triangle ";
+            if (roundBox.Checked) shape += "Round";
+
+            string save = row.ToString()+" "+column.ToString()+Environment.NewLine
+                +shape;
+            try
+            {
+                // Create the file, or overwrite if the file exists.
+                using (FileStream fs = File.Create(path))
+                {
+                    byte[] info = new UTF8Encoding(true).GetBytes(save);
+                    // Add some information to the file.
+                    fs.Write(info, 0, info.Length);
+                }
+
+               
+               
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }
+
     }
 }
+
