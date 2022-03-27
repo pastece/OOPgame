@@ -31,7 +31,9 @@ namespace WindowsFormsApp1
         {
             this.DiffLbl = new System.Windows.Forms.Label();
             this.settingGB = new System.Windows.Forms.GroupBox();
+            this.cmboxDiffuculty = new System.Windows.Forms.ComboBox();
             this.confirmBtn = new System.Windows.Forms.Button();
+            this.customBtn = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -43,8 +45,6 @@ namespace WindowsFormsApp1
             this.shapeGB = new System.Windows.Forms.GroupBox();
             this.saveBtn = new System.Windows.Forms.Button();
             this.backBtn = new System.Windows.Forms.Button();
-            this.customBtn = new System.Windows.Forms.Button();
-            this.cmboxDiffuculty = new System.Windows.Forms.ComboBox();
             this.settingGB.SuspendLayout();
             this.shapeGB.SuspendLayout();
             this.SuspendLayout();
@@ -79,6 +79,19 @@ namespace WindowsFormsApp1
             this.settingGB.TabIndex = 4;
             this.settingGB.TabStop = false;
             // 
+            // cmboxDiffuculty
+            // 
+            this.cmboxDiffuculty.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.cmboxDiffuculty.FormattingEnabled = true;
+            this.cmboxDiffuculty.Items.AddRange(new object[] {
+            "Easy",
+            "Medium",
+            "Hard"});
+            this.cmboxDiffuculty.Location = new System.Drawing.Point(164, 26);
+            this.cmboxDiffuculty.Name = "cmboxDiffuculty";
+            this.cmboxDiffuculty.Size = new System.Drawing.Size(184, 28);
+            this.cmboxDiffuculty.TabIndex = 10;
+            // 
             // confirmBtn
             // 
             this.confirmBtn.Cursor = System.Windows.Forms.Cursors.Default;
@@ -90,6 +103,17 @@ namespace WindowsFormsApp1
             this.confirmBtn.Text = "Confirm";
             this.confirmBtn.UseVisualStyleBackColor = true;
             this.confirmBtn.Visible = false;
+            // 
+            // customBtn
+            // 
+            this.customBtn.Location = new System.Drawing.Point(460, 17);
+            this.customBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.customBtn.Name = "customBtn";
+            this.customBtn.Size = new System.Drawing.Size(75, 41);
+            this.customBtn.TabIndex = 4;
+            this.customBtn.Text = "Custom";
+            this.customBtn.UseVisualStyleBackColor = true;
+            this.customBtn.Click += new System.EventHandler(this.customBtn_Click);
             // 
             // textBox2
             // 
@@ -216,30 +240,6 @@ namespace WindowsFormsApp1
             this.backBtn.Text = "Back";
             this.backBtn.UseVisualStyleBackColor = true;
             this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
-            // 
-            // customBtn
-            // 
-            this.customBtn.Location = new System.Drawing.Point(460, 17);
-            this.customBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.customBtn.Name = "customBtn";
-            this.customBtn.Size = new System.Drawing.Size(75, 41);
-            this.customBtn.TabIndex = 4;
-            this.customBtn.Text = "Custom";
-            this.customBtn.UseVisualStyleBackColor = true;
-            this.customBtn.Click += new System.EventHandler(this.customBtn_Click);
-            // 
-            // cmboxDiffuculty
-            // 
-            this.cmboxDiffuculty.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.cmboxDiffuculty.FormattingEnabled = true;
-            this.cmboxDiffuculty.Items.AddRange(new object[] {
-            "Easy",
-            "Medium",
-            "Hard"});
-            this.cmboxDiffuculty.Location = new System.Drawing.Point(164, 26);
-            this.cmboxDiffuculty.Name = "cmboxDiffuculty";
-            this.cmboxDiffuculty.Size = new System.Drawing.Size(184, 28);
-            this.cmboxDiffuculty.TabIndex = 10;
             // 
             // Settings
             // 
