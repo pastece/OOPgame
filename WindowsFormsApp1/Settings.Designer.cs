@@ -45,8 +45,14 @@ namespace WindowsFormsApp1
             this.shapeGB = new System.Windows.Forms.GroupBox();
             this.saveBtn = new System.Windows.Forms.Button();
             this.backBtn = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkBoxRed = new System.Windows.Forms.CheckBox();
+            this.labelColor = new System.Windows.Forms.Label();
+            this.checkBoxGreen = new System.Windows.Forms.CheckBox();
+            this.checkBoxBlue = new System.Windows.Forms.CheckBox();
             this.settingGB.SuspendLayout();
             this.shapeGB.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // DiffLbl
@@ -88,7 +94,7 @@ namespace WindowsFormsApp1
             "Medium",
             "Hard"});
             this.cmboxDiffuculty.Location = new System.Drawing.Point(219, 32);
-            this.cmboxDiffuculty.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cmboxDiffuculty.Margin = new System.Windows.Forms.Padding(4);
             this.cmboxDiffuculty.Name = "cmboxDiffuculty";
             this.cmboxDiffuculty.Size = new System.Drawing.Size(244, 33);
             this.cmboxDiffuculty.TabIndex = 10;
@@ -210,7 +216,7 @@ namespace WindowsFormsApp1
             this.shapeGB.Controls.Add(this.shapeLbl);
             this.shapeGB.Controls.Add(this.triangleBox);
             this.shapeGB.Controls.Add(this.squareBox);
-            this.shapeGB.Location = new System.Drawing.Point(43, 294);
+            this.shapeGB.Location = new System.Drawing.Point(55, 244);
             this.shapeGB.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.shapeGB.Name = "shapeGB";
             this.shapeGB.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -221,7 +227,7 @@ namespace WindowsFormsApp1
             // saveBtn
             // 
             this.saveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.saveBtn.Location = new System.Drawing.Point(727, 455);
+            this.saveBtn.Location = new System.Drawing.Point(728, 535);
             this.saveBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(120, 50);
@@ -242,12 +248,73 @@ namespace WindowsFormsApp1
             this.backBtn.UseVisualStyleBackColor = true;
             this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.checkBoxRed);
+            this.groupBox1.Controls.Add(this.labelColor);
+            this.groupBox1.Controls.Add(this.checkBoxGreen);
+            this.groupBox1.Controls.Add(this.checkBoxBlue);
+            this.groupBox1.Location = new System.Drawing.Point(55, 368);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Size = new System.Drawing.Size(805, 100);
+            this.groupBox1.TabIndex = 12;
+            this.groupBox1.TabStop = false;
+            // 
+            // checkBoxRed
+            // 
+            this.checkBoxRed.AutoSize = true;
+            this.checkBoxRed.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.checkBoxRed.Location = new System.Drawing.Point(524, 34);
+            this.checkBoxRed.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.checkBoxRed.Name = "checkBoxRed";
+            this.checkBoxRed.Size = new System.Drawing.Size(69, 29);
+            this.checkBoxRed.TabIndex = 8;
+            this.checkBoxRed.Text = "Red";
+            this.checkBoxRed.UseVisualStyleBackColor = true;
+            // 
+            // labelColor
+            // 
+            this.labelColor.AutoSize = true;
+            this.labelColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelColor.Location = new System.Drawing.Point(5, 26);
+            this.labelColor.Name = "labelColor";
+            this.labelColor.Size = new System.Drawing.Size(100, 38);
+            this.labelColor.TabIndex = 5;
+            this.labelColor.Text = "Color";
+            // 
+            // checkBoxGreen
+            // 
+            this.checkBoxGreen.AutoSize = true;
+            this.checkBoxGreen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.checkBoxGreen.Location = new System.Drawing.Point(352, 34);
+            this.checkBoxGreen.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.checkBoxGreen.Name = "checkBoxGreen";
+            this.checkBoxGreen.Size = new System.Drawing.Size(88, 29);
+            this.checkBoxGreen.TabIndex = 7;
+            this.checkBoxGreen.Text = "Green";
+            this.checkBoxGreen.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxBlue
+            // 
+            this.checkBoxBlue.AutoSize = true;
+            this.checkBoxBlue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.checkBoxBlue.Location = new System.Drawing.Point(196, 33);
+            this.checkBoxBlue.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.checkBoxBlue.Name = "checkBoxBlue";
+            this.checkBoxBlue.Size = new System.Drawing.Size(73, 29);
+            this.checkBoxBlue.TabIndex = 6;
+            this.checkBoxBlue.Text = "Blue";
+            this.checkBoxBlue.UseVisualStyleBackColor = true;
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
-            this.ClientSize = new System.Drawing.Size(901, 550);
+            this.ClientSize = new System.Drawing.Size(901, 621);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.backBtn);
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.shapeGB);
@@ -255,11 +322,14 @@ namespace WindowsFormsApp1
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Settings";
             this.Text = "Settings";
+            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Settings_FormClosing);
             this.settingGB.ResumeLayout(false);
             this.settingGB.PerformLayout();
             this.shapeGB.ResumeLayout(false);
             this.shapeGB.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -282,5 +352,10 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button backBtn;
         private System.Windows.Forms.ComboBox cmboxDiffuculty;
         private System.Windows.Forms.Button customBtn;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.CheckBox checkBoxRed;
+        private System.Windows.Forms.Label labelColor;
+        private System.Windows.Forms.CheckBox checkBoxGreen;
+        private System.Windows.Forms.CheckBox checkBoxBlue;
     }
 }
