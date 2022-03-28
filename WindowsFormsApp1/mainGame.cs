@@ -22,7 +22,6 @@ namespace WindowsFormsApp1
         private void settingb_Click(object sender, EventArgs e)
         {
             Settings skip = new Settings();
-            this.Hide();
             skip.Show();
         }
 
