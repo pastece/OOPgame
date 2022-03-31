@@ -25,6 +25,12 @@ namespace WindowsFormsApp1
                 this.Hide();
                 skip.Show();
             }
+            else if(textBox1.Text == "user" && textBox2.Text == "user")
+            {
+                mainGame skip = new mainGame();
+                this.Hide();
+                skip.Show();
+            }
             else
             {
                 MessageBox.Show("Kullanıcı adı hatalı. Tekrar deneyiniz.");
