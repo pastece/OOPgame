@@ -321,7 +321,6 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.settingGB);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Settings";
-            this.Text = "Settings";
             this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Settings_FormClosing);
             this.settingGB.ResumeLayout(false);
