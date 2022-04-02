@@ -81,5 +81,12 @@ namespace WindowsFormsApp1
             Form1 kapat = new Form1();
             Application.ExitThread();
         }
+
+        private void buttonRegister_Click(object sender, EventArgs e)
+        {
+            signUp signup = new signUp();
+            this.Hide();
+            signup.Show();
+        }
     }
 }
