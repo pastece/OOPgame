@@ -74,7 +74,12 @@ namespace WindowsFormsApp1
                 btn.Click += Btn_Click;
                 
             }
-            
+            else
+            {
+                MessageBox.Show("Kullanıcı adı hatalı. Tekrar deneyiniz.");
+                
+            }
+
         }
 
         private void Btn_Click(object sender, EventArgs e)
