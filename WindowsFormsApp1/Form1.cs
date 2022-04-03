@@ -65,14 +65,10 @@ namespace WindowsFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
 
-            //new mainGame(this).Show();
-
-
 
             if (textBox1.Text == "admin" && textBox2.Text == "admin")
             {
-                
-
+               
                 mainGame skip = new mainGame(this);
                 this.Hide();
                 skip.Show();

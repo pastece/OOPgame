@@ -215,7 +215,7 @@ namespace WindowsFormsApp1
             rootElement.Add(element);
             xdosya.Save(@"usersInfo.xml");
             MessageBox.Show("Successful Registration");
-            //mngScreen.usersList();
+            
         }
 
         
