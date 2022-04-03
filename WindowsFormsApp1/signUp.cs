@@ -187,16 +187,16 @@ namespace WindowsFormsApp1
 
         private void signUp_Load(object sender, EventArgs e)
         {
-            //XmlTextWriter dosya = new XmlTextWriter(@"usersInfo.xml", Encoding.UTF8);
-            //dosya.Formatting = Formatting.Indented;
-            //dosya.WriteStartDocument();
-            //dosya.WriteStartElement("Users");
-            ////dosya.WriteStartElement("User");
-            ////dosya.WriteElementString("UserName", "Omer5426");
-            ////dosya.WriteElementString("Name-Surname", "Omer Kurtuldu");
-            ////dosya.WriteEndElement();
+            XmlTextWriter dosya = new XmlTextWriter(@"usersInfo.xml", Encoding.UTF8);
+            dosya.Formatting = Formatting.Indented;
+            dosya.WriteStartDocument();
+            dosya.WriteStartElement("Users");
+            //dosya.WriteStartElement("User");
+            //dosya.WriteElementString("UserName", "Omer5426");
+            //dosya.WriteElementString("Name-Surname", "Omer Kurtuldu");
             //dosya.WriteEndElement();
-            //dosya.Close();
+            dosya.WriteEndElement();
+            dosya.Close();
         }
 
         private void buttonSign_Click(object sender, EventArgs e)
