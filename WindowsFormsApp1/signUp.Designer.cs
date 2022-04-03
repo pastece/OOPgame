@@ -48,9 +48,10 @@ namespace WindowsFormsApp1
             this.textBoxUserName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.textBoxUserName.ForeColor = System.Drawing.Color.SlateGray;
-            this.textBoxUserName.Location = new System.Drawing.Point(273, 47);
+            this.textBoxUserName.Location = new System.Drawing.Point(205, 38);
+            this.textBoxUserName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxUserName.Name = "textBoxUserName";
-            this.textBoxUserName.Size = new System.Drawing.Size(250, 28);
+            this.textBoxUserName.Size = new System.Drawing.Size(188, 24);
             this.textBoxUserName.TabIndex = 0;
             this.textBoxUserName.Text = "User Name";
             this.textBoxUserName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -63,9 +64,10 @@ namespace WindowsFormsApp1
             this.textBoxPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.textBoxPassword.ForeColor = System.Drawing.Color.SlateGray;
-            this.textBoxPassword.Location = new System.Drawing.Point(273, 91);
+            this.textBoxPassword.Location = new System.Drawing.Point(205, 74);
+            this.textBoxPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(250, 28);
+            this.textBoxPassword.Size = new System.Drawing.Size(188, 24);
             this.textBoxPassword.TabIndex = 1;
             this.textBoxPassword.Text = "Password";
             this.textBoxPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -78,9 +80,10 @@ namespace WindowsFormsApp1
             this.textBoxName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.textBoxName.ForeColor = System.Drawing.Color.SlateGray;
-            this.textBoxName.Location = new System.Drawing.Point(273, 135);
+            this.textBoxName.Location = new System.Drawing.Point(205, 110);
+            this.textBoxName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(250, 28);
+            this.textBoxName.Size = new System.Drawing.Size(188, 24);
             this.textBoxName.TabIndex = 2;
             this.textBoxName.Text = "Name-Surname";
             this.textBoxName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -93,13 +96,15 @@ namespace WindowsFormsApp1
             this.textBoxAdress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxAdress.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.textBoxAdress.ForeColor = System.Drawing.Color.SlateGray;
-            this.textBoxAdress.Location = new System.Drawing.Point(273, 226);
+            this.textBoxAdress.Location = new System.Drawing.Point(205, 184);
+            this.textBoxAdress.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxAdress.Multiline = true;
             this.textBoxAdress.Name = "textBoxAdress";
-            this.textBoxAdress.Size = new System.Drawing.Size(250, 56);
+            this.textBoxAdress.Size = new System.Drawing.Size(188, 46);
             this.textBoxAdress.TabIndex = 4;
             this.textBoxAdress.Text = "Adress";
             this.textBoxAdress.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            
             this.textBoxAdress.Enter += new System.EventHandler(this.textBoxAdress_Enter);
             this.textBoxAdress.Leave += new System.EventHandler(this.textBoxAdress_Leave);
             // 
@@ -109,9 +114,10 @@ namespace WindowsFormsApp1
             this.textBoxCity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.textBoxCity.ForeColor = System.Drawing.Color.SlateGray;
-            this.textBoxCity.Location = new System.Drawing.Point(273, 299);
+            this.textBoxCity.Location = new System.Drawing.Point(205, 243);
+            this.textBoxCity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxCity.Name = "textBoxCity";
-            this.textBoxCity.Size = new System.Drawing.Size(250, 28);
+            this.textBoxCity.Size = new System.Drawing.Size(188, 24);
             this.textBoxCity.TabIndex = 5;
             this.textBoxCity.Text = "City";
             this.textBoxCity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -124,9 +130,10 @@ namespace WindowsFormsApp1
             this.textBoxCountry.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxCountry.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.textBoxCountry.ForeColor = System.Drawing.Color.SlateGray;
-            this.textBoxCountry.Location = new System.Drawing.Point(273, 345);
+            this.textBoxCountry.Location = new System.Drawing.Point(205, 280);
+            this.textBoxCountry.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxCountry.Name = "textBoxCountry";
-            this.textBoxCountry.Size = new System.Drawing.Size(250, 28);
+            this.textBoxCountry.Size = new System.Drawing.Size(188, 24);
             this.textBoxCountry.TabIndex = 6;
             this.textBoxCountry.Text = "Country";
             this.textBoxCountry.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -139,9 +146,10 @@ namespace WindowsFormsApp1
             this.textBoxEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.textBoxEmail.ForeColor = System.Drawing.Color.SlateGray;
-            this.textBoxEmail.Location = new System.Drawing.Point(273, 389);
+            this.textBoxEmail.Location = new System.Drawing.Point(205, 316);
+            this.textBoxEmail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(250, 28);
+            this.textBoxEmail.Size = new System.Drawing.Size(188, 24);
             this.textBoxEmail.TabIndex = 7;
             this.textBoxEmail.Text = "Email";
             this.textBoxEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -154,10 +162,11 @@ namespace WindowsFormsApp1
             this.maskedTextBoxPhone.BackColor = System.Drawing.SystemColors.Window;
             this.maskedTextBoxPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.maskedTextBoxPhone.ForeColor = System.Drawing.Color.SlateGray;
-            this.maskedTextBoxPhone.Location = new System.Drawing.Point(273, 180);
+            this.maskedTextBoxPhone.Location = new System.Drawing.Point(205, 146);
+            this.maskedTextBoxPhone.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.maskedTextBoxPhone.Mask = "(999) 000-00-00";
             this.maskedTextBoxPhone.Name = "maskedTextBoxPhone";
-            this.maskedTextBoxPhone.Size = new System.Drawing.Size(250, 28);
+            this.maskedTextBoxPhone.Size = new System.Drawing.Size(188, 24);
             this.maskedTextBoxPhone.TabIndex = 8;
             this.maskedTextBoxPhone.Tag = "";
             this.maskedTextBoxPhone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -166,28 +175,32 @@ namespace WindowsFormsApp1
             // labelPhone
             // 
             this.labelPhone.AutoSize = true;
-            this.labelPhone.Location = new System.Drawing.Point(529, 188);
+            this.labelPhone.Location = new System.Drawing.Point(397, 153);
+            this.labelPhone.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelPhone.Name = "labelPhone";
-            this.labelPhone.Size = new System.Drawing.Size(113, 17);
+            this.labelPhone.Size = new System.Drawing.Size(84, 13);
             this.labelPhone.TabIndex = 9;
             this.labelPhone.Text = "(Phone Number)";
             // 
             // buttonSign
             // 
             this.buttonSign.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.buttonSign.Location = new System.Drawing.Point(343, 440);
+            this.buttonSign.Location = new System.Drawing.Point(257, 358);
+            this.buttonSign.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonSign.Name = "buttonSign";
-            this.buttonSign.Size = new System.Drawing.Size(111, 48);
+            this.buttonSign.Size = new System.Drawing.Size(83, 39);
             this.buttonSign.TabIndex = 10;
             this.buttonSign.Text = "Sign in";
             this.buttonSign.UseVisualStyleBackColor = true;
+            this.buttonSign.Click += new System.EventHandler(this.buttonSign_Click);
             // 
             // buttonBack
             // 
             this.buttonBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.buttonBack.Location = new System.Drawing.Point(32, 27);
+            this.buttonBack.Location = new System.Drawing.Point(24, 22);
+            this.buttonBack.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.buttonBack.Name = "buttonBack";
-            this.buttonBack.Size = new System.Drawing.Size(111, 48);
+            this.buttonBack.Size = new System.Drawing.Size(83, 39);
             this.buttonBack.TabIndex = 11;
             this.buttonBack.Text = "Back";
             this.buttonBack.UseVisualStyleBackColor = true;
@@ -195,11 +208,11 @@ namespace WindowsFormsApp1
             // 
             // signUp
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.SystemColors.Info;
-            this.ClientSize = new System.Drawing.Size(800, 516);
+            this.ClientSize = new System.Drawing.Size(600, 419);
             this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.buttonSign);
             this.Controls.Add(this.labelPhone);
@@ -211,8 +224,10 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.textBoxUserName);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "signUp";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.signUp_FormClosing);
+            this.Load += new System.EventHandler(this.signUp_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

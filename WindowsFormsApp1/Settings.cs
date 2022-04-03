@@ -17,6 +17,7 @@ namespace WindowsFormsApp1
         int row;
         int column;
         string path = @".\save_settings.txt";
+        
         public Settings()
         {
             InitializeComponent();

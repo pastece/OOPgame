@@ -7,11 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace WindowsFormsApp1
 {
     public partial class signUp : Form
     {
+        managerScreen mngScreen;
+
         public signUp()
         {
             InitializeComponent();
@@ -180,5 +184,40 @@ namespace WindowsFormsApp1
                 e.Cancel = true;
             }
         }
+
+        private void signUp_Load(object sender, EventArgs e)
+        {
+            //XmlTextWriter dosya = new XmlTextWriter(@"usersInfo.xml", Encoding.UTF8);
+            //dosya.Formatting = Formatting.Indented;
+            //dosya.WriteStartDocument();
+            //dosya.WriteStartElement("Users");
+            ////dosya.WriteStartElement("User");
+            ////dosya.WriteElementString("UserName", "Omer5426");
+            ////dosya.WriteElementString("Name-Surname", "Omer Kurtuldu");
+            ////dosya.WriteEndElement();
+            //dosya.WriteEndElement();
+            //dosya.Close();
+        }
+
+        private void buttonSign_Click(object sender, EventArgs e)
+        {
+            XDocument xdosya = XDocument.Load(@"usersInfo.xml");
+            XElement rootElement = xdosya.Root;
+            XElement element = new XElement("User");
+            XElement UserName = new XElement("UserName", textBoxUserName.Text);
+            XElement NameSurname = new XElement("NameSurname", textBoxName.Text);
+            XElement PhoneNumber = new XElement("PhoneNumber", maskedTextBoxPhone.Text);
+            XElement Adress = new XElement("Adress", textBoxAdress.Text);
+            XElement City = new XElement("City", textBoxCity.Text);
+            XElement Country = new XElement("City", textBoxCountry.Text);
+            XElement Email = new XElement("Email", textBoxEmail.Text);
+            element.Add(UserName, NameSurname, PhoneNumber, Adress, City, Country, Email);
+            rootElement.Add(element);
+            xdosya.Save(@"usersInfo.xml");
+            MessageBox.Show("Successful Registration");
+            mngScreen.usersList();
+        }
+
+        
     }
 }

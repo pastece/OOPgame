@@ -18,6 +18,28 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
+        public TextBox getTextbox1
+        {
+            get { return textBox1; }
+        }
+
+        public TextBox setTextbox1
+        {
+            set { textBox1 = value; }
+        }
+        public TextBox getTextbox2
+        {
+            get { return textBox2; }
+        }
+
+        public TextBox setTextbox2
+        {
+            set { textBox2 = value; }
+        }
+
+        
+
+
         static string ComputeSha256Hash(string rawData)
         {
             // Create a SHA256   
@@ -35,11 +57,30 @@ namespace WindowsFormsApp1
                 return builder.ToString();
             }
         }
-            private void button1_Click(object sender, EventArgs e)
+
+
+ 
+
+
+        private void button1_Click(object sender, EventArgs e)
         {
-            if(textBox1.Text == "admin" && textBox2.Text == "admin")
+
+            new mainGame(this).Show();
+
+
+
+            if (textBox1.Text == "admin" && textBox2.Text == "admin")
             {
-                mainGame skip = new mainGame();
+                
+
+                mainGame skip = new mainGame(this);
+                this.Hide();
+                skip.Show();
+
+            }
+            else if (textBox1.Text == "user" && textBox2.Text == "user")
+            {
+                mainGame skip = new mainGame(this);
                 this.Hide();
                 skip.Show();
             }
