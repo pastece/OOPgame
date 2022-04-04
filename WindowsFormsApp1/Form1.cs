@@ -8,11 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography;
+using System.IO;
 
 namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
+
+        
         public Form1()
         {
             InitializeComponent();
@@ -64,14 +67,16 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            string username = "";
 
             if (textBox1.Text == "admin" && textBox2.Text == "admin")
             {
-               
+                
                 mainGame skip = new mainGame(this);
                 this.Hide();
                 skip.Show();
+
+                username = textBox1.Text;
 
             }
             else if (textBox1.Text == "user" && textBox2.Text == "user")
@@ -79,6 +84,9 @@ namespace WindowsFormsApp1
                 mainGame skip = new mainGame(this);
                 this.Hide();
                 skip.Show();
+               
+                username = textBox1.Text;
+
             }
             else
             {
@@ -86,6 +94,8 @@ namespace WindowsFormsApp1
                 textBox1.Clear();
                 textBox2.Clear();
             }
+
+            string saveUserName = Environment.NewLine + username;
 
         }
 
@@ -125,5 +135,28 @@ namespace WindowsFormsApp1
             this.Hide();
             signup.Show();
         }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar)
+                && !char.IsSeparator(e.KeyChar);
+
+        }
+
+        private void sfreGstr_CheckedChanged(object sender, EventArgs e)
+        {
+            //checkBox işaretli ise
+            if (sfreGstr.Checked)
+            {
+                //karakteri göster.
+                textBox2.PasswordChar = '\0';
+            }
+            //değilse karakterlerin yerine * koy.
+            else
+            {
+                textBox2.PasswordChar = '*';
+            }
+        }
+        
     }
 }

@@ -37,6 +37,7 @@ namespace WindowsFormsApp1
             this.button1 = new System.Windows.Forms.Button();
             this.btnExitForm1 = new System.Windows.Forms.Button();
             this.buttonRegister = new System.Windows.Forms.Button();
+            this.sfreGstr = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // textBox1
@@ -45,6 +46,7 @@ namespace WindowsFormsApp1
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(179, 20);
             this.textBox1.TabIndex = 0;
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // textBox2
             // 
@@ -118,6 +120,17 @@ namespace WindowsFormsApp1
             this.buttonRegister.UseVisualStyleBackColor = true;
             this.buttonRegister.Click += new System.EventHandler(this.buttonRegister_Click);
             // 
+            // sfreGstr
+            // 
+            this.sfreGstr.AutoSize = true;
+            this.sfreGstr.Location = new System.Drawing.Point(452, 212);
+            this.sfreGstr.Name = "sfreGstr";
+            this.sfreGstr.Size = new System.Drawing.Size(88, 17);
+            this.sfreGstr.TabIndex = 8;
+            this.sfreGstr.Text = "Şifreyi Göster";
+            this.sfreGstr.UseVisualStyleBackColor = true;
+            this.sfreGstr.CheckedChanged += new System.EventHandler(this.sfreGstr_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -125,6 +138,7 @@ namespace WindowsFormsApp1
             this.BackColor = System.Drawing.SystemColors.Info;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(689, 448);
+            this.Controls.Add(this.sfreGstr);
             this.Controls.Add(this.buttonRegister);
             this.Controls.Add(this.btnExitForm1);
             this.Controls.Add(this.button1);
@@ -136,6 +150,7 @@ namespace WindowsFormsApp1
             this.KeyPreview = true;
             this.Name = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+           
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -151,6 +166,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button buttonRegister;
         public System.Windows.Forms.TextBox textBox1;
         public System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.CheckBox sfreGstr;
     }
 }
 
