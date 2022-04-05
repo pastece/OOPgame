@@ -59,26 +59,9 @@ namespace WindowsFormsApp1
 
         private void mainGame_Load(object sender, EventArgs e)
         {
-
-        //    if (f1.getTextbox1.Text == "admin" && f1.getTextbox2.Text == "admin")
-        //    {
-
-        //        Button btn = new Button();
-        //        btn.Text = "User Control";
-        //        btn.Font = new Font("Normal", 12);
-        //        btn.Name = "UserControl";
-        //        btn.Size = new Size(147, 45);
-        //        btn.Location = new Point(260, 100);
-        //        btn.BackColor = Color.Transparent;
-        //        this.Controls.Add(btn);
-        //        btn.Click += Btn_Click;
-                
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Kullanıcı adı hatalı. Tekrar deneyiniz.");
-                
-        //    }
+            if (f1.textBox1.Text == "admin")
+                buttonUsers.Visible = true;
+            
 
         }
 
@@ -88,10 +71,13 @@ namespace WindowsFormsApp1
             skip.Show();
         }
 
-        private void UserControl_Click(object sender, EventArgs e)
+        
+
+        private void buttonUsers_Click(object sender, EventArgs e)
         {
-            Settings skip = new Settings();
+            managerScreen skip = new managerScreen();
             skip.Show();
+            this.Hide();
         }
     }
 }

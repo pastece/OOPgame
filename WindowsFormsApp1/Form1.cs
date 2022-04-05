@@ -43,23 +43,7 @@ namespace WindowsFormsApp1
         
 
 
-        static string ComputeSha256Hash(string rawData)
-        {
-            // Create a SHA256   
-            using (SHA256 sha256Hash = SHA256.Create())
-            {
-                // ComputeHash - returns byte array  
-                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
-
-                // Convert byte array to a string   
-                StringBuilder builder = new StringBuilder();
-                for (int i = 0; i < bytes.Length; i++)
-                {
-                    builder.Append(bytes[i].ToString("x2"));
-                }
-                return builder.ToString();
-            }
-        }
+        
 
 
  
@@ -67,7 +51,7 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string username = "";
+            
 
             if (textBox1.Text == "admin" && textBox2.Text == "admin")
             {
@@ -76,7 +60,7 @@ namespace WindowsFormsApp1
                 this.Hide();
                 skip.Show();
 
-                username = textBox1.Text;
+                
 
             }
             else if (textBox1.Text == "user" && textBox2.Text == "user")
@@ -85,7 +69,6 @@ namespace WindowsFormsApp1
                 this.Hide();
                 skip.Show();
                
-                username = textBox1.Text;
 
             }
             else
@@ -95,7 +78,7 @@ namespace WindowsFormsApp1
                 textBox2.Clear();
             }
 
-            string saveUserName = Environment.NewLine + username;
+            
 
         }
 
@@ -157,6 +140,7 @@ namespace WindowsFormsApp1
                 textBox2.PasswordChar = '*';
             }
         }
+
         
     }
 }
