@@ -57,6 +57,7 @@ namespace WindowsFormsApp1
             this.dtGridList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGridList.Location = new System.Drawing.Point(36, 52);
             this.dtGridList.Name = "dtGridList";
+            this.dtGridList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtGridList.Size = new System.Drawing.Size(755, 299);
             this.dtGridList.TabIndex = 0;
             // 
