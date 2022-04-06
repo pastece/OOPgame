@@ -77,7 +77,7 @@ namespace WindowsFormsApp1
         {
             managerScreen skip = new managerScreen();
             skip.Show();
-            this.Hide();
+            
         }
     }
 }

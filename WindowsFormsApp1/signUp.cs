@@ -192,10 +192,10 @@ namespace WindowsFormsApp1
             //dosya.Formatting = Formatting.Indented;
             //dosya.WriteStartDocument();
             //dosya.WriteStartElement("Users");
-            ////dosya.WriteStartElement("User");
-            ////dosya.WriteElementString("UserName", "Omer5426");
-            ////dosya.WriteElementString("Name-Surname", "Omer Kurtuldu");
-            ////dosya.WriteEndElement();
+            //dosya.WriteStartElement("User");
+            //dosya.WriteElementString("UserName", "Omer5426");
+            //dosya.WriteElementString("Name-Surname", "Omer Kurtuldu");
+            //dosya.WriteEndElement();
             //dosya.WriteEndElement();
             //dosya.Close();
         }
@@ -224,14 +224,12 @@ namespace WindowsFormsApp1
             XElement rootElement = xdosya.Root;
             XElement element = new XElement("User");
             XElement UserName = new XElement("UserName", textBoxUserName.Text);
-            
             XElement Password = new XElement("Password", sha256);
-
             XElement NameSurname = new XElement("NameSurname", textBoxName.Text);
             XElement PhoneNumber = new XElement("PhoneNumber", maskedTextBoxPhone.Text);
             XElement Adress = new XElement("Adress", textBoxAdress.Text);
             XElement City = new XElement("City", textBoxCity.Text);
-            XElement Country = new XElement("City", textBoxCountry.Text);
+            XElement Country = new XElement("Country", textBoxCountry.Text);
             XElement Email = new XElement("Email", textBoxEmail.Text);
             element.Add(UserName, Password, NameSurname, PhoneNumber, Adress, City, Country, Email);
             rootElement.Add(element);

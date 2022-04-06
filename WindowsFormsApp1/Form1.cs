@@ -40,14 +40,6 @@ namespace WindowsFormsApp1
             set { textBox2 = value; }
         }
 
-        
-
-
-        
-
-
- 
-
 
         private void button1_Click(object sender, EventArgs e)
         {
