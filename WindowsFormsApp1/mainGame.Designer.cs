@@ -32,13 +32,14 @@ namespace WindowsFormsApp1
             this.settingb = new System.Windows.Forms.Button();
             this.btnExitMain = new System.Windows.Forms.Button();
             this.logoutb = new System.Windows.Forms.Button();
+            this.buttonUsers = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // settingb
             // 
             this.settingb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.settingb.Location = new System.Drawing.Point(260, 146);
-            this.settingb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.settingb.Margin = new System.Windows.Forms.Padding(2);
             this.settingb.Name = "settingb";
             this.settingb.Size = new System.Drawing.Size(147, 45);
             this.settingb.TabIndex = 0;
@@ -61,7 +62,7 @@ namespace WindowsFormsApp1
             // 
             this.logoutb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.logoutb.Location = new System.Drawing.Point(260, 195);
-            this.logoutb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.logoutb.Margin = new System.Windows.Forms.Padding(2);
             this.logoutb.Name = "logoutb";
             this.logoutb.Size = new System.Drawing.Size(147, 45);
             this.logoutb.TabIndex = 8;
@@ -69,12 +70,25 @@ namespace WindowsFormsApp1
             this.logoutb.UseVisualStyleBackColor = true;
             this.logoutb.Click += new System.EventHandler(this.logoutb_Click);
             // 
+            // buttonUsers
+            // 
+            this.buttonUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.buttonUsers.Location = new System.Drawing.Point(260, 96);
+            this.buttonUsers.Name = "buttonUsers";
+            this.buttonUsers.Size = new System.Drawing.Size(147, 45);
+            this.buttonUsers.TabIndex = 9;
+            this.buttonUsers.Text = "User Control";
+            this.buttonUsers.UseVisualStyleBackColor = true;
+            this.buttonUsers.Visible = false;
+            this.buttonUsers.Click += new System.EventHandler(this.buttonUsers_Click);
+            // 
             // mainGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(676, 457);
+            this.Controls.Add(this.buttonUsers);
             this.Controls.Add(this.logoutb);
             this.Controls.Add(this.btnExitMain);
             this.Controls.Add(this.settingb);
@@ -90,5 +104,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button settingb;
         private System.Windows.Forms.Button btnExitMain;
         private System.Windows.Forms.Button logoutb;
+        private System.Windows.Forms.Button buttonUsers;
     }
 }

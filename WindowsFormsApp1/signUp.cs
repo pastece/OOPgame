@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,7 +15,7 @@ namespace WindowsFormsApp1
 {
     public partial class signUp : Form
     {
-        //managerScreen mngScreen;
+        Form1 f1;
 
         public signUp()
         {
@@ -199,19 +200,40 @@ namespace WindowsFormsApp1
             //dosya.Close();
         }
 
+        static string ComputeSha256Hash(string rawData)
+        {
+            // Create a SHA256   
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                // ComputeHash - returns byte array  
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));
+
+                // Convert byte array to a string   
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
+            }
+        }
         private void buttonSign_Click(object sender, EventArgs e)
         {
+            string sha256 = ComputeSha256Hash(textBoxPassword.Text);
             XDocument xdosya = XDocument.Load(@"usersInfo.xml");
             XElement rootElement = xdosya.Root;
             XElement element = new XElement("User");
             XElement UserName = new XElement("UserName", textBoxUserName.Text);
+            
+            XElement Password = new XElement("Password", sha256);
+
             XElement NameSurname = new XElement("NameSurname", textBoxName.Text);
             XElement PhoneNumber = new XElement("PhoneNumber", maskedTextBoxPhone.Text);
             XElement Adress = new XElement("Adress", textBoxAdress.Text);
             XElement City = new XElement("City", textBoxCity.Text);
             XElement Country = new XElement("City", textBoxCountry.Text);
             XElement Email = new XElement("Email", textBoxEmail.Text);
-            element.Add(UserName, NameSurname, PhoneNumber, Adress, City, Country, Email);
+            element.Add(UserName, Password, NameSurname, PhoneNumber, Adress, City, Country, Email);
             rootElement.Add(element);
             xdosya.Save(@"usersInfo.xml");
             MessageBox.Show("Successful Registration");
