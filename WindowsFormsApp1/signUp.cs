@@ -14,7 +14,7 @@ namespace WindowsFormsApp1
 {
     public partial class signUp : Form
     {
-        managerScreen mngScreen;
+        //managerScreen mngScreen;
 
         public signUp()
         {
