@@ -59,8 +59,8 @@ namespace WindowsFormsApp1
 
         private void mainGame_Load(object sender, EventArgs e)
         {
-            if (f1.textBox1.Text == "admin")
-                buttonUsers.Visible = true;
+            buttonUsers.Visible = true;
+
             
 
         }
@@ -75,9 +75,17 @@ namespace WindowsFormsApp1
 
         private void buttonUsers_Click(object sender, EventArgs e)
         {
-            managerScreen skip = new managerScreen();
-            skip.Show();
-            this.Hide();
+            if (f1.textBox1.Text == "admin")
+            {
+                managerScreen skip = new managerScreen();
+                skip.Show();
+                this.Hide();
+            }
+
+            else
+            {
+
+            }
         }
     }
 }
