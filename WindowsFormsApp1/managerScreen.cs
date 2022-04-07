@@ -27,14 +27,24 @@ namespace WindowsFormsApp1
 
         public void usersList()
         {
-            XmlDocument xdosya = new XmlDocument();
-            DataSet dSet = new DataSet();
-            XmlReader reader = XmlReader.Create(@"usersInfo.xml", new XmlReaderSettings());
-            dSet.ReadXml(reader);
-            dtGridList.DataSource = dSet.Tables[0];
-            reader.Close();
-            
+            try
+            {
+
+
+                XmlDocument xdosya = new XmlDocument();
+                DataSet dSet = new DataSet();
+                XmlReader reader = XmlReader.Create(@"usersInfo.xml", new XmlReaderSettings());
+                dSet.ReadXml(reader);
+                dtGridList.DataSource = dSet.Tables[0];
+                reader.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
+       
+        
 
         private void backBtnMs_Click(object sender, EventArgs e)
         {
@@ -86,6 +96,7 @@ namespace WindowsFormsApp1
             xdosya.Root.Elements().Where(a => a.Element("UserName").Value == txtBoxUserName.Text).Remove();
             xdosya.Save(@"usersInfo.xml");
             usersList();
+
         }
     }
 }
