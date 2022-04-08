@@ -38,12 +38,14 @@ namespace WindowsFormsApp1
             this.btnExitForm1 = new System.Windows.Forms.Button();
             this.buttonRegister = new System.Windows.Forms.Button();
             this.sfreGstr = new System.Windows.Forms.CheckBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(332, 187);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(237, 22);
             this.textBox1.TabIndex = 0;
@@ -52,7 +54,7 @@ namespace WindowsFormsApp1
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(332, 258);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.textBox2.Name = "textBox2";
             this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(237, 22);
@@ -96,7 +98,7 @@ namespace WindowsFormsApp1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.button1.Location = new System.Drawing.Point(333, 321);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(237, 36);
             this.button1.TabIndex = 5;
@@ -108,7 +110,7 @@ namespace WindowsFormsApp1
             // 
             this.btnExitForm1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.btnExitForm1.Location = new System.Drawing.Point(332, 409);
-            this.btnExitForm1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExitForm1.Margin = new System.Windows.Forms.Padding(4);
             this.btnExitForm1.Name = "btnExitForm1";
             this.btnExitForm1.Size = new System.Drawing.Size(237, 36);
             this.btnExitForm1.TabIndex = 6;
@@ -120,7 +122,7 @@ namespace WindowsFormsApp1
             // 
             this.buttonRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.buttonRegister.Location = new System.Drawing.Point(332, 366);
-            this.buttonRegister.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonRegister.Margin = new System.Windows.Forms.Padding(4);
             this.buttonRegister.Name = "buttonRegister";
             this.buttonRegister.Size = new System.Drawing.Size(237, 36);
             this.buttonRegister.TabIndex = 7;
@@ -132,13 +134,22 @@ namespace WindowsFormsApp1
             // 
             this.sfreGstr.AutoSize = true;
             this.sfreGstr.Location = new System.Drawing.Point(603, 261);
-            this.sfreGstr.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.sfreGstr.Margin = new System.Windows.Forms.Padding(4);
             this.sfreGstr.Name = "sfreGstr";
-            this.sfreGstr.Size = new System.Drawing.Size(116, 21);
+            this.sfreGstr.Size = new System.Drawing.Size(18, 17);
             this.sfreGstr.TabIndex = 8;
-            this.sfreGstr.Text = "Şifreyi Göster";
             this.sfreGstr.UseVisualStyleBackColor = true;
             this.sfreGstr.CheckedChanged += new System.EventHandler(this.sfreGstr_CheckedChanged);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.visibility;
+            this.pictureBox1.Location = new System.Drawing.Point(628, 254);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(28, 29);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 21;
+            this.pictureBox1.TabStop = false;
             // 
             // Form1
             // 
@@ -147,6 +158,7 @@ namespace WindowsFormsApp1
             this.BackColor = System.Drawing.SystemColors.Info;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(919, 551);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.sfreGstr);
             this.Controls.Add(this.buttonRegister);
             this.Controls.Add(this.btnExitForm1);
@@ -157,10 +169,11 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -176,6 +189,7 @@ namespace WindowsFormsApp1
         public System.Windows.Forms.TextBox textBox1;
         public System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.CheckBox sfreGstr;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

@@ -85,6 +85,7 @@ namespace WindowsFormsApp1
                 city = textBoxCity.Text;
                 country = textBoxCountry.Text;
                 email = textBoxEmail.Text;
+                password = Form1.ComputeSha256Hash(textBoxPassword.Text);
 
                 
                 node.SetElementValue("NameSurname", name);
@@ -93,6 +94,7 @@ namespace WindowsFormsApp1
                 node.SetElementValue("City", city);
                 node.SetElementValue("Country", country);
                 node.SetElementValue("Email", email);
+                node.SetElementValue("Password", password);
                 xdosya.Save(@"usersInfo.xml");
 
                 textBoxName.Enabled = false;
@@ -103,6 +105,8 @@ namespace WindowsFormsApp1
                 textBoxEmail.Enabled = false;
                 textBoxPassword.Enabled = false;
                 buttonConfirm.Visible = false;
+                pictureBox1.Visible = false;
+                sfreGstr.Visible = false;
 
                 MessageBox.Show("            Saved");
 
@@ -115,7 +119,7 @@ namespace WindowsFormsApp1
             textBoxPassword.Text = "";
             
             sfreGstr.Visible = true;
-
+            pictureBox1.Visible = true;
 
         }
 
@@ -124,11 +128,32 @@ namespace WindowsFormsApp1
             if (sfreGstr.Checked)
             {
                 textBoxPassword.PasswordChar = default;
+                pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.open;
+
             }
             else
             {
                 textBoxPassword.PasswordChar = '*';
+                pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.visibility;
+
             }
         }
+
+        private void profileScreen_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult secim = new DialogResult();
+            secim = MessageBox.Show("Do you want to close the program ? ", "Close", MessageBoxButtons.YesNo);
+
+            if (secim == DialogResult.Yes)
+            {
+                Application.ExitThread();
+            }
+            else if (secim == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        
     }
 }

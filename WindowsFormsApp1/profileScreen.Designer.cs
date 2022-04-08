@@ -50,7 +50,9 @@ namespace WindowsFormsApp1
             this.labelPassword = new System.Windows.Forms.Label();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.sfreGstr = new System.Windows.Forms.CheckBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUser)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBoxUser
@@ -209,6 +211,7 @@ namespace WindowsFormsApp1
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Size = new System.Drawing.Size(75, 30);
             this.buttonEdit.TabIndex = 14;
+            this.buttonEdit.TabStop = false;
             this.buttonEdit.Text = "Edit";
             this.buttonEdit.UseVisualStyleBackColor = true;
             this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
@@ -220,6 +223,7 @@ namespace WindowsFormsApp1
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(75, 30);
             this.buttonBack.TabIndex = 15;
+            this.buttonBack.TabStop = false;
             this.buttonBack.Text = "Back";
             this.buttonBack.UseVisualStyleBackColor = true;
             this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
@@ -265,12 +269,22 @@ namespace WindowsFormsApp1
             this.sfreGstr.Location = new System.Drawing.Point(618, 45);
             this.sfreGstr.Margin = new System.Windows.Forms.Padding(4);
             this.sfreGstr.Name = "sfreGstr";
-            this.sfreGstr.Size = new System.Drawing.Size(116, 21);
+            this.sfreGstr.Size = new System.Drawing.Size(18, 17);
             this.sfreGstr.TabIndex = 19;
-            this.sfreGstr.Text = "Şifreyi Göster";
             this.sfreGstr.UseVisualStyleBackColor = true;
             this.sfreGstr.Visible = false;
             this.sfreGstr.CheckedChanged += new System.EventHandler(this.sfreGstr_CheckedChanged);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.visibility;
+            this.pictureBox1.Location = new System.Drawing.Point(643, 38);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(28, 29);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 20;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
             // 
             // profileScreen
             // 
@@ -278,6 +292,7 @@ namespace WindowsFormsApp1
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(800, 515);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.sfreGstr);
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.labelPassword);
@@ -301,8 +316,10 @@ namespace WindowsFormsApp1
             this.Name = "profileScreen";
             this.Text = "profileScreen";
             this.TopMost = true;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.profileScreen_FormClosing);
             this.Load += new System.EventHandler(this.profileScreen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUser)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -330,5 +347,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label labelPassword;
         private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.CheckBox sfreGstr;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
