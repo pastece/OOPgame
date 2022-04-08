@@ -78,7 +78,7 @@ namespace WindowsFormsApp1
                 this.Hide();
                 skip.Show();
 
-                userName = "admin";
+                
 
                 
 
@@ -89,7 +89,7 @@ namespace WindowsFormsApp1
                 this.Hide();
                 skip.Show();
 
-                userName = "user";
+                
             }
             else
             {
@@ -102,7 +102,7 @@ namespace WindowsFormsApp1
                     pass = ComputeSha256Hash(textBox2.Text);
                     if (node.Element("Password").Value == pass)
                     {
-                        userName = node.Element("UserName").Value;
+                        
                         profileScreen.username = node.Element("UserName").Value;
                         profileScreen.password = node.Element("Password").Value;
                         profileScreen.name=node.Element("NameSurname").Value;
@@ -205,12 +205,6 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            if(userName != null)
-            {
-                textBox1.Text = userName;
-            }
-        }
+        
     }
 }
