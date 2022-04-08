@@ -28,9 +28,21 @@ namespace WindowsFormsApp1
 
         private void buttonBack_Click(object sender, EventArgs e)
         {
-            Form1 form1 = new Form1();
-            this.Hide();
-            form1.Show();
+
+            Form fc = Application.OpenForms["managerScreen"];
+            if (fc != null)
+            {
+                managerScreen mngscreen = new managerScreen();
+                this.Hide();
+
+            }
+
+            else
+            {
+                Form1 form1 = new Form1();
+                this.Hide();
+                form1.Show();
+            }
         }
 
         private void signUp_FormClosing(object sender, FormClosingEventArgs e)

@@ -55,20 +55,10 @@ namespace WindowsFormsApp1
 
         private void btnAddNewUser_Click(object sender, EventArgs e)
         {
-            XDocument x = XDocument.Load(@"usersInfo.xml");
-            x.Element("Users").Add(
-                new XElement("User",
-                new XElement("UserName", txtBoxUserName.Text),
-                new XElement("NameSurname", txtBoxNameSurname.Text),
-                new XElement("PhoneNumber", txtBoxPhoneNumber.Text),
-                new XElement("Adress", txtBoxAddress.Text),
-                new XElement("City", txtBoxCity.Text),
-                new XElement("Country", txtBoxCountry.Text),
-                new XElement("Email", txtBoxEmail.Text)
-                ));
-            x.Save(@"usersInfo.xml");
-            usersList();
 
+            signUp skip = new signUp();
+            skip.Show();
+            
         }
 
         private void btnUptade_Click(object sender, EventArgs e)
@@ -98,5 +88,7 @@ namespace WindowsFormsApp1
             usersList();
 
         }
+
+        
     }
 }

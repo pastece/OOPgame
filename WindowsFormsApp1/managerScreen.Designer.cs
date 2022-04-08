@@ -173,6 +173,7 @@ namespace WindowsFormsApp1
             this.txtBoxPhoneNumber.Name = "txtBoxPhoneNumber";
             this.txtBoxPhoneNumber.Size = new System.Drawing.Size(100, 20);
             this.txtBoxPhoneNumber.TabIndex = 19;
+            
             // 
             // txtBoxAddress
             // 
