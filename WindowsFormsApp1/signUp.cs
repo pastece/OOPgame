@@ -15,154 +15,16 @@ namespace WindowsFormsApp1
 {
     public partial class signUp : Form
     {
-        Form1 f1;
+       
 
         public signUp()
         {
             InitializeComponent();
         }
 
-        private void textBoxUserName_Enter(object sender, EventArgs e)
-        {
-            if (textBoxUserName.Text == "User Name")
-            {
-                textBoxUserName.Text = "";
-                textBoxUserName.ForeColor = Color.Black;
+        
 
-            }
-        }
-
-        private void textBoxUserName_Leave(object sender, EventArgs e)
-        {
-            if (textBoxUserName.Text == "")
-            {
-                textBoxUserName.ForeColor = Color.SlateGray;
-                textBoxUserName.Text = "User Name";
-            }
-        }
-
-        private void textBoxPassword_Enter(object sender, EventArgs e)
-        {
-            if (textBoxPassword.Text == "Password")
-            {
-                textBoxPassword.Text = "";
-                textBoxPassword.ForeColor = Color.Black;
-            }
-            textBoxPassword.PasswordChar = '*';
-
-        }
-
-        private void textBoxPassword_Leave(object sender, EventArgs e)
-        {
-            if (textBoxPassword.Text == "")
-            {
-                textBoxPassword.Text = "Password";
-                textBoxPassword.PasswordChar = default;
-                textBoxPassword.ForeColor = Color.SlateGray;
-
-            }
-        }
-
-        private void textBoxName_Enter(object sender, EventArgs e)
-        {
-            if (textBoxName.Text == "Name-Surname")
-            {
-                textBoxName.Text = "";
-                textBoxName.ForeColor = Color.Black;
-
-            }
-
-        }
-
-        private void textBoxName_Leave(object sender, EventArgs e)
-        {
-            if (textBoxName.Text == "")
-            {
-                textBoxName.Text = "Name-Surname";
-                textBoxName.ForeColor = Color.SlateGray;
-            }
-
-        }
-
-       
-
-        private void textBoxAdress_Enter(object sender, EventArgs e)
-        {
-            if (textBoxAdress.Text == "Adress") {
-                textBoxAdress.Text = "";
-                textBoxAdress.ForeColor = Color.Black;
-            }
-
-        }
-
-        private void textBoxAdress_Leave(object sender, EventArgs e)
-        {
-            if (textBoxAdress.Text == "") {
-                textBoxAdress.Text = "Adress";
-                textBoxAdress.ForeColor = Color.SlateGray;
-            }
-
-        }
-
-        private void textBoxCity_Enter(object sender, EventArgs e)
-        {
-            if (textBoxCity.Text == "City") {
-                textBoxCity.Text = "";
-                textBoxCity.ForeColor = Color.Black;
-            }
-
-        }
-
-        private void textBoxCity_Leave(object sender, EventArgs e)
-        {
-            if (textBoxCity.Text == "") {
-                textBoxCity.Text = "City";
-                textBoxCity.ForeColor = Color.SlateGray;
-            }
-
-        }
-
-        private void textBoxCountry_Enter(object sender, EventArgs e)
-        {
-            if (textBoxCountry.Text == "Country") {
-                textBoxCountry.Text = "";
-                textBoxCountry.ForeColor = Color.Black;
-            }
-
-        }
-
-        private void textBoxCountry_Leave(object sender, EventArgs e)
-        {
-            if (textBoxCountry.Text == "") {
-                textBoxCountry.Text = "Country";
-                textBoxCountry.ForeColor = Color.SlateGray;
-            }
-
-        }
-
-        private void textBoxEmail_Enter(object sender, EventArgs e)
-        {
-            if (textBoxEmail.Text == "Email")
-            {
-                textBoxEmail.Text = "";
-                textBoxEmail.ForeColor = Color.Black;
-            }
-
-        }
-
-        private void textBoxEmail_Leave(object sender, EventArgs e)
-        {
-            if (textBoxEmail.Text == "") {
-                textBoxEmail.Text = "Email";
-                textBoxEmail.ForeColor = Color.SlateGray;
-            }
-
-        }
-
-        private void maskedTextBoxPhone_Enter(object sender, EventArgs e)
-        {
-            maskedTextBoxPhone.ForeColor = Color.Black;
-        }
+        
 
         private void buttonBack_Click(object sender, EventArgs e)
         {
@@ -200,6 +62,24 @@ namespace WindowsFormsApp1
             //dosya.Close();
         }
 
+        bool IsValidEmail(string eMail)
+        {
+            bool Result = false;
+
+            try
+            {
+                var eMailValidator = new System.Net.Mail.MailAddress(eMail);
+
+                Result = (eMail.LastIndexOf(".") > eMail.LastIndexOf("@"));
+            }
+            catch
+            {
+                Result = false;
+            };
+
+            return Result;
+        }
+
         static string ComputeSha256Hash(string rawData)
         {
             // Create a SHA256   
@@ -219,6 +99,36 @@ namespace WindowsFormsApp1
         }
         private void buttonSign_Click(object sender, EventArgs e)
         {
+            foreach (Control c in this.Controls)
+            {
+                if (c is TextBox)
+                {
+                    TextBox textBox = c as TextBox;
+                    if (textBox.Text == string.Empty)
+                    {
+                        MessageBox.Show(textBox.Name + "  is empthy, please enter a value.");
+                        return;
+
+                    }
+                   
+                }
+            }
+            if (!IsValidEmail(textBoxEmail.Text))
+            {
+                MessageBox.Show("You have to enter a valid email");
+                return;
+            }
+            if (textBoxUserName.Text == "admin")
+            {
+                MessageBox.Show("User name can't be 'admin'");
+                return;
+            }
+            if (maskedTextBoxPhone.Text.Length != 15)
+            {
+                MessageBox.Show("Phone number is missing");
+                return;
+            }
+
             string sha256 = ComputeSha256Hash(textBoxPassword.Text);
             XDocument xdosya = XDocument.Load(@"usersInfo.xml");
             XElement rootElement = xdosya.Root;
@@ -235,9 +145,105 @@ namespace WindowsFormsApp1
             rootElement.Add(element);
             xdosya.Save(@"usersInfo.xml");
             MessageBox.Show("Successful Registration");
-            
+
         }
 
-        
+        private void textBoxUserName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar)
+               && !char.IsSeparator(e.KeyChar);
+        }
+
+        private void textBoxUserName_Enter(object sender, EventArgs e)
+        {
+            labelUserName.Visible = false;
+        }
+        private void textBoxUserName_Leave(object sender, EventArgs e)
+        {
+            if(textBoxUserName.Text==string.Empty)
+                labelUserName.Visible = true;
+        }
+
+        private void textBoxName_Enter(object sender, EventArgs e)
+        {
+            labelName.Visible = false;
+        }
+        private void textBoxName_Leave(object sender, EventArgs e)
+        {
+            if (textBoxName.Text == string.Empty)
+                labelName.Visible = true;
+        }
+
+        private void textBoxPassword_Enter(object sender, EventArgs e)
+        {
+            labelPassword.Visible = false;
+        }
+        private void textBoxPassword_Leave(object sender, EventArgs e)
+        {
+            if (textBoxPassword.Text == string.Empty)
+                labelPassword.Visible = true;
+        }
+
+        private void maskedTextBoxPhone_Enter(object sender, EventArgs e)
+        {
+            maskedTextBoxPhone.ForeColor = Color.Black;
+        }
+
+        private void maskedTextBoxPhone_Leave(object sender, EventArgs e)
+        {
+            if(maskedTextBoxPhone.Text==string.Empty)
+                maskedTextBoxPhone.ForeColor = Color.SlateGray;
+
+        }
+
+        private void textBoxAdress_Enter(object sender, EventArgs e)
+        {
+            labelAdress.Visible = false;
+        }
+        private void textBoxAdress_Leave(object sender, EventArgs e)
+        {
+            if (textBoxAdress.Text == string.Empty)
+                labelAdress.Visible = true;
+        }
+
+        private void textBoxCity_Enter(object sender, EventArgs e)
+        {
+            labelCity.Visible = false;
+        }
+        private void textBoxCity_Leave(object sender, EventArgs e)
+        {
+            if (textBoxCity.Text == string.Empty)
+                labelCity.Visible = true;
+        }
+
+        private void textBoxCountry_Enter(object sender, EventArgs e)
+        {
+            labelCountry.Visible = false;
+        }
+        private void textBoxCountry_Leave(object sender, EventArgs e)
+        {
+            if (textBoxCountry.Text == string.Empty)
+                labelCountry.Visible = true;
+        }
+
+        private void textBoxEmail_Enter(object sender, EventArgs e)
+        {
+            labelEmail.Visible = false;
+        }
+        private void textBoxEmail_Leave(object sender, EventArgs e)
+        {
+            if (textBoxEmail.Text == string.Empty)
+                labelEmail.Visible = true;
+        }
+
+        private void signUp_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buttonSign.PerformClick();
+            }
+        }
+
+       
     }
 }

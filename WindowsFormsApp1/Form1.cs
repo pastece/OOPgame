@@ -183,11 +183,15 @@ namespace WindowsFormsApp1
             {
                 //karakteri göster.
                 textBox2.PasswordChar = '\0';
+                pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.open;
+
             }
             //değilse karakterlerin yerine * koy.
             else
             {
                 textBox2.PasswordChar = '*';
+                pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.visibility;
+
             }
         }
 

@@ -40,6 +40,13 @@ namespace WindowsFormsApp1
             this.labelPhone = new System.Windows.Forms.Label();
             this.buttonSign = new System.Windows.Forms.Button();
             this.buttonBack = new System.Windows.Forms.Button();
+            this.labelUserName = new System.Windows.Forms.Label();
+            this.labelPassword = new System.Windows.Forms.Label();
+            this.labelName = new System.Windows.Forms.Label();
+            this.labelAdress = new System.Windows.Forms.Label();
+            this.labelCity = new System.Windows.Forms.Label();
+            this.labelCountry = new System.Windows.Forms.Label();
+            this.labelEmail = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBoxUserName
@@ -47,15 +54,15 @@ namespace WindowsFormsApp1
             this.textBoxUserName.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.textBoxUserName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBoxUserName.ForeColor = System.Drawing.Color.SlateGray;
-            this.textBoxUserName.Location = new System.Drawing.Point(205, 38);
-            this.textBoxUserName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxUserName.ForeColor = System.Drawing.Color.Black;
+            this.textBoxUserName.Location = new System.Drawing.Point(273, 47);
+            this.textBoxUserName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxUserName.Name = "textBoxUserName";
-            this.textBoxUserName.Size = new System.Drawing.Size(188, 24);
-            this.textBoxUserName.TabIndex = 0;
-            this.textBoxUserName.Text = "User Name";
+            this.textBoxUserName.Size = new System.Drawing.Size(250, 28);
+            this.textBoxUserName.TabIndex = 1;
             this.textBoxUserName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxUserName.Enter += new System.EventHandler(this.textBoxUserName_Enter);
+            this.textBoxUserName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxUserName_KeyPress);
             this.textBoxUserName.Leave += new System.EventHandler(this.textBoxUserName_Leave);
             // 
             // textBoxPassword
@@ -63,13 +70,13 @@ namespace WindowsFormsApp1
             this.textBoxPassword.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.textBoxPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBoxPassword.ForeColor = System.Drawing.Color.SlateGray;
-            this.textBoxPassword.Location = new System.Drawing.Point(205, 74);
-            this.textBoxPassword.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxPassword.ForeColor = System.Drawing.Color.Black;
+            this.textBoxPassword.Location = new System.Drawing.Point(273, 91);
+            this.textBoxPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(188, 24);
-            this.textBoxPassword.TabIndex = 1;
-            this.textBoxPassword.Text = "Password";
+            this.textBoxPassword.PasswordChar = '*';
+            this.textBoxPassword.Size = new System.Drawing.Size(250, 28);
+            this.textBoxPassword.TabIndex = 2;
             this.textBoxPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxPassword.Enter += new System.EventHandler(this.textBoxPassword_Enter);
             this.textBoxPassword.Leave += new System.EventHandler(this.textBoxPassword_Leave);
@@ -79,13 +86,12 @@ namespace WindowsFormsApp1
             this.textBoxName.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.textBoxName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBoxName.ForeColor = System.Drawing.Color.SlateGray;
-            this.textBoxName.Location = new System.Drawing.Point(205, 110);
-            this.textBoxName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxName.ForeColor = System.Drawing.Color.Black;
+            this.textBoxName.Location = new System.Drawing.Point(273, 135);
+            this.textBoxName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(188, 24);
-            this.textBoxName.TabIndex = 2;
-            this.textBoxName.Text = "Name-Surname";
+            this.textBoxName.Size = new System.Drawing.Size(250, 28);
+            this.textBoxName.TabIndex = 3;
             this.textBoxName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxName.Enter += new System.EventHandler(this.textBoxName_Enter);
             this.textBoxName.Leave += new System.EventHandler(this.textBoxName_Leave);
@@ -95,16 +101,14 @@ namespace WindowsFormsApp1
             this.textBoxAdress.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.textBoxAdress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxAdress.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBoxAdress.ForeColor = System.Drawing.Color.SlateGray;
-            this.textBoxAdress.Location = new System.Drawing.Point(205, 184);
-            this.textBoxAdress.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxAdress.ForeColor = System.Drawing.Color.Black;
+            this.textBoxAdress.Location = new System.Drawing.Point(273, 226);
+            this.textBoxAdress.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxAdress.Multiline = true;
             this.textBoxAdress.Name = "textBoxAdress";
-            this.textBoxAdress.Size = new System.Drawing.Size(188, 46);
-            this.textBoxAdress.TabIndex = 4;
-            this.textBoxAdress.Text = "Adress";
+            this.textBoxAdress.Size = new System.Drawing.Size(250, 56);
+            this.textBoxAdress.TabIndex = 5;
             this.textBoxAdress.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            
             this.textBoxAdress.Enter += new System.EventHandler(this.textBoxAdress_Enter);
             this.textBoxAdress.Leave += new System.EventHandler(this.textBoxAdress_Leave);
             // 
@@ -113,13 +117,12 @@ namespace WindowsFormsApp1
             this.textBoxCity.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.textBoxCity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBoxCity.ForeColor = System.Drawing.Color.SlateGray;
-            this.textBoxCity.Location = new System.Drawing.Point(205, 243);
-            this.textBoxCity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxCity.ForeColor = System.Drawing.Color.Black;
+            this.textBoxCity.Location = new System.Drawing.Point(273, 299);
+            this.textBoxCity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxCity.Name = "textBoxCity";
-            this.textBoxCity.Size = new System.Drawing.Size(188, 24);
-            this.textBoxCity.TabIndex = 5;
-            this.textBoxCity.Text = "City";
+            this.textBoxCity.Size = new System.Drawing.Size(250, 28);
+            this.textBoxCity.TabIndex = 6;
             this.textBoxCity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxCity.Enter += new System.EventHandler(this.textBoxCity_Enter);
             this.textBoxCity.Leave += new System.EventHandler(this.textBoxCity_Leave);
@@ -129,13 +132,12 @@ namespace WindowsFormsApp1
             this.textBoxCountry.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.textBoxCountry.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxCountry.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBoxCountry.ForeColor = System.Drawing.Color.SlateGray;
-            this.textBoxCountry.Location = new System.Drawing.Point(205, 280);
-            this.textBoxCountry.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxCountry.ForeColor = System.Drawing.Color.Black;
+            this.textBoxCountry.Location = new System.Drawing.Point(273, 345);
+            this.textBoxCountry.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxCountry.Name = "textBoxCountry";
-            this.textBoxCountry.Size = new System.Drawing.Size(188, 24);
-            this.textBoxCountry.TabIndex = 6;
-            this.textBoxCountry.Text = "Country";
+            this.textBoxCountry.Size = new System.Drawing.Size(250, 28);
+            this.textBoxCountry.TabIndex = 7;
             this.textBoxCountry.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxCountry.Enter += new System.EventHandler(this.textBoxCountry_Enter);
             this.textBoxCountry.Leave += new System.EventHandler(this.textBoxCountry_Leave);
@@ -145,13 +147,12 @@ namespace WindowsFormsApp1
             this.textBoxEmail.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.textBoxEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBoxEmail.ForeColor = System.Drawing.Color.SlateGray;
-            this.textBoxEmail.Location = new System.Drawing.Point(205, 316);
-            this.textBoxEmail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxEmail.ForeColor = System.Drawing.Color.Black;
+            this.textBoxEmail.Location = new System.Drawing.Point(273, 389);
+            this.textBoxEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(188, 24);
-            this.textBoxEmail.TabIndex = 7;
-            this.textBoxEmail.Text = "Email";
+            this.textBoxEmail.Size = new System.Drawing.Size(250, 28);
+            this.textBoxEmail.TabIndex = 8;
             this.textBoxEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxEmail.Enter += new System.EventHandler(this.textBoxEmail_Enter);
             this.textBoxEmail.Leave += new System.EventHandler(this.textBoxEmail_Leave);
@@ -162,34 +163,34 @@ namespace WindowsFormsApp1
             this.maskedTextBoxPhone.BackColor = System.Drawing.SystemColors.Window;
             this.maskedTextBoxPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.maskedTextBoxPhone.ForeColor = System.Drawing.Color.SlateGray;
-            this.maskedTextBoxPhone.Location = new System.Drawing.Point(205, 146);
-            this.maskedTextBoxPhone.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.maskedTextBoxPhone.Location = new System.Drawing.Point(273, 180);
+            this.maskedTextBoxPhone.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.maskedTextBoxPhone.Mask = "(999) 000-00-00";
             this.maskedTextBoxPhone.Name = "maskedTextBoxPhone";
-            this.maskedTextBoxPhone.Size = new System.Drawing.Size(188, 24);
-            this.maskedTextBoxPhone.TabIndex = 8;
+            this.maskedTextBoxPhone.Size = new System.Drawing.Size(249, 28);
+            this.maskedTextBoxPhone.TabIndex = 4;
             this.maskedTextBoxPhone.Tag = "";
             this.maskedTextBoxPhone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.maskedTextBoxPhone.Enter += new System.EventHandler(this.maskedTextBoxPhone_Enter);
+            this.maskedTextBoxPhone.Leave += new System.EventHandler(this.maskedTextBoxPhone_Leave);
             // 
             // labelPhone
             // 
             this.labelPhone.AutoSize = true;
-            this.labelPhone.Location = new System.Drawing.Point(397, 153);
-            this.labelPhone.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelPhone.Location = new System.Drawing.Point(529, 188);
             this.labelPhone.Name = "labelPhone";
-            this.labelPhone.Size = new System.Drawing.Size(84, 13);
+            this.labelPhone.Size = new System.Drawing.Size(113, 17);
             this.labelPhone.TabIndex = 9;
             this.labelPhone.Text = "(Phone Number)";
             // 
             // buttonSign
             // 
             this.buttonSign.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.buttonSign.Location = new System.Drawing.Point(257, 358);
-            this.buttonSign.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonSign.Location = new System.Drawing.Point(343, 441);
+            this.buttonSign.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonSign.Name = "buttonSign";
-            this.buttonSign.Size = new System.Drawing.Size(83, 39);
-            this.buttonSign.TabIndex = 10;
+            this.buttonSign.Size = new System.Drawing.Size(111, 48);
+            this.buttonSign.TabIndex = 9;
             this.buttonSign.Text = "Sign in";
             this.buttonSign.UseVisualStyleBackColor = true;
             this.buttonSign.Click += new System.EventHandler(this.buttonSign_Click);
@@ -197,22 +198,120 @@ namespace WindowsFormsApp1
             // buttonBack
             // 
             this.buttonBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.buttonBack.Location = new System.Drawing.Point(24, 22);
-            this.buttonBack.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonBack.Location = new System.Drawing.Point(32, 27);
+            this.buttonBack.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonBack.Name = "buttonBack";
-            this.buttonBack.Size = new System.Drawing.Size(83, 39);
-            this.buttonBack.TabIndex = 11;
+            this.buttonBack.Size = new System.Drawing.Size(111, 48);
+            this.buttonBack.TabIndex = 0;
             this.buttonBack.Text = "Back";
             this.buttonBack.UseVisualStyleBackColor = true;
             this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
+            // labelUserName
+            // 
+            this.labelUserName.AutoSize = true;
+            this.labelUserName.BackColor = System.Drawing.SystemColors.Window;
+            this.labelUserName.Enabled = false;
+            this.labelUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelUserName.ForeColor = System.Drawing.Color.SlateGray;
+            this.labelUserName.Location = new System.Drawing.Point(349, 49);
+            this.labelUserName.Name = "labelUserName";
+            this.labelUserName.Size = new System.Drawing.Size(105, 24);
+            this.labelUserName.TabIndex = 18;
+            this.labelUserName.Text = "User Name";
+            // 
+            // labelPassword
+            // 
+            this.labelPassword.AutoSize = true;
+            this.labelPassword.BackColor = System.Drawing.SystemColors.Window;
+            this.labelPassword.Enabled = false;
+            this.labelPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelPassword.ForeColor = System.Drawing.Color.SlateGray;
+            this.labelPassword.Location = new System.Drawing.Point(355, 93);
+            this.labelPassword.Name = "labelPassword";
+            this.labelPassword.Size = new System.Drawing.Size(92, 24);
+            this.labelPassword.TabIndex = 11;
+            this.labelPassword.Text = "Password";
+            // 
+            // labelName
+            // 
+            this.labelName.AutoSize = true;
+            this.labelName.BackColor = System.Drawing.SystemColors.Window;
+            this.labelName.Enabled = false;
+            this.labelName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelName.ForeColor = System.Drawing.Color.SlateGray;
+            this.labelName.Location = new System.Drawing.Point(328, 137);
+            this.labelName.Name = "labelName";
+            this.labelName.Size = new System.Drawing.Size(143, 24);
+            this.labelName.TabIndex = 12;
+            this.labelName.Text = "Name Surname";
+            // 
+            // labelAdress
+            // 
+            this.labelAdress.AutoSize = true;
+            this.labelAdress.BackColor = System.Drawing.SystemColors.Window;
+            this.labelAdress.Enabled = false;
+            this.labelAdress.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelAdress.ForeColor = System.Drawing.Color.SlateGray;
+            this.labelAdress.Location = new System.Drawing.Point(364, 241);
+            this.labelAdress.Name = "labelAdress";
+            this.labelAdress.Size = new System.Drawing.Size(69, 24);
+            this.labelAdress.TabIndex = 13;
+            this.labelAdress.Text = "Adress";
+            // 
+            // labelCity
+            // 
+            this.labelCity.AutoSize = true;
+            this.labelCity.BackColor = System.Drawing.SystemColors.Window;
+            this.labelCity.Enabled = false;
+            this.labelCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelCity.ForeColor = System.Drawing.Color.SlateGray;
+            this.labelCity.Location = new System.Drawing.Point(376, 301);
+            this.labelCity.Name = "labelCity";
+            this.labelCity.Size = new System.Drawing.Size(40, 24);
+            this.labelCity.TabIndex = 14;
+            this.labelCity.Text = "City";
+            // 
+            // labelCountry
+            // 
+            this.labelCountry.AutoSize = true;
+            this.labelCountry.BackColor = System.Drawing.SystemColors.Window;
+            this.labelCountry.Enabled = false;
+            this.labelCountry.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelCountry.ForeColor = System.Drawing.Color.SlateGray;
+            this.labelCountry.Location = new System.Drawing.Point(364, 347);
+            this.labelCountry.Name = "labelCountry";
+            this.labelCountry.Size = new System.Drawing.Size(75, 24);
+            this.labelCountry.TabIndex = 15;
+            this.labelCountry.Text = "Country";
+            // 
+            // labelEmail
+            // 
+            this.labelEmail.AutoSize = true;
+            this.labelEmail.BackColor = System.Drawing.SystemColors.Window;
+            this.labelEmail.Enabled = false;
+            this.labelEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelEmail.ForeColor = System.Drawing.Color.SlateGray;
+            this.labelEmail.Location = new System.Drawing.Point(370, 391);
+            this.labelEmail.Name = "labelEmail";
+            this.labelEmail.Size = new System.Drawing.Size(57, 24);
+            this.labelEmail.TabIndex = 16;
+            this.labelEmail.Text = "Email";
+            // 
             // signUp
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.SystemColors.Info;
-            this.ClientSize = new System.Drawing.Size(600, 419);
+            this.ClientSize = new System.Drawing.Size(800, 516);
+            this.Controls.Add(this.labelEmail);
+            this.Controls.Add(this.labelCountry);
+            this.Controls.Add(this.labelCity);
+            this.Controls.Add(this.labelAdress);
+            this.Controls.Add(this.labelName);
+            this.Controls.Add(this.labelPassword);
+            this.Controls.Add(this.labelUserName);
             this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.buttonSign);
             this.Controls.Add(this.labelPhone);
@@ -224,10 +323,11 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.textBoxUserName);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "signUp";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.signUp_FormClosing);
             this.Load += new System.EventHandler(this.signUp_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.signUp_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -246,5 +346,12 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label labelPhone;
         private System.Windows.Forms.Button buttonSign;
         private System.Windows.Forms.Button buttonBack;
+        private System.Windows.Forms.Label labelUserName;
+        private System.Windows.Forms.Label labelPassword;
+        private System.Windows.Forms.Label labelName;
+        private System.Windows.Forms.Label labelAdress;
+        private System.Windows.Forms.Label labelCity;
+        private System.Windows.Forms.Label labelCountry;
+        private System.Windows.Forms.Label labelEmail;
     }
 }
