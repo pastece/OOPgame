@@ -17,6 +17,7 @@ namespace WindowsFormsApp1
         public managerScreen()
         {
             InitializeComponent();
+
         }
 
         private void managerScreen_Load(object sender, EventArgs e)
@@ -25,11 +26,28 @@ namespace WindowsFormsApp1
 
         }
 
+        bool IsValidEmailmng(string eMail)
+        {
+            bool Result = false;
+
+            try
+            {
+                var eMailValidator = new System.Net.Mail.MailAddress(eMail);
+
+                Result = (eMail.LastIndexOf(".") > eMail.LastIndexOf("@"));
+            }
+            catch
+            {
+                Result = false;
+            };
+
+            return Result;
+        }
+
         public void usersList()
         {
             try
             {
-
 
                 XmlDocument xdosya = new XmlDocument();
                 DataSet dSet = new DataSet();
@@ -55,19 +73,8 @@ namespace WindowsFormsApp1
 
         private void btnAddNewUser_Click(object sender, EventArgs e)
         {
-            XDocument x = XDocument.Load(@"usersInfo.xml");
-            x.Element("Users").Add(
-                new XElement("User",
-                new XElement("UserName", txtBoxUserName.Text),
-                new XElement("NameSurname", txtBoxNameSurname.Text),
-                new XElement("PhoneNumber", txtBoxPhoneNumber.Text),
-                new XElement("Adress", txtBoxAddress.Text),
-                new XElement("City", txtBoxCity.Text),
-                new XElement("Country", txtBoxCountry.Text),
-                new XElement("Email", txtBoxEmail.Text)
-                ));
-            x.Save(@"usersInfo.xml");
-            usersList();
+            signUp skip = new signUp();
+            skip.Show();
 
         }
 
@@ -86,6 +93,29 @@ namespace WindowsFormsApp1
                 node.SetElementValue("Email", txtBoxEmail.Text);
                 xdosya.Save(@"usersInfo.xml");
                 usersList();
+                
+                if (!IsValidEmailmng(txtBoxEmail.Text))
+                {
+                    MessageBox.Show("You have to enter a valid email");
+                    return;
+                }
+                
+                
+                if (txtBoxPhoneNumber.Text.Length != 15)
+                {
+                    MessageBox.Show("Phone number is missing");
+                    return;
+                }
+
+
+                txtBoxUserName.Clear();
+                txtBoxNameSurname.Clear();
+                txtBoxPhoneNumber.Clear();
+                txtBoxAddress.Clear();
+                txtBoxCity.Clear();
+                txtBoxCountry.Clear();
+                txtBoxEmail.Clear();
+                
 
             }
         }
@@ -96,7 +126,18 @@ namespace WindowsFormsApp1
             xdosya.Root.Elements().Where(a => a.Element("UserName").Value == txtBoxUserName.Text).Remove();
             xdosya.Save(@"usersInfo.xml");
             usersList();
+            txtBoxUserName.Clear();
 
         }
+
+        private void txtBoxUserName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((int)e.KeyChar == 32)
+            {
+                e.Handled = true;
+            }
+        }
+
+        
     }
 }

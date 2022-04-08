@@ -13,24 +13,37 @@ using System.Xml.Linq;
 
 namespace WindowsFormsApp1
 {
+
+    
     public partial class signUp : Form
     {
        
-
+        
         public signUp()
         {
             InitializeComponent();
         }
 
-        
+        managerScreen mng = (managerScreen)Application.OpenForms["managerScreen"];
 
-        
+
 
         private void buttonBack_Click(object sender, EventArgs e)
         {
-            Form1 form1 = new Form1();
-            this.Hide();
-            form1.Show();
+            Form fc = Application.OpenForms["managerScreen"];
+            if (fc != null)
+            {
+                managerScreen mngscreen = new managerScreen();
+                this.Hide();
+
+            }
+
+            else
+            {
+                Form1 form1 = new Form1();
+                this.Hide();
+                form1.Show();
+            }
         }
 
         private void signUp_FormClosing(object sender, FormClosingEventArgs e)
@@ -60,6 +73,7 @@ namespace WindowsFormsApp1
             //dosya.WriteEndElement();
             //dosya.WriteEndElement();
             //dosya.Close();
+            
         }
 
         bool IsValidEmail(string eMail)
@@ -99,53 +113,78 @@ namespace WindowsFormsApp1
         }
         private void buttonSign_Click(object sender, EventArgs e)
         {
-            foreach (Control c in this.Controls)
+
+            Form fc = Application.OpenForms["managerScreen"];
+            string sha256 = ComputeSha256Hash(textBoxPassword.Text);
+
+            if (fc != null)
             {
-                if (c is TextBox)
+                XDocument x = XDocument.Load(@"usersInfo.xml");
+                x.Element("Users").Add(
+                    new XElement("User",
+                    new XElement("UserName", textBoxUserName.Text),
+                    new XElement("Password", sha256),
+                    new XElement("NameSurname", textBoxName.Text),
+                    new XElement("PhoneNumber", maskedTextBoxPhone.Text),
+                    new XElement("Adress", textBoxAdress.Text),
+                    new XElement("City", textBoxCity.Text),
+                    new XElement("Country", textBoxCity.Text),
+                    new XElement("Email", textBoxEmail.Text)
+                    ));
+                x.Save(@"usersInfo.xml");
+                MessageBox.Show("Successful Registration");
+                mng.usersList();
+;
+            }
+            else
+            {
+                foreach (Control c in this.Controls)
                 {
-                    TextBox textBox = c as TextBox;
-                    if (textBox.Text == string.Empty)
+                    if (c is TextBox)
                     {
-                        MessageBox.Show(textBox.Name + "  is empthy, please enter a value.");
-                        return;
+                        TextBox textBox = c as TextBox;
+                        if (textBox.Text == string.Empty)
+                        {
+                            MessageBox.Show(textBox.Name + "  is empthy, please enter a value.");
+                            return;
+
+                        }
 
                     }
-                   
                 }
-            }
-            if (!IsValidEmail(textBoxEmail.Text))
-            {
-                MessageBox.Show("You have to enter a valid email");
-                return;
-            }
-            if (textBoxUserName.Text == "admin")
-            {
-                MessageBox.Show("User name can't be 'admin'");
-                return;
-            }
-            if (maskedTextBoxPhone.Text.Length != 15)
-            {
-                MessageBox.Show("Phone number is missing");
-                return;
-            }
+                if (!IsValidEmail(textBoxEmail.Text))
+                {
+                    MessageBox.Show("You have to enter a valid email");
+                    return;
+                }
+                if (textBoxUserName.Text == "admin")
+                {
+                    MessageBox.Show("User name can't be 'admin'");
+                    return;
+                }
+                if (maskedTextBoxPhone.Text.Length != 15)
+                {
+                    MessageBox.Show("Phone number is missing");
+                    return;
+                }
 
-            string sha256 = ComputeSha256Hash(textBoxPassword.Text);
-            XDocument xdosya = XDocument.Load(@"usersInfo.xml");
-            XElement rootElement = xdosya.Root;
-            XElement element = new XElement("User");
-            XElement UserName = new XElement("UserName", textBoxUserName.Text);
-            XElement Password = new XElement("Password", sha256);
-            XElement NameSurname = new XElement("NameSurname", textBoxName.Text);
-            XElement PhoneNumber = new XElement("PhoneNumber", maskedTextBoxPhone.Text);
-            XElement Adress = new XElement("Adress", textBoxAdress.Text);
-            XElement City = new XElement("City", textBoxCity.Text);
-            XElement Country = new XElement("Country", textBoxCountry.Text);
-            XElement Email = new XElement("Email", textBoxEmail.Text);
-            element.Add(UserName, Password, NameSurname, PhoneNumber, Adress, City, Country, Email);
-            rootElement.Add(element);
-            xdosya.Save(@"usersInfo.xml");
-            MessageBox.Show("Successful Registration");
-
+                //string sha256 = ComputeSha256Hash(textBoxPassword.Text);
+                XDocument xdosya = XDocument.Load(@"usersInfo.xml");
+                XElement rootElement = xdosya.Root;
+                XElement element = new XElement("User");
+                XElement UserName = new XElement("UserName", textBoxUserName.Text);
+                XElement Password = new XElement("Password", sha256);
+                XElement NameSurname = new XElement("NameSurname", textBoxName.Text);
+                XElement PhoneNumber = new XElement("PhoneNumber", maskedTextBoxPhone.Text);
+                XElement Adress = new XElement("Adress", textBoxAdress.Text);
+                XElement City = new XElement("City", textBoxCity.Text);
+                XElement Country = new XElement("Country", textBoxCountry.Text);
+                XElement Email = new XElement("Email", textBoxEmail.Text);
+                element.Add(UserName, Password, NameSurname, PhoneNumber, Adress, City, Country, Email);
+                rootElement.Add(element);
+                xdosya.Save(@"usersInfo.xml");
+                MessageBox.Show("Successful Registration");
+            }
         }
 
         private void textBoxUserName_KeyPress(object sender, KeyPressEventArgs e)

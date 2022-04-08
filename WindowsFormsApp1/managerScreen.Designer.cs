@@ -48,6 +48,9 @@ namespace WindowsFormsApp1
             this.txtBoxEmail = new System.Windows.Forms.TextBox();
             this.btnUptade = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
+            this.lblAddNewUser = new System.Windows.Forms.Label();
+            this.lblRemove = new System.Windows.Forms.Label();
+            this.lblUptade = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dtGridList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -159,6 +162,7 @@ namespace WindowsFormsApp1
             this.txtBoxUserName.Name = "txtBoxUserName";
             this.txtBoxUserName.Size = new System.Drawing.Size(100, 20);
             this.txtBoxUserName.TabIndex = 17;
+            this.txtBoxUserName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBoxUserName_KeyPress);
             // 
             // txtBoxNameSurname
             // 
@@ -173,6 +177,8 @@ namespace WindowsFormsApp1
             this.txtBoxPhoneNumber.Name = "txtBoxPhoneNumber";
             this.txtBoxPhoneNumber.Size = new System.Drawing.Size(100, 20);
             this.txtBoxPhoneNumber.TabIndex = 19;
+            
+            
             // 
             // txtBoxAddress
             // 
@@ -223,12 +229,42 @@ namespace WindowsFormsApp1
             this.btnRemove.UseVisualStyleBackColor = true;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
+            // lblAddNewUser
+            // 
+            this.lblAddNewUser.AutoSize = true;
+            this.lblAddNewUser.Location = new System.Drawing.Point(483, 390);
+            this.lblAddNewUser.Name = "lblAddNewUser";
+            this.lblAddNewUser.Size = new System.Drawing.Size(118, 13);
+            this.lblAddNewUser.TabIndex = 26;
+            this.lblAddNewUser.Text = "(Click to add new user.)";
+            // 
+            // lblRemove
+            // 
+            this.lblRemove.AutoSize = true;
+            this.lblRemove.Location = new System.Drawing.Point(483, 508);
+            this.lblRemove.Name = "lblRemove";
+            this.lblRemove.Size = new System.Drawing.Size(231, 13);
+            this.lblRemove.TabIndex = 27;
+            this.lblRemove.Text = "(Write the name of the user you want to delete.)";
+            // 
+            // lblUptade
+            // 
+            this.lblUptade.AutoSize = true;
+            this.lblUptade.Location = new System.Drawing.Point(483, 447);
+            this.lblUptade.Name = "lblUptade";
+            this.lblUptade.Size = new System.Drawing.Size(232, 13);
+            this.lblUptade.TabIndex = 28;
+            this.lblUptade.Text = "(Write the username of the you want to uptade.)";
+            // 
             // managerScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(819, 570);
+            this.Controls.Add(this.lblUptade);
+            this.Controls.Add(this.lblRemove);
+            this.Controls.Add(this.lblAddNewUser);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnUptade);
             this.Controls.Add(this.txtBoxEmail);
@@ -258,8 +294,6 @@ namespace WindowsFormsApp1
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dtGridList;
         private System.Windows.Forms.Button backBtnMs;
         private System.Windows.Forms.Label lblUserName;
         private System.Windows.Forms.Label lblNameSurname;
@@ -269,7 +303,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label lblCity;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Button btnAddNewUser;
-        private System.Windows.Forms.TextBox txtBoxUserName;
         private System.Windows.Forms.TextBox txtBoxNameSurname;
         private System.Windows.Forms.TextBox txtBoxPhoneNumber;
         private System.Windows.Forms.TextBox txtBoxAddress;
@@ -278,5 +311,10 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.TextBox txtBoxEmail;
         private System.Windows.Forms.Button btnUptade;
         private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.Label lblAddNewUser;
+        private System.Windows.Forms.Label lblRemove;
+        private System.Windows.Forms.Label lblUptade;
+        public System.Windows.Forms.TextBox txtBoxUserName;
+        public System.Windows.Forms.DataGridView dtGridList;
     }
 }

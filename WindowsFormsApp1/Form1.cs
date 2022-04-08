@@ -26,6 +26,7 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
+            
         }
 
         public TextBox getTextbox1
@@ -68,6 +69,7 @@ namespace WindowsFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
             string pass;
+            string userName;
 
             if (textBox1.Text == "admin" && textBox2.Text == "admin")
             {
@@ -75,6 +77,8 @@ namespace WindowsFormsApp1
                 mainGame skip = new mainGame(this);
                 this.Hide();
                 skip.Show();
+
+                userName = "admin";
 
                 
 
@@ -84,8 +88,8 @@ namespace WindowsFormsApp1
                 mainGame skip = new mainGame(this);
                 this.Hide();
                 skip.Show();
-                
 
+                userName = "user";
             }
             else
             {
@@ -98,6 +102,7 @@ namespace WindowsFormsApp1
                     pass = ComputeSha256Hash(textBox2.Text);
                     if (node.Element("Password").Value == pass)
                     {
+                        userName = node.Element("UserName").Value;
                         profileScreen.username = node.Element("UserName").Value;
                         profileScreen.password = node.Element("Password").Value;
                         profileScreen.name=node.Element("NameSurname").Value;
@@ -173,6 +178,11 @@ namespace WindowsFormsApp1
         {
             e.Handled = !char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar)
                 && !char.IsSeparator(e.KeyChar);
+            
+            if ((int)e.KeyChar == 32)
+            {
+                e.Handled = true;
+            }
 
         }
 
@@ -195,6 +205,12 @@ namespace WindowsFormsApp1
             }
         }
 
-        
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            if(userName != null)
+            {
+                textBox1.Text = userName;
+            }
+        }
     }
 }
