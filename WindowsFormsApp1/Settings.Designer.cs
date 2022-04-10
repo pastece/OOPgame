@@ -78,9 +78,9 @@ namespace WindowsFormsApp1
             this.settingGB.Controls.Add(this.labelColumn);
             this.settingGB.Controls.Add(this.DiffLbl);
             this.settingGB.Location = new System.Drawing.Point(32, 58);
-            this.settingGB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.settingGB.Margin = new System.Windows.Forms.Padding(2);
             this.settingGB.Name = "settingGB";
-            this.settingGB.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.settingGB.Padding = new System.Windows.Forms.Padding(2);
             this.settingGB.Size = new System.Drawing.Size(604, 137);
             this.settingGB.TabIndex = 4;
             this.settingGB.TabStop = false;
@@ -104,7 +104,7 @@ namespace WindowsFormsApp1
             // 
             this.confirmBtn.Cursor = System.Windows.Forms.Cursors.Default;
             this.confirmBtn.Location = new System.Drawing.Point(535, 93);
-            this.confirmBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.confirmBtn.Margin = new System.Windows.Forms.Padding(2);
             this.confirmBtn.Name = "confirmBtn";
             this.confirmBtn.Size = new System.Drawing.Size(58, 19);
             this.confirmBtn.TabIndex = 9;
@@ -116,7 +116,7 @@ namespace WindowsFormsApp1
             // customBtn
             // 
             this.customBtn.Location = new System.Drawing.Point(455, 24);
-            this.customBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.customBtn.Margin = new System.Windows.Forms.Padding(2);
             this.customBtn.Name = "customBtn";
             this.customBtn.Size = new System.Drawing.Size(75, 41);
             this.customBtn.TabIndex = 4;
@@ -127,7 +127,7 @@ namespace WindowsFormsApp1
             // textBoxColumn
             // 
             this.textBoxColumn.Location = new System.Drawing.Point(455, 109);
-            this.textBoxColumn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxColumn.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxColumn.Name = "textBoxColumn";
             this.textBoxColumn.Size = new System.Drawing.Size(76, 20);
             this.textBoxColumn.TabIndex = 8;
@@ -137,7 +137,7 @@ namespace WindowsFormsApp1
             // textBoxRow
             // 
             this.textBoxRow.Location = new System.Drawing.Point(455, 78);
-            this.textBoxRow.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxRow.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxRow.Name = "textBoxRow";
             this.textBoxRow.Size = new System.Drawing.Size(76, 20);
             this.textBoxRow.TabIndex = 7;
@@ -182,7 +182,7 @@ namespace WindowsFormsApp1
             this.squareBox.AutoSize = true;
             this.squareBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.squareBox.Location = new System.Drawing.Point(147, 27);
-            this.squareBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.squareBox.Margin = new System.Windows.Forms.Padding(2);
             this.squareBox.Name = "squareBox";
             this.squareBox.Size = new System.Drawing.Size(80, 24);
             this.squareBox.TabIndex = 6;
@@ -194,7 +194,7 @@ namespace WindowsFormsApp1
             this.triangleBox.AutoSize = true;
             this.triangleBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.triangleBox.Location = new System.Drawing.Point(264, 28);
-            this.triangleBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.triangleBox.Margin = new System.Windows.Forms.Padding(2);
             this.triangleBox.Name = "triangleBox";
             this.triangleBox.Size = new System.Drawing.Size(84, 24);
             this.triangleBox.TabIndex = 7;
@@ -206,7 +206,7 @@ namespace WindowsFormsApp1
             this.roundBox.AutoSize = true;
             this.roundBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.roundBox.Location = new System.Drawing.Point(393, 28);
-            this.roundBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.roundBox.Margin = new System.Windows.Forms.Padding(2);
             this.roundBox.Name = "roundBox";
             this.roundBox.Size = new System.Drawing.Size(76, 24);
             this.roundBox.TabIndex = 8;
@@ -220,9 +220,9 @@ namespace WindowsFormsApp1
             this.shapeGB.Controls.Add(this.triangleBox);
             this.shapeGB.Controls.Add(this.squareBox);
             this.shapeGB.Location = new System.Drawing.Point(41, 198);
-            this.shapeGB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.shapeGB.Margin = new System.Windows.Forms.Padding(2);
             this.shapeGB.Name = "shapeGB";
-            this.shapeGB.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.shapeGB.Padding = new System.Windows.Forms.Padding(2);
             this.shapeGB.Size = new System.Drawing.Size(604, 81);
             this.shapeGB.TabIndex = 9;
             this.shapeGB.TabStop = false;
@@ -231,7 +231,7 @@ namespace WindowsFormsApp1
             // 
             this.saveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.saveBtn.Location = new System.Drawing.Point(546, 435);
-            this.saveBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.saveBtn.Margin = new System.Windows.Forms.Padding(2);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(90, 41);
             this.saveBtn.TabIndex = 10;
@@ -243,7 +243,7 @@ namespace WindowsFormsApp1
             // 
             this.backBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.backBtn.Location = new System.Drawing.Point(32, 11);
-            this.backBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.backBtn.Margin = new System.Windows.Forms.Padding(2);
             this.backBtn.Name = "backBtn";
             this.backBtn.Size = new System.Drawing.Size(75, 31);
             this.backBtn.TabIndex = 11;
@@ -258,9 +258,9 @@ namespace WindowsFormsApp1
             this.groupBox1.Controls.Add(this.checkBoxGreen);
             this.groupBox1.Controls.Add(this.checkBoxBlue);
             this.groupBox1.Location = new System.Drawing.Point(41, 299);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(604, 81);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
@@ -270,7 +270,7 @@ namespace WindowsFormsApp1
             this.checkBoxRed.AutoSize = true;
             this.checkBoxRed.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.checkBoxRed.Location = new System.Drawing.Point(393, 28);
-            this.checkBoxRed.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBoxRed.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxRed.Name = "checkBoxRed";
             this.checkBoxRed.Size = new System.Drawing.Size(58, 24);
             this.checkBoxRed.TabIndex = 8;
@@ -293,7 +293,7 @@ namespace WindowsFormsApp1
             this.checkBoxGreen.AutoSize = true;
             this.checkBoxGreen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.checkBoxGreen.Location = new System.Drawing.Point(264, 28);
-            this.checkBoxGreen.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBoxGreen.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxGreen.Name = "checkBoxGreen";
             this.checkBoxGreen.Size = new System.Drawing.Size(73, 24);
             this.checkBoxGreen.TabIndex = 7;
@@ -305,7 +305,7 @@ namespace WindowsFormsApp1
             this.checkBoxBlue.AutoSize = true;
             this.checkBoxBlue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.checkBoxBlue.Location = new System.Drawing.Point(147, 27);
-            this.checkBoxBlue.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkBoxBlue.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxBlue.Name = "checkBoxBlue";
             this.checkBoxBlue.Size = new System.Drawing.Size(60, 24);
             this.checkBoxBlue.TabIndex = 6;
@@ -314,6 +314,7 @@ namespace WindowsFormsApp1
             // 
             // Settings
             // 
+            this.AcceptButton = this.saveBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
@@ -323,7 +324,7 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.saveBtn);
             this.Controls.Add(this.shapeGB);
             this.Controls.Add(this.settingGB);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Settings";
             this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Settings_FormClosing);

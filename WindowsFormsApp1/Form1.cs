@@ -23,10 +23,23 @@ namespace WindowsFormsApp1
             get { return textBox1.Text; }
         }
         
+        string path = @".\save_username.txt";
         public Form1()
         {
             InitializeComponent();
-            
+            if (File.Exists(path))
+            {
+                using (StreamReader readertxt = new StreamReader(path))
+                {
+                    string txt;
+                    while ((txt = readertxt.ReadLine()) != null)
+                    {
+                        textBox1.Text = txt;
+                    }
+
+                }
+
+            }
         }
 
         public TextBox getTextbox1
@@ -47,6 +60,12 @@ namespace WindowsFormsApp1
         {
             set { textBox2 = value; }
         }
+
+
+        
+
+        
+
 
         public static string ComputeSha256Hash(string rawData)
         {
@@ -69,7 +88,7 @@ namespace WindowsFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
             string pass;
-            string userName;
+            
 
             if (textBox1.Text == "admin" && textBox2.Text == "admin")
             {
@@ -132,18 +151,20 @@ namespace WindowsFormsApp1
                 }
 
             }
-
-
-
-        }
-
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
+            if (File.Exists(path))
             {
-                button1.PerformClick();
+                File.Delete(path);
             }
+
+            TextWriter txt = new StreamWriter(@".\save_username.txt");
+            txt.Write(textBox1.Text);
+            txt.Close();
+
+
+
         }
+
+       
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
