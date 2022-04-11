@@ -33,6 +33,7 @@ namespace WindowsFormsApp1
             this.btnExitMain = new System.Windows.Forms.Button();
             this.logoutb = new System.Windows.Forms.Button();
             this.buttonUsers = new System.Windows.Forms.Button();
+            this.buttonAbout = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // settingb
@@ -51,8 +52,8 @@ namespace WindowsFormsApp1
             // btnExitMain
             // 
             this.btnExitMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnExitMain.Location = new System.Drawing.Point(347, 302);
-            this.btnExitMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExitMain.Location = new System.Drawing.Point(347, 364);
+            this.btnExitMain.Margin = new System.Windows.Forms.Padding(4);
             this.btnExitMain.Name = "btnExitMain";
             this.btnExitMain.Size = new System.Drawing.Size(196, 55);
             this.btnExitMain.TabIndex = 3;
@@ -78,7 +79,7 @@ namespace WindowsFormsApp1
             // 
             this.buttonUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.buttonUsers.Location = new System.Drawing.Point(347, 118);
-            this.buttonUsers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonUsers.Margin = new System.Windows.Forms.Padding(4);
             this.buttonUsers.Name = "buttonUsers";
             this.buttonUsers.Size = new System.Drawing.Size(196, 55);
             this.buttonUsers.TabIndex = 0;
@@ -88,17 +89,31 @@ namespace WindowsFormsApp1
             this.buttonUsers.Visible = false;
             this.buttonUsers.Click += new System.EventHandler(this.buttonUsers_Click);
             // 
+            // buttonAbout
+            // 
+            this.buttonAbout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.buttonAbout.Location = new System.Drawing.Point(347, 301);
+            this.buttonAbout.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonAbout.Name = "buttonAbout";
+            this.buttonAbout.Size = new System.Drawing.Size(196, 55);
+            this.buttonAbout.TabIndex = 4;
+            this.buttonAbout.TabStop = false;
+            this.buttonAbout.Text = "About";
+            this.buttonAbout.UseVisualStyleBackColor = true;
+            this.buttonAbout.Click += new System.EventHandler(this.buttonAbout_Click);
+            // 
             // mainGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(901, 562);
+            this.Controls.Add(this.buttonAbout);
             this.Controls.Add(this.buttonUsers);
             this.Controls.Add(this.logoutb);
             this.Controls.Add(this.btnExitMain);
             this.Controls.Add(this.settingb);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "mainGame";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.mainGame_FormClosing);
             this.Load += new System.EventHandler(this.mainGame_Load);
@@ -112,5 +127,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button btnExitMain;
         private System.Windows.Forms.Button logoutb;
         private System.Windows.Forms.Button buttonUsers;
+        private System.Windows.Forms.Button buttonAbout;
     }
 }

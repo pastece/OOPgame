@@ -14,6 +14,7 @@ namespace WindowsFormsApp1
     {
 
         Form1 f1;
+        
 
         public mainGame(Form1 form)
         {
@@ -91,6 +92,13 @@ namespace WindowsFormsApp1
                 profileScreen profile = new profileScreen();
                 profile.Show();
             }
+        }
+
+        private void buttonAbout_Click(object sender, EventArgs e)
+        {
+            About about = new About();
+            about.Show();
+            this.Enabled = false;
         }
     }
 }
