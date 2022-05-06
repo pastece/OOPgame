@@ -16,10 +16,10 @@ namespace WindowsFormsApp1
         Form1 f1;
         
 
-        public mainGame(Form1 form)
+        public mainGame()
         {
             InitializeComponent();
-            f1 = form;
+            f1 = new Form1();
         }
 
        
@@ -32,7 +32,7 @@ namespace WindowsFormsApp1
 
         private void btnExitMain_Click(object sender, EventArgs e)
         {
-            mainGame kapat = new mainGame(f1);
+            mainGame kapat = new mainGame();
             Application.ExitThread();
         }
 
@@ -98,6 +98,13 @@ namespace WindowsFormsApp1
         {
             About about = new About();
             about.ShowDialog();
+        }
+
+        private void buttonPlay_Click(object sender, EventArgs e)
+        {
+            PlayGround pg = new PlayGround();
+            this.Hide();
+            pg.Show();
         }
     }
 }

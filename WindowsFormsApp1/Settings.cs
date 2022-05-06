@@ -14,8 +14,8 @@ namespace WindowsFormsApp1
 {
     public partial class Settings : Form
     {
-        int row;
-        int column;
+        public int row;
+        public int column;
         string path = @".\save_settings.txt";
         
         public Settings()
@@ -31,9 +31,9 @@ namespace WindowsFormsApp1
                     {
                         if (count == 0)
                         {
-                            if (line == "3 3") cmboxDiffuculty.SelectedIndex=0;
-                            else if (line == "4 4") cmboxDiffuculty.SelectedIndex=1;
-                            else if (line == "5 5") cmboxDiffuculty.SelectedIndex=2;
+                            if (line == "15 15") cmboxDiffuculty.SelectedIndex=0;
+                            else if (line == "9 9") cmboxDiffuculty.SelectedIndex=1;
+                            else if (line == "6 6") cmboxDiffuculty.SelectedIndex=2;
                             else
                             {
                                 labelRow.Visible = true;
@@ -52,9 +52,9 @@ namespace WindowsFormsApp1
                                         c++;
                                     }
                                     if(c==1)textBoxColumn.Text = word;
-                                }
-                                
 
+                                }
+                                //confirmBtn_Click(sender, e);
                             }
 
                         }
@@ -127,18 +127,18 @@ namespace WindowsFormsApp1
         {
             if (cmboxDiffuculty.Text == "Easy")
             {
-                row = 3;
-                column = 3;
+                row = 15;
+                column = 15;
             }
             if (cmboxDiffuculty.Text == "Medium")
             {
-                row = 4;
-                column = 4;
+                row = 9;
+                column = 9;
             }
             if (cmboxDiffuculty.Text == "Hard")
             {
-                row = 5;
-                column = 5;
+                row = 6;
+                column = 6;
             }
         }
 

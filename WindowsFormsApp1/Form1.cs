@@ -14,7 +14,7 @@ using System.Xml.Linq;
 
 namespace WindowsFormsApp1
 {
-
+    
     //yorumsatırı
     public partial class Form1 : Form
     {
@@ -93,7 +93,7 @@ namespace WindowsFormsApp1
             if (textBox1.Text == "admin" && textBox2.Text == "admin")
             {
                 
-                mainGame skip = new mainGame(this);
+                mainGame skip = new mainGame();
                 this.Hide();
                 skip.Show();
 
@@ -104,7 +104,7 @@ namespace WindowsFormsApp1
             }
             else if (textBox1.Text == "user" && textBox2.Text == "user")
             {
-                mainGame skip = new mainGame(this);
+                mainGame skip = new mainGame();
                 this.Hide();
                 skip.Show();
 
@@ -131,7 +131,7 @@ namespace WindowsFormsApp1
                         profileScreen.country=node.Element("Country").Value;
                         profileScreen.email=node.Element("Email").Value;
 
-                        mainGame skip = new mainGame(this);
+                        mainGame skip = new mainGame();
                         this.Hide();
                         skip.Show();
                     }
