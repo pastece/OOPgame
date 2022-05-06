@@ -34,6 +34,7 @@ namespace WindowsFormsApp1
             this.logoutb = new System.Windows.Forms.Button();
             this.buttonUsers = new System.Windows.Forms.Button();
             this.buttonAbout = new System.Windows.Forms.Button();
+            this.buttonPlay = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // settingb
@@ -102,12 +103,26 @@ namespace WindowsFormsApp1
             this.buttonAbout.UseVisualStyleBackColor = true;
             this.buttonAbout.Click += new System.EventHandler(this.buttonAbout_Click);
             // 
+            // buttonPlay
+            // 
+            this.buttonPlay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.buttonPlay.Location = new System.Drawing.Point(347, 57);
+            this.buttonPlay.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonPlay.Name = "buttonPlay";
+            this.buttonPlay.Size = new System.Drawing.Size(196, 55);
+            this.buttonPlay.TabIndex = 5;
+            this.buttonPlay.TabStop = false;
+            this.buttonPlay.Text = "Play";
+            this.buttonPlay.UseVisualStyleBackColor = true;
+            this.buttonPlay.Click += new System.EventHandler(this.buttonPlay_Click);
+            // 
             // mainGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(901, 562);
+            this.Controls.Add(this.buttonPlay);
             this.Controls.Add(this.buttonAbout);
             this.Controls.Add(this.buttonUsers);
             this.Controls.Add(this.logoutb);
@@ -128,5 +143,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button logoutb;
         private System.Windows.Forms.Button buttonUsers;
         private System.Windows.Forms.Button buttonAbout;
+        private System.Windows.Forms.Button buttonPlay;
     }
 }
