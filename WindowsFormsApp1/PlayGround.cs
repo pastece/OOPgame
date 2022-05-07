@@ -16,7 +16,12 @@ namespace WindowsFormsApp1
     {
         public PlayGround()
         {
+            Settings settings = new Settings();
+            int r = settings.row;
+            int c = settings.column;
+
             InitializeComponent();
+            this.Size = new Size(67*r,70*c);
             startGame();
            
 
@@ -43,11 +48,14 @@ namespace WindowsFormsApp1
             int r = settings.row;
             int c = settings.column;
             PlayGame game = new PlayGame(r, c);
-            game.createGameBoard();
+            game.CreateGameBoard();
             for (int i = 0; i < r*c; i++)
             {
-                Controls.Add(game.tiles[i].pb);
+                
+                Controls.Add(game.tiles[i].Pb);
+
             }
+            game.RandomShapes();
         }
 
         private void button1_Click(object sender, EventArgs e)

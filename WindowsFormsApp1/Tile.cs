@@ -11,22 +11,26 @@ namespace WindowsFormsApp1
 {
     class Tile
     {
-        public string shape { get; private set; }
-        public Color color { get; private set; }
+        public string Shape { get; private set; }
+        public Color Clr { get; private set; }
 
-        public PictureBox pb { get; }
+        public PictureBox Pb { get; }
 
         public Tile(int x, int y, int count)
         {
-            pb = new PictureBox();
-            pb.Name = count.ToString();
-            pb.BackColor = Color.White;
-            pb.Cursor = Cursors.Hand;
-            pb.Anchor = AnchorStyles.None;
-            pb.BorderStyle = BorderStyle.FixedSingle;
-            pb.Size = new Size(45, 45);
-            pb.Location = new Point(50 * x, 50 * y);
-            
+            Pb = new PictureBox
+            {
+                Name = count.ToString(),
+                BackColor = Color.White,
+                Cursor = Cursors.Hand,
+                Anchor = AnchorStyles.None,
+                BorderStyle = BorderStyle.FixedSingle,
+                Size = new Size(45, 45),
+                Location = new Point(50 * x, 50 * y),
+                SizeMode = PictureBoxSizeMode.StretchImage
+
+            };
+
         }
 
     }

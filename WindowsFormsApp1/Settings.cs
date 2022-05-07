@@ -48,10 +48,16 @@ namespace WindowsFormsApp1
                                 {
                                     if (c == 0)
                                     {
+                                        row = int.Parse(word);
                                         textBoxRow.Text = word;
                                         c++;
                                     }
-                                    if(c==1)textBoxColumn.Text = word;
+                                    if (c == 1)
+                                    {
+                                        column = int.Parse(word);
+
+                                        textBoxColumn.Text = word;
+                                    }
 
                                 }
                                 //confirmBtn_Click(sender, e);
