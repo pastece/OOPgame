@@ -160,5 +160,38 @@
   <ItemGroup>
     <None Include="Resources\visibility.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\0.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\redtriangle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\redsquare.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\redcircle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\greentriangle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\greensquare.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\greencircle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bluetriangle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bluesquare.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bluecircle.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
