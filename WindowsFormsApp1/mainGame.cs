@@ -102,9 +102,11 @@ namespace WindowsFormsApp1
 
         private void buttonPlay_Click(object sender, EventArgs e)
         {
-            PlayGround pg = new PlayGround();
+            Settings settings = new Settings();
+            int r = settings.row;
+            int c = settings.column;
+            PlayGame game = new PlayGame(r, c);
             this.Hide();
-            pg.Show();
         }
     }
 }
