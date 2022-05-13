@@ -28,10 +28,15 @@ namespace WindowsFormsApp1
                 Size = new Size(45, 45),
                 Location = new Point(50 * x, 50 * y),
                 SizeMode = PictureBoxSizeMode.StretchImage
+                
 
             };
+            
+            
+            }
 
-        }
-
+       
     }
+
+    
 }

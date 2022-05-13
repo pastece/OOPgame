@@ -15,16 +15,28 @@ namespace WindowsFormsApp1
         private readonly int Row;
         private readonly int Column;
         private int Count;
+        private Tile Clicked1;
+        private Tile Clicked2;
 
         public PlayGame(int r, int c)
         {
             Count = 0;
             Row = r;
             Column = c;
+            CreateGameBoard();
+            RandomShapes();
+
+            
         }
+
+      
 
         public void CreateGameBoard()
         {
+            PlayGround playGround = new PlayGround();
+            playGround.Show();
+            
+            
             for (int i = 1; i <= Row; i++)
             {
                 for (int j = 1; j <= Column; j++)
@@ -33,9 +45,46 @@ namespace WindowsFormsApp1
                     Tile t = new Tile(i,j,Count);
                     tiles.Add(t);
                     Count++;
+                    t.Pb.Click += (s, e) =>
+                    {
+                        if (t.Pb.BackColor == Color.White)
+                        {
+                            t.Pb.BackColor = Color.Gray;
+                            if (Clicked1 == null) Clicked1 = t;
+                            else if (Clicked2 == null)
+                            {
+                                Clicked2 = t;
+                                MoveTile(Clicked1, Clicked2);
+                            }
+                        }
+                        else
+                        {
+                            t.Pb.BackColor = Color.White;
+                            Clicked1 = null;
+                        }
+                    };
+                    playGround.Controls.Add(t.Pb);
                 }
             }
+        }
+
+        
+
+       
+
+        public void MoveTile(Tile t1, Tile t2)
+        {
             
+            Image temp;
+            temp=t2.Pb.Image;
+            t2.Pb.Image = t1.Pb.Image;
+            t1.Pb.Image = temp;
+            t1.Pb.BackColor = Color.White;
+            t2.Pb.BackColor = Color.White;            
+            Clicked1 = null;
+            Clicked2 = null;
+            RandomShapes();
+
         }
 
         public void RandomShapes()
@@ -46,45 +95,51 @@ namespace WindowsFormsApp1
                 int tile = random.Next(0, Row*Column);
                 int shape = random.Next(0, 9);
 
-                switch (shape)
+                if (tiles[tile].Pb.Image == default)
                 {
-                    case 0:
-                        tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redcircle;
-                        break;
 
-                    case 1:
-                        tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redsquare;
-                        break;
+                    switch (shape)
+                    {
+                        case 0:
+                            tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redcircle;
+                            break;
 
-                    case 2:
-                        tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redtriangle;
-                        break;
+                        case 1:
+                            tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redsquare;
+                            break;
 
-                    case 3:
-                        tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluecircle;
-                        break;
+                        case 2:
+                            tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redtriangle;
+                            break;
 
-                    case 4:
-                        tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluesquare;
-                        break;
+                        case 3:
+                            tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluecircle;
+                            break;
 
-                    case 5:
-                        tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluetriangle;
-                        break;
+                        case 4:
+                            tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluesquare;
+                            break;
 
-                    case 6:
-                        tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greencircle;
-                        break;
+                        case 5:
+                            tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluetriangle;
+                            break;
 
-                    case 7:
-                        tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greensquare;
-                        break;
+                        case 6:
+                            tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greencircle;
+                            break;
 
-                    case 8:
-                        tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greentriangle;
-                        break;
+                        case 7:
+                            tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greensquare;
+                            break;
+
+                        case 8:
+                            tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greentriangle;
+                            break;
+                    }
                 }
+                else i--;
             }
+
         }
     }
 }
