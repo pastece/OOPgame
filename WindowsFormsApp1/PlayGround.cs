@@ -14,18 +14,40 @@ namespace WindowsFormsApp1
 
     public partial class PlayGround : Form
     {
+        private int count;
         public PlayGround()
         {
+            
             Settings settings = new Settings();
             int r = settings.row;
             int c = settings.column;
 
+
             InitializeComponent();
             this.Size = new Size(67*r,70*c);
             startGame();
-           
+            
+            Tile tile = new Tile(r, c, count);
 
+            tile.Pb.MouseClick += Pb_MouseClick;
+            
         }
+
+        private void Pb_MouseClick(object sender, MouseEventArgs e)
+        {
+            Settings settings = new Settings();
+            int r = settings.row;
+            int c = settings.column;
+            Tile tile = new Tile(r, c, count);
+
+
+            Graphics g;
+            Pen draw = new Pen(Color.White, 3);
+            g = tile.Pb.CreateGraphics();
+            g.DrawRectangle(draw, Cursor.Position.X - 10, Cursor.Position.Y - 10, 100, 100);
+        }
+
+        
 
         private void PlayGround_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -64,5 +86,8 @@ namespace WindowsFormsApp1
             mg.Show();
             this.Hide();
         }
+
+        
+
     }
 }

@@ -36,6 +36,9 @@ namespace WindowsFormsApp1
                 }
             }
             
+            
+            
+            
         }
 
         public void RandomShapes()
