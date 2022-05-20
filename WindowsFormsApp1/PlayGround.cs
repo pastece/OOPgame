@@ -14,6 +14,7 @@ namespace WindowsFormsApp1
 
     public partial class PlayGround : Form
     {
+        public int sayac = 0;
         public PlayGround()
         {
             Settings settings = new Settings();
@@ -21,11 +22,8 @@ namespace WindowsFormsApp1
             int c = settings.column;
 
             InitializeComponent();
-            this.Size = new Size(67*r,70*c);
-           
-
+            this.Size = new Size(67*r, 70*c);           
             
-
         }
 
         private void PlayGround_FormClosing(object sender, FormClosingEventArgs e)
@@ -51,5 +49,12 @@ namespace WindowsFormsApp1
             mg.Show();
             this.Hide();
         }
+
+        private void PbTimer_Tick(object sender, EventArgs e)
+        {
+            
+        }
+
+        
     }
 }

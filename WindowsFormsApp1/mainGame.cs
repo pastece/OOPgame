@@ -108,5 +108,16 @@ namespace WindowsFormsApp1
             PlayGame game = new PlayGame(r, c);
             this.Hide();
         }
+
+        private void HelpScreenBtn_Click(object sender, EventArgs e)
+        {
+            HelpScreen help = new HelpScreen();
+            help.ShowDialog();
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
     }
 }
