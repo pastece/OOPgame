@@ -248,9 +248,9 @@ namespace WindowsFormsApp1
 
                 Task.Delay(sleepTime).Wait();
 
-                temp = tiles[destinationIndex].Pb.Image;
+                //temp = tiles[destinationIndex].Pb.Image;
                 tiles[destinationIndex].Pb.Image = tiles[sourceIndex].Pb.Image;
-                tiles[sourceIndex].Pb.Image = temp;
+                tiles[sourceIndex].Pb.Image = default;
                 
                 
                 tiles[sourceIndex].Pb.BackColor = Color.White;
