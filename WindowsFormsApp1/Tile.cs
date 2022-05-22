@@ -14,7 +14,7 @@ namespace WindowsFormsApp1
         public string Shape { get;  set; }
         public Color Clr { get;  set; }
 
-        public PictureBox Pb { get; set; }
+        public Button Pb { get; set; }
 
         public int x { get;  set; }
 
@@ -25,16 +25,17 @@ namespace WindowsFormsApp1
         public bool visited { get;  set; }
         public Tile(int x, int y, int count)
         {
-            Pb = new PictureBox
+            Pb = new Button
             {
                 Name = count.ToString(),
                 BackColor = Color.White,
                 Cursor = Cursors.Hand,
                 Anchor = AnchorStyles.None,
-                BorderStyle = BorderStyle.FixedSingle,
+                //BorderStyle = BorderStyle.FixedSingle,
                 Size = new Size(45, 45),
-                Location = new  Point(35 * (y + 1), 35 * (x + 1)),
-                SizeMode = PictureBoxSizeMode.StretchImage            
+                Location = new Point(48 * (y + 1), 48 * (x + 1)),
+                
+                //SizeMode = PictureBoxSizeMode.StretchImage            
             };
 
             this.x = x;
