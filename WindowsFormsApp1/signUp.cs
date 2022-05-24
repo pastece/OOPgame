@@ -130,6 +130,7 @@ namespace WindowsFormsApp1
                     new XElement("City", textBoxCity.Text),
                     new XElement("Country", textBoxCity.Text),
                     new XElement("Email", textBoxEmail.Text)
+                    
                     ));
                 x.Save(@"usersInfo.xml");
                 MessageBox.Show("Successful Registration");

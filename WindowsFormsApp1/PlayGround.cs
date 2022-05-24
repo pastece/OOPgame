@@ -20,7 +20,7 @@ namespace WindowsFormsApp1
             Settings settings = new Settings();
             int r = settings.row;
             int c = settings.column;
-
+           
             InitializeComponent();
             this.Size = new Size(67*r, 70*c);           
             
@@ -40,9 +40,6 @@ namespace WindowsFormsApp1
                 e.Cancel = true;
             }
         }
-
-      
-
         private void button1_Click(object sender, EventArgs e)
         {
             mainGame mg = new mainGame();
@@ -50,11 +47,7 @@ namespace WindowsFormsApp1
             this.Hide();
         }
 
-        private void PbTimer_Tick(object sender, EventArgs e)
-        {
-            
-        }
 
-        
+       
     }
 }

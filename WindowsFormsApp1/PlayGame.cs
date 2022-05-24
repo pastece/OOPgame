@@ -13,9 +13,10 @@ namespace WindowsFormsApp1
     {
         public List<Tile> tiles=new List<Tile>();
         private Stack<String> visitedTiles = new Stack<String>();
-        
+        //int[,] ButtonInfo = new int[20,20];
 
 
+        private int score  { get; set; }
 
 
         private readonly int Row;
@@ -33,16 +34,19 @@ namespace WindowsFormsApp1
             Count = 0;
             Row = r;
             Column = c;
+            score = 0;
             CreateGameBoard();
             RandomShapes();
         }
         
+        int[,] tilesAdd = new int[20,20];
 
         public void CreateGameBoard()
         {
             PlayGround playGround = new PlayGround();
             playGround.Show();
             List<QItem> list = new List<QItem>();
+
 
             for (int i = 0; i < Row; i++)
             {
@@ -51,6 +55,8 @@ namespace WindowsFormsApp1
                     
                     Tile t = new Tile(i,j,Count);
                     tiles.Add(t);
+                    tilesAdd[i, j] = 0;
+                    
                     Count++;
                     t.Pb.Click += (e, s) =>
                     {
@@ -63,6 +69,7 @@ namespace WindowsFormsApp1
                                 t.Pb.BackColor = Color.Gray;
 
                             }
+                           
 
                             else if (Clicked2 == null && t.Pb.Image == null && Clicked1 != null)
                             {
@@ -72,6 +79,9 @@ namespace WindowsFormsApp1
                                 if (minDistance(ref list))
                                 {
                                     MoveTile(list);
+                                    scoreCheck();
+                                    Clicked1 = null;
+                                    Clicked2 = null;
 
                                 }
                                 else
@@ -96,6 +106,10 @@ namespace WindowsFormsApp1
                 }
             }
         }
+
+       
+
+        
         class QItem
         {
             public int row;
@@ -216,17 +230,6 @@ namespace WindowsFormsApp1
             return false;
         }
 
-
-
-
-
-
-
-
-
-
-       
-
         private bool isEmptyTile(Tile tile)
         {
 
@@ -235,7 +238,7 @@ namespace WindowsFormsApp1
 
         private void MoveTile(List<QItem> list)
         {
-            int sleepTime = 1000;
+            int sleepTime = 1;
             Image temp;
             list.Reverse();
             for (int i = 0; i < list.Count - 1; i++)
@@ -252,30 +255,133 @@ namespace WindowsFormsApp1
                 tiles[destinationIndex].Pb.Image = tiles[sourceIndex].Pb.Image;
                 tiles[sourceIndex].Pb.Image = default;
                 
-                
                 tiles[sourceIndex].Pb.BackColor = Color.White;
                 tiles[destinationIndex].Pb.BackColor = Color.Gray;
                 
             }
+            int sayi = tilesAdd[Clicked1.x, Clicked1.y];
+            tilesAdd[Clicked2.x, Clicked2.y] = sayi;
+            tilesAdd[Clicked1.x, Clicked1.y] = 0;
+
             //Task.Delay(sleepTime).Wait();
-            Clicked1 = null;
-            Clicked2 = null;
+
+
             tiles[(list[list.Count-1].row*Row)+ (list[list.Count-1].col)].Pb.BackColor = Color.White;
             list.Clear();
-            
+
             
             RandomShapes();
             
 
+
+        }
+        void scoreCheck()
+        {
+           
+            
+            for (int i = 0; i < Row; i++)
+            {
+                for (int j = 0; j < Column - 4; j++)
+                {
+
+                    int[,] arrXCoordinate = new int[5, 2];
+                    int pickedShape = tilesAdd[i, j];
+                    int shapeCount = 0;
+
+                    for (int k = 0; k < 5; k++)
+                    {
+                        if (tilesAdd[i, k + j] == pickedShape && tilesAdd[i, k + j] != 0) 
+                        {
+                            arrXCoordinate[k, 0] = i;
+                            arrXCoordinate[k, 1] = k + j;
+                            shapeCount++;
+
+                        }
+                        else
+                        {
+                            break;
+                        }
+                       
+                    }
+                    if (shapeCount == 5)
+                    {                      
+                        removeShape(arrXCoordinate);
+                    }
+                }
+            }
+
+      
+
+            for (int i = 0; i < Column; i++)
+            {
+                for (int j = 0; j < Row - 4; j++)
+                {
+                    int[,] arrYCoordinate = new int[5, 2];
+                    int pickedShape = tilesAdd[j, i];
+                    int shapeCount = 0;
+
+                    for (int k = 0; k < 5; k++)
+                    {
+                        if (tilesAdd[k + j, i] == pickedShape && tilesAdd[k + j, i] != 0) 
+                        {
+                            arrYCoordinate[k, 0] = k + j;
+                            arrYCoordinate[k, 1] = i;
+                            shapeCount++;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                    if (shapeCount == 5)
+                    {
+                        removeShape(arrYCoordinate);
+                    } 
+                }
+            }
         }
 
-        public int sumScore(Tile t1)
+       void removeShape(int[,] arr)
         {
-            int score = 0;
-            return score;
+            PlayGround ply = new PlayGround();
+            for (int i = 0; i < 5; i++)
+            {
+                Task.Delay(50).Wait();
+                tilesAdd[arr[i, 0], arr[i, 1]] = 0;
+                tiles[(arr[i, 0] * Row) + arr[i, 1]].Pb.Image = default;
+                
+            }
+            sumScore();
+            ply.scoreWrite.Text = score.ToString();
 
+        }
+        public void sumScore()
+        {
+            Settings st = new Settings();
+            
 
+            if (st.cmboxDiffuculty.Text == "Easy")
+            {
+                score += 1;
+                
 
+            }
+            else if (st.cmboxDiffuculty.Text == "Medium")
+            {
+                score += 3;
+                
+            }
+            else if (st.cmboxDiffuculty.Text == "Hard")
+            {
+                score += 5;
+                
+            }
+            else 
+            {
+                score += 2;
+                
+            }
+ 
         }
 
         public void RandomShapes()
@@ -284,56 +390,63 @@ namespace WindowsFormsApp1
             for (int i = 0; i < 3; i++)
             {
                 int tile = random.Next(0, Row*Column);
-                int shape = random.Next(0, 9);
+                int shape = random.Next(1, 10);
+                Tile t;
+                int r, c;
+                t = tiles[tile];
+                r = t.x;
+                c = t.y;
 
                 if (tiles[tile].Pb.Image == default)
                 {
 
                     switch (shape)
                     {
-                        case 0:
-                            tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redcircle;
-                            tiles[tile].color = 0;
-                            break;
-
                         case 1:
-                            tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redsquare;
-                            tiles[tile].color = 1;
+                            tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redcircle;
+                           
+
+                            tilesAdd[r, c] = shape;
                             break;
 
                         case 2:
-                            tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redtriangle;
-                            tiles[tile].color = 2;
+                            tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redsquare;
+                            tilesAdd[r, c] = shape;
                             break;
 
                         case 3:
-                            tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluecircle;
-                            tiles[tile].color = 3;
+                            tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redtriangle;
+                            tilesAdd[r, c] = shape; ;
                             break;
 
                         case 4:
-                            tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluesquare;
-                            tiles[tile].color = 4;
+                            tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluecircle;
+                            tilesAdd[r, c] = shape;
                             break;
 
                         case 5:
-                            tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluetriangle;
-                            tiles[tile].color = 5;
+                            tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluesquare;
+                            tilesAdd[r, c] = shape;
                             break;
 
                         case 6:
-                            tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greencircle;
-                            tiles[tile].color = 6;
+                            tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluetriangle;
+                            tilesAdd[r, c] = shape;
                             break;
 
                         case 7:
-                            tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greensquare;
-                            tiles[tile].color = 7;
+                            tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greencircle;
+                            tilesAdd[r, c] = shape;
                             break;
 
                         case 8:
+                            tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greensquare;
+                            tilesAdd[r, c] = shape;
+                            break;
+
+                        case 9:
                             tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greentriangle;
-                            tiles[tile].color = 8;
+                            tilesAdd[r, c] = shape;
                             break;
                     }
                 }

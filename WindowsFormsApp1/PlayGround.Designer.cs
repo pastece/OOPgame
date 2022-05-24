@@ -29,10 +29,8 @@ namespace WindowsFormsApp1
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
-            this.PbTimer = new System.Windows.Forms.Timer(this.components);
-            this.bilgi = new System.Windows.Forms.Label();
+            this.scoreWrite = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button1
@@ -46,27 +44,22 @@ namespace WindowsFormsApp1
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // PbTimer
+            // scoreWrite
             // 
-            this.PbTimer.Interval = 1000;
-            this.PbTimer.Tick += new System.EventHandler(this.PbTimer_Tick);
-            // 
-            // bilgi
-            // 
-            this.bilgi.AutoSize = true;
-            this.bilgi.Location = new System.Drawing.Point(541, 60);
-            this.bilgi.Name = "bilgi";
-            this.bilgi.Size = new System.Drawing.Size(35, 13);
-            this.bilgi.TabIndex = 1;
-            this.bilgi.Text = "label1";
+            this.scoreWrite.Dock = System.Windows.Forms.DockStyle.Right;
+            this.scoreWrite.Location = new System.Drawing.Point(749, 0);
+            this.scoreWrite.MaxLength = 3276;
+            this.scoreWrite.Name = "scoreWrite";
+            this.scoreWrite.Size = new System.Drawing.Size(30, 20);
+            this.scoreWrite.TabIndex = 1;
             // 
             // PlayGround
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
-            this.ClientSize = new System.Drawing.Size(600, 384);
-            this.Controls.Add(this.bilgi);
+            this.ClientSize = new System.Drawing.Size(779, 384);
+            this.Controls.Add(this.scoreWrite);
             this.Controls.Add(this.button1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "PlayGround";
@@ -79,7 +72,6 @@ namespace WindowsFormsApp1
         #endregion
 
         private System.Windows.Forms.Button button1;
-        public System.Windows.Forms.Timer PbTimer;
-        public System.Windows.Forms.Label bilgi;
+        public System.Windows.Forms.TextBox scoreWrite;
     }
 }
