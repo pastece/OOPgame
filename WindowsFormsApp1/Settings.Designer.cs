@@ -342,11 +342,8 @@ namespace WindowsFormsApp1
 
         private System.Windows.Forms.Label DiffLbl;
         private System.Windows.Forms.GroupBox settingGB;
-        private System.Windows.Forms.TextBox textBoxColumn;
-        private System.Windows.Forms.TextBox textBoxRow;
         private System.Windows.Forms.Label labelColumn;
         private System.Windows.Forms.Label labelRow;
-        private System.Windows.Forms.Button confirmBtn;
         private System.Windows.Forms.Label shapeLbl;
         private System.Windows.Forms.CheckBox squareBox;
         private System.Windows.Forms.CheckBox triangleBox;
@@ -354,12 +351,15 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.GroupBox shapeGB;
         private System.Windows.Forms.Button saveBtn;
         private System.Windows.Forms.Button backBtn;
-        private System.Windows.Forms.ComboBox cmboxDiffuculty;
-        private System.Windows.Forms.Button customBtn;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox checkBoxRed;
         private System.Windows.Forms.Label labelColor;
         private System.Windows.Forms.CheckBox checkBoxGreen;
         private System.Windows.Forms.CheckBox checkBoxBlue;
+        public System.Windows.Forms.ComboBox cmboxDiffuculty;
+        public System.Windows.Forms.TextBox textBoxColumn;
+        public System.Windows.Forms.TextBox textBoxRow;
+        public System.Windows.Forms.Button customBtn;
+        public System.Windows.Forms.Button confirmBtn;
     }
 }

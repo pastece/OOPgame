@@ -61,12 +61,6 @@ namespace WindowsFormsApp1
             set { textBox2 = value; }
         }
 
-
-        
-
-        
-
-
         public static string ComputeSha256Hash(string rawData)
         {
             // Create a SHA256   
@@ -92,27 +86,20 @@ namespace WindowsFormsApp1
 
             if (textBox1.Text == "admin" && textBox2.Text == "admin")
             {
-                
+            
                 mainGame skip = new mainGame();
                 this.Hide();
                 skip.Show();
-
-                
-
-                
-
             }
             else if (textBox1.Text == "user" && textBox2.Text == "user")
             {
                 mainGame skip = new mainGame();
                 this.Hide();
                 skip.Show();
-
-                
+   
             }
             else
             {
-
                 XDocument xdosya = XDocument.Load(@"usersInfo.xml");
                 XElement node = xdosya.Element("Users").Elements("User").FirstOrDefault(a => a.Element("UserName").Value.Trim() == textBox1.Text);
 
@@ -141,7 +128,6 @@ namespace WindowsFormsApp1
                         textBox1.Clear();
                         textBox2.Clear();
                     }
-
                 }
                 else
                 {
@@ -149,7 +135,6 @@ namespace WindowsFormsApp1
                     textBox1.Clear();
                     textBox2.Clear();
                 }
-
             }
             if (File.Exists(path))
             {
@@ -159,9 +144,6 @@ namespace WindowsFormsApp1
             TextWriter txt = new StreamWriter(@".\save_username.txt");
             txt.Write(textBox1.Text);
             txt.Close();
-
-
-
         }
 
        

@@ -11,43 +11,46 @@ namespace WindowsFormsApp1
 {
     class Tile
     {
-        public string Shape { get;  set; }
-        public Color Clr { get;  set; }
+        Settings st = new Settings();
+        public string Shape { get; set; }
+        public Color Clr { get; set; }
 
         public Button Pb { get; set; }
 
-        public int x { get;  set; }
+        public int x { get; set; }
+
 
         public int y { get; set; }
-        public int color { get; set; }
+        public int color;
 
 
-        public bool visited { get;  set; }
+
+        public bool visited { get; set; }
         public Tile(int x, int y, int count)
         {
-            Pb = new Button
             {
-                Name = count.ToString(),
-                BackColor = Color.White,
-                Cursor = Cursors.Hand,
-                Anchor = AnchorStyles.None,
-                //BorderStyle = BorderStyle.FixedSingle,
-                Size = new Size(45, 45),
-                Location = new Point(48 * (y + 1), 48 * (x + 1)),
-                
-                //SizeMode = PictureBoxSizeMode.StretchImage            
-            };
-
-            this.x = x;
-            this.y = y;
-            this.visited = false;
-            this.color = -1;
+                Pb = new Button
+                {
+                    Name = count.ToString(),
+                    BackColor = Color.White,
+                    Cursor = Cursors.Hand,
+                    Anchor = AnchorStyles.None,
+                    //BorderStyle = BorderStyle.FixedSingle,
+                    Size = new Size(45, 45),
+                    Location = new Point(48 * (y + 1), 48 * (x + 1)),
+                    //SizeMode = PictureBoxSizeMode.StretchImage            
+                };
 
 
+
+
+                this.x = x;
+                this.y = y;
+                this.visited = false;
+                this.color = -1;
+
+
+            }
         }
-
-
     }
-
-    
 }
