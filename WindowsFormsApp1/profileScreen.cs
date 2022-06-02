@@ -24,6 +24,8 @@ namespace WindowsFormsApp1
         public static string country;
         public static string email;
         public static string password;
+        public static string score;
+        
         public profileScreen()
         {
             InitializeComponent();
@@ -39,6 +41,7 @@ namespace WindowsFormsApp1
             textBoxCountry.Text = country;
             textBoxEmail.Text = email;
             textBoxPassword.Text = "Password";
+            labelScore.Text = "Best Score: " + score;
 
         }
 

@@ -117,6 +117,7 @@ namespace WindowsFormsApp1
                         profileScreen.city=node.Element("City").Value;
                         profileScreen.country=node.Element("Country").Value;
                         profileScreen.email=node.Element("Email").Value;
+                        profileScreen.score=node.Element("Score").Value;
 
                         mainGame skip = new mainGame();
                         this.Hide();

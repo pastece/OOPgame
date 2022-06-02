@@ -5,12 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Linq;
+
 
 
 namespace WindowsFormsApp1
 {
     class PlayGame
     {
+        PlayGround playGround;
         public List<Tile> tiles=new List<Tile>();
         private Stack<String> visitedTiles = new Stack<String>();
         //int[,] ButtonInfo = new int[20,20];
@@ -22,7 +26,8 @@ namespace WindowsFormsApp1
         private readonly int Row;
         private readonly int Column;
         private int Count;
-        
+        public static int bestScore;
+
 
         private Tile Clicked1;
         private Tile Clicked2;
@@ -35,6 +40,9 @@ namespace WindowsFormsApp1
             Row = r;
             Column = c;
             score = 0;
+            playGround = new PlayGround();
+            bestScore = int.Parse(profileScreen.score);
+            playGround.labelBest.Text = "Best Score: " + bestScore.ToString();
             CreateGameBoard();
             RandomShapes();
         }
@@ -43,7 +51,6 @@ namespace WindowsFormsApp1
 
         public void CreateGameBoard()
         {
-            PlayGround playGround = new PlayGround();
             playGround.Show();
             List<QItem> list = new List<QItem>();
 
@@ -239,7 +246,6 @@ namespace WindowsFormsApp1
         private void MoveTile(List<QItem> list)
         {
             int sleepTime = 1;
-            Image temp;
             list.Reverse();
             for (int i = 0; i < list.Count - 1; i++)
             {
@@ -343,7 +349,7 @@ namespace WindowsFormsApp1
 
        void removeShape(int[,] arr)
         {
-            PlayGround ply = new PlayGround();
+            
             for (int i = 0; i < 5; i++)
             {
                 Task.Delay(50).Wait();
@@ -351,11 +357,24 @@ namespace WindowsFormsApp1
                 tiles[(arr[i, 0] * Row) + arr[i, 1]].Pb.Image = default;
                 
             }
+            
             sumScore();
-            ply.scoreWrite.Text = score.ToString();
+            playGround.labelCurrent.Text = "Current Score: "+score.ToString();
+            if (score > bestScore)
+            {
+                bestScore = score;
+                playGround.labelBest.Text = "Best Score: " + bestScore.ToString();
+                profileScreen.score = bestScore.ToString();
+                XDocument xdosya = XDocument.Load(@"usersInfo.xml");
+                XElement node = xdosya.Element("Users").Elements("User").FirstOrDefault(a => a.Element("UserName").Value.Trim() == profileScreen.username);
+                node.SetElementValue("Score", bestScore);
+                xdosya.Save(@"usersInfo.xml");
+
+            }
+
 
         }
-        public void sumScore()
+            public void sumScore()
         {
             Settings st = new Settings();
             
