@@ -17,7 +17,7 @@ namespace WindowsFormsApp1
         PlayGround playGround;
         public List<Tile> tiles=new List<Tile>();
         private Stack<String> visitedTiles = new Stack<String>();
-        //int[,] ButtonInfo = new int[20,20];
+        
 
 
         private int score  { get; set; }
@@ -40,9 +40,7 @@ namespace WindowsFormsApp1
             Row = r;
             Column = c;
             score = 0;
-            playGround = new PlayGround();
-            bestScore = int.Parse(profileScreen.score);
-            playGround.labelBest.Text = "Best Score: " + bestScore.ToString();
+            
             CreateGameBoard();
             RandomShapes();
         }
@@ -51,6 +49,10 @@ namespace WindowsFormsApp1
 
         public void CreateGameBoard()
         {
+            playGround = new PlayGround();
+            bestScore = int.Parse(profileScreen.score);
+            playGround.labelBest.Text = "Best Score: " + bestScore.ToString();
+
             playGround.Show();
             List<QItem> list = new List<QItem>();
 
@@ -93,7 +95,7 @@ namespace WindowsFormsApp1
                                 }
                                 else
                                 {
-                                    MessageBox.Show("No PATH for this move!");
+                                    MessageBox.Show("Unfortunately the shape can't go there, make a new move!!!");
                                     Clicked1.Pb.BackColor = Color.White;
                                     Clicked1 = null;
                                     Clicked2 = null;
@@ -101,6 +103,12 @@ namespace WindowsFormsApp1
                                 }
                                 
                                 
+                            }
+                            if (gameOverControl())
+                            {
+                                repeatGame();
+                                CreateGameBoard();
+                                RandomShapes();
                             }
                         }
                         else
@@ -236,6 +244,51 @@ namespace WindowsFormsApp1
             }
             return false;
         }
+        bool gameOverControl()
+        {
+            int control = 0;
+
+            for (int i = 0; i < Row; i++)
+            {
+                for (int j = 0; j < Column; j++)
+                {
+                    if (tilesAdd[i, j] == 0)
+                    {
+                        control++;
+                    }
+                }
+            }
+            if (control >= 3)
+            {
+                return false;
+            }
+            MessageBox.Show("You can't make move, GAME IS OVER!!!!!");
+            MessageBox.Show("Score = " + score);
+            playGround.Hide();
+
+
+            return true;
+        }
+        void repeatGame()
+        {
+            score = 0;
+
+            for (int a = 0; a < Row; a++)
+            {
+                for (int b = 0; b < Column; b++)
+                {
+                    tilesAdd[a, b] = 0;
+                    tiles.Clear();
+                }
+            }
+           
+
+
+
+
+        }
+
+
 
         private bool isEmptyTile(Tile tile)
         {
