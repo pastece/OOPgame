@@ -129,8 +129,10 @@ namespace WindowsFormsApp1
                     new XElement("Adress", textBoxAdress.Text),
                     new XElement("City", textBoxCity.Text),
                     new XElement("Country", textBoxCity.Text),
-                    new XElement("Email", textBoxEmail.Text)
-                    
+                    new XElement("Email", textBoxEmail.Text),
+                    new XElement("Score", "0")
+
+
                     ));
                 x.Save(@"usersInfo.xml");
                 MessageBox.Show("Successful Registration");
@@ -181,7 +183,8 @@ namespace WindowsFormsApp1
                 XElement City = new XElement("City", textBoxCity.Text);
                 XElement Country = new XElement("Country", textBoxCountry.Text);
                 XElement Email = new XElement("Email", textBoxEmail.Text);
-                element.Add(UserName, Password, NameSurname, PhoneNumber, Adress, City, Country, Email);
+                XElement Score = new XElement("Score", 0);
+                element.Add(UserName, Password, NameSurname, PhoneNumber, Adress, City, Country, Email, Score);
                 rootElement.Add(element);
                 xdosya.Save(@"usersInfo.xml");
                 MessageBox.Show("Successful Registration");

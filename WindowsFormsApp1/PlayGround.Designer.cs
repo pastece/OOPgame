@@ -30,38 +30,53 @@ namespace WindowsFormsApp1
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.scoreWrite = new System.Windows.Forms.TextBox();
+            this.labelBest = new System.Windows.Forms.Label();
+            this.labelCurrent = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(9, 10);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Location = new System.Drawing.Point(12, 12);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(56, 19);
+            this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
             this.button1.Text = "Back";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // scoreWrite
+            // labelBest
             // 
-            this.scoreWrite.Dock = System.Windows.Forms.DockStyle.Right;
-            this.scoreWrite.Location = new System.Drawing.Point(749, 0);
-            this.scoreWrite.MaxLength = 3276;
-            this.scoreWrite.Name = "scoreWrite";
-            this.scoreWrite.Size = new System.Drawing.Size(30, 20);
-            this.scoreWrite.TabIndex = 1;
+            this.labelBest.AutoSize = true;
+            this.labelBest.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelBest.Dock = System.Windows.Forms.DockStyle.Right;
+            this.labelBest.Location = new System.Drawing.Point(960, 0);
+            this.labelBest.Name = "labelBest";
+            this.labelBest.Size = new System.Drawing.Size(79, 19);
+            this.labelBest.TabIndex = 3;
+            this.labelBest.Text = "Best Score";
+            // 
+            // labelCurrent
+            // 
+            this.labelCurrent.AutoSize = true;
+            this.labelCurrent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelCurrent.Dock = System.Windows.Forms.DockStyle.Right;
+            this.labelCurrent.Location = new System.Drawing.Point(846, 0);
+            this.labelCurrent.Name = "labelCurrent";
+            this.labelCurrent.Size = new System.Drawing.Size(114, 19);
+            this.labelCurrent.TabIndex = 4;
+            this.labelCurrent.Text = "Current Score: 0";
             // 
             // PlayGround
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
-            this.ClientSize = new System.Drawing.Size(779, 384);
-            this.Controls.Add(this.scoreWrite);
+            this.ClientSize = new System.Drawing.Size(1039, 473);
+            this.Controls.Add(this.labelCurrent);
+            this.Controls.Add(this.labelBest);
             this.Controls.Add(this.button1);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "PlayGround";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PlayGround_FormClosing);
             this.ResumeLayout(false);
@@ -72,6 +87,7 @@ namespace WindowsFormsApp1
         #endregion
 
         private System.Windows.Forms.Button button1;
-        public System.Windows.Forms.TextBox scoreWrite;
+        public System.Windows.Forms.Label labelBest;
+        public System.Windows.Forms.Label labelCurrent;
     }
 }
