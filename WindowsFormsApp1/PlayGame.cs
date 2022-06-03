@@ -7,6 +7,8 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
+using System.Data.SqlClient;
+using System.Data;
 
 
 
@@ -17,8 +19,9 @@ namespace WindowsFormsApp1
         PlayGround playGround;
         public List<Tile> tiles=new List<Tile>();
         private Stack<String> visitedTiles = new Stack<String>();
-        
 
+        String connetionString = @"workstation id=OOPGAME.mssql.somee.com;packet size=4096;user id=pastace_SQLLogin_1;pwd=7xbcp7q2cu;data source=OOPGAME.mssql.somee.com;persist security info=False;initial catalog=OOPGAME";
+        SqlConnection cnn;
 
         private int score  { get; set; }
 
@@ -106,6 +109,15 @@ namespace WindowsFormsApp1
                             }
                             if (gameOverControl())
                             {
+                                cnn = new SqlConnection(connetionString);
+                                cnn.Open();
+                                SqlCommand sqlCommand = new SqlCommand("Update oopUsers set Score = @score  where UserName = @uname", cnn);
+                                sqlCommand.CommandType = CommandType.Text;
+                                sqlCommand.Parameters.AddWithValue("@uname", profileScreen.username);
+                                sqlCommand.Parameters.AddWithValue("@score", bestScore);
+                                sqlCommand.ExecuteNonQuery();
+                                cnn.Close();
+
                                 repeatGame();
                                 CreateGameBoard();
                                 RandomShapes();
@@ -420,7 +432,8 @@ namespace WindowsFormsApp1
                 profileScreen.score = bestScore.ToString();
                 XDocument xdosya = XDocument.Load(@"usersInfo.xml");
                 XElement node = xdosya.Element("Users").Elements("User").FirstOrDefault(a => a.Element("UserName").Value.Trim() == profileScreen.username);
-                node.SetElementValue("Score", bestScore);
+                node.SetElementValue("Score", bestScore);          
+
                 xdosya.Save(@"usersInfo.xml");
 
             }

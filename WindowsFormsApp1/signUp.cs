@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
+using System.Data.SqlClient;
 
 namespace WindowsFormsApp1
 {
@@ -25,7 +26,8 @@ namespace WindowsFormsApp1
         }
 
         managerScreen mng = (managerScreen)Application.OpenForms["managerScreen"];
-
+        String connetionString = @"workstation id=OOPGAME.mssql.somee.com;packet size=4096;user id=pastace_SQLLogin_1;pwd=7xbcp7q2cu;data source=OOPGAME.mssql.somee.com;persist security info=False;initial catalog=OOPGAME";
+        SqlConnection cnn;
 
 
         private void buttonBack_Click(object sender, EventArgs e)
@@ -63,16 +65,7 @@ namespace WindowsFormsApp1
 
         private void signUp_Load(object sender, EventArgs e)
         {
-            //XmlTextWriter dosya = new XmlTextWriter(@"usersInfo.xml", Encoding.UTF8);
-            //dosya.Formatting = Formatting.Indented;
-            //dosya.WriteStartDocument();
-            //dosya.WriteStartElement("Users");
-            //dosya.WriteStartElement("User");
-            //dosya.WriteElementString("UserName", "Omer5426");
-            //dosya.WriteElementString("Name-Surname", "Omer Kurtuldu");
-            //dosya.WriteEndElement();
-            //dosya.WriteEndElement();
-            //dosya.Close();
+            
             
         }
 
@@ -116,6 +109,9 @@ namespace WindowsFormsApp1
 
             Form fc = Application.OpenForms["managerScreen"];
             string sha256 = ComputeSha256Hash(textBoxPassword.Text);
+
+            cnn = new SqlConnection(connetionString);
+            cnn.Open();
 
             if (fc != null)
             {
@@ -170,8 +166,7 @@ namespace WindowsFormsApp1
                     MessageBox.Show("Phone number is missing");
                     return;
                 }
-
-                //string sha256 = ComputeSha256Hash(textBoxPassword.Text);
+                //xml'e kaydetme
                 XDocument xdosya = XDocument.Load(@"usersInfo.xml");
                 XElement rootElement = xdosya.Root;
                 XElement element = new XElement("User");
@@ -184,9 +179,27 @@ namespace WindowsFormsApp1
                 XElement Country = new XElement("Country", textBoxCountry.Text);
                 XElement Email = new XElement("Email", textBoxEmail.Text);
                 XElement Score = new XElement("Score", 0);
+                
+
+                //sql'e kaydetme
+                SqlCommand sqlCommand = new SqlCommand("Insert into oopUsers  (UserName, NameSurname, PhoneNumber, Adress, City, Country, Email, Score) Values (@username, @name, @phone, @adress, @city, @country, @email, @score)", cnn);
+                sqlCommand.CommandType = CommandType.Text;
+                sqlCommand.Parameters.AddWithValue("@username", textBoxUserName.Text);
+                sqlCommand.Parameters.AddWithValue("@name", textBoxName.Text);
+                sqlCommand.Parameters.AddWithValue("@phone", maskedTextBoxPhone.Text);
+                sqlCommand.Parameters.AddWithValue("@adress", textBoxAdress.Text);
+                sqlCommand.Parameters.AddWithValue("@city", textBoxCity.Text);
+                sqlCommand.Parameters.AddWithValue("@country", textBoxCountry.Text);
+                sqlCommand.Parameters.AddWithValue("@email", textBoxEmail.Text);
+                sqlCommand.Parameters.AddWithValue("@score", 0);
+                sqlCommand.ExecuteNonQuery();
+
+                cnn.Close();
+
                 element.Add(UserName, Password, NameSurname, PhoneNumber, Adress, City, Country, Email, Score);
                 rootElement.Add(element);
                 xdosya.Save(@"usersInfo.xml");
+
                 MessageBox.Show("Successful Registration");
             }
         }
