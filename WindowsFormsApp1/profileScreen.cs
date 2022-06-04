@@ -10,11 +10,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
+using System.Data.SqlClient;
+
 
 namespace WindowsFormsApp1
 {
     public partial class profileScreen : Form
     {
+
+        String connetionString = @"workstation id=OOPGAME.mssql.somee.com;packet size=4096;user id=pastace_SQLLogin_1;pwd=7xbcp7q2cu;data source=OOPGAME.mssql.somee.com;persist security info=False;initial catalog=OOPGAME";
+        SqlConnection cnn;
 
         public static string username;
         public static string name;
@@ -98,7 +103,22 @@ namespace WindowsFormsApp1
                 node.SetElementValue("Country", country);
                 node.SetElementValue("Email", email);
                 node.SetElementValue("Password", password);
+
+                cnn = new SqlConnection(connetionString);
+                cnn.Open();
+                SqlCommand sqlCommand = new SqlCommand("Update oopUsers set NameSurname = @name ,PhoneNumber = @phone, Adress=@adress, City=@city, Country=@country, Email=@email where UserName = @uname", cnn);
+                sqlCommand.CommandType = CommandType.Text;
+                sqlCommand.Parameters.AddWithValue("@uname", username);
+                sqlCommand.Parameters.AddWithValue("@phone", phone);
+                sqlCommand.Parameters.AddWithValue("@name", name);
+                sqlCommand.Parameters.AddWithValue("@adress", adress);
+                sqlCommand.Parameters.AddWithValue("@city", city);
+                sqlCommand.Parameters.AddWithValue("@country", country);
+                sqlCommand.Parameters.AddWithValue("@email", email);
+                sqlCommand.ExecuteNonQuery();
                 xdosya.Save(@"usersInfo.xml");
+
+                cnn.Close();
 
                 textBoxName.Enabled = false;
                 textBoxPhone.Enabled = false;

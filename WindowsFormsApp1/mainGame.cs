@@ -13,13 +13,13 @@ namespace WindowsFormsApp1
     public partial class mainGame : Form
     {
 
-        Form1 f1;
-        
+        public static string un;
+       
 
         public mainGame()
         {
             InitializeComponent();
-            f1 = new Form1();
+            
         }
 
        
@@ -54,18 +54,19 @@ namespace WindowsFormsApp1
         private void logoutb_Click(object sender, EventArgs e)
         {
             Form1 form1 = new Form1();
+            un = "";
             this.Hide();
             form1.Show();
         }
 
         private void mainGame_Load(object sender, EventArgs e)
         {
-            buttonUsers.Visible = true;
-            if (f1.textBox1.Text != "admin")
+            if (un == "admin")
             {
-                buttonUsers.Text = "Profile";
+                buttonUserControl.Visible = true;
             }
-
+            else
+                buttonUserControl.Visible = false;
 
 
         }
@@ -78,22 +79,7 @@ namespace WindowsFormsApp1
 
         
 
-        private void buttonUsers_Click(object sender, EventArgs e)
-        {
-            if (f1.textBox1.Text == "admin")
-            {
-
-                managerScreen skip = new managerScreen();
-                skip.Show();
-            }
-
-            else
-            {
-                profileScreen profile = new profileScreen();
-                profile.Show();
-            }
-        }
-
+       
         private void buttonAbout_Click(object sender, EventArgs e)
         {
             About about = new About();
@@ -118,6 +104,24 @@ namespace WindowsFormsApp1
         private void btnBack_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void buttonProfile_Click(object sender, EventArgs e)
+        {
+            profileScreen profileScreen = new profileScreen();
+            profileScreen.Show();
+        }
+
+        private void buttonUserControl_Click(object sender, EventArgs e)
+        {
+            managerScreen ms = new managerScreen();
+            ms.Show();
+        }
+
+        private void buttonScore_Click(object sender, EventArgs e)
+        {
+            Scores scores = new Scores();
+            scores.Show();
         }
     }
 }

@@ -86,7 +86,7 @@ namespace WindowsFormsApp1
 
             if (textBox1.Text == "admin" && textBox2.Text == "admin")
             {
-            
+                mainGame.un = "admin";
                 mainGame skip = new mainGame();
                 this.Hide();
                 skip.Show();
