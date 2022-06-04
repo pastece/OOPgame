@@ -211,5 +211,9 @@
   <ItemGroup>
     <None Include="Resources\bluecircle.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\sound.wav" />
+    <Content Include="Resources\soundRemove.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
