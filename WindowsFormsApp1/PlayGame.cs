@@ -9,6 +9,7 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Data.SqlClient;
 using System.Data;
+using System.Media;
 
 
 
@@ -23,6 +24,10 @@ namespace WindowsFormsApp1
         String connetionString = @"workstation id=OOPGAME.mssql.somee.com;packet size=4096;user id=pastace_SQLLogin_1;pwd=7xbcp7q2cu;data source=OOPGAME.mssql.somee.com;persist security info=False;initial catalog=OOPGAME";
         SqlConnection cnn;
 
+        SoundPlayer soundMove = new SoundPlayer(@"C:\Repostorie\OOPgame\WindowsFormsApp1\Resources\sound.wav");
+        SoundPlayer soundRemove = new SoundPlayer(@"C:\Repostorie\OOPgame\WindowsFormsApp1\Resources\soundRemove.wav");
+
+
         private int score  { get; set; }
 
 
@@ -30,6 +35,7 @@ namespace WindowsFormsApp1
         private readonly int Column;
         private int Count;
         public static int bestScore;
+        private static int countRemove = 0;
 
 
         private Tile Clicked1;
@@ -75,15 +81,22 @@ namespace WindowsFormsApp1
                         if (t.Pb.BackColor == Color.White )
                         {
                             
-                            if (Clicked1 == null && t.Pb.Image != null ) { 
-                                
-                                Clicked1 = t;
-                                t.Pb.BackColor = Color.Gray;
+                            if (Clicked1 == default && t.Pb.Image != default ) {
+
+                                if (tilesAdd[i, j] == 0)
+                                {
+                                    t.Pb.Enabled = true;
+                                    Clicked1 = t;
+                                    t.Pb.BackColor = Color.Gray;
+                                }
+                                else
+                                {
+                                    t.Pb.Enabled = false;
+                                }
 
                             }
                            
-
-                            else if (Clicked2 == null && t.Pb.Image == null && Clicked1 != null)
+                            else if (Clicked2 == default && t.Pb.Image == default&& Clicked1 != default)
                             {
                                 Clicked2 = t;
                                 
@@ -92,16 +105,27 @@ namespace WindowsFormsApp1
                                 {
                                     MoveTile(list);
                                     scoreCheck();
-                                    Clicked1 = null;
-                                    Clicked2 = null;
+
+                                    if (countRemove == 0)
+                                    {
+
+                                        RandomShapes();
+                                    }
+                                    if (countRemove > 0)
+                                    {
+                                        countRemove = 0;
+                                    }
+
+                                    Clicked1 = default;
+                                    Clicked2 = default;
 
                                 }
                                 else
                                 {
                                     MessageBox.Show("Unfortunately the shape can't go there, make a new move!!!");
                                     Clicked1.Pb.BackColor = Color.White;
-                                    Clicked1 = null;
-                                    Clicked2 = null;
+                                    Clicked1 = default;
+                                    Clicked2 = default;
                                     
                                 }
                                 
@@ -126,17 +150,14 @@ namespace WindowsFormsApp1
                         else
                         {
                             t.Pb.BackColor = Color.White;
-                            Clicked1 = null;
+                            Clicked1 = default;
                         }
                     };
                     playGround.Controls.Add(t.Pb);
                 }
             }
         }
-
-       
-
-        
+      
         class QItem
         {
             public int row;
@@ -151,8 +172,6 @@ namespace WindowsFormsApp1
             }
         };
 
-
-
         bool minDistance(ref List<QItem> arr)
         {
             char[,] tiles2D = new char[Row, Column];
@@ -161,7 +180,6 @@ namespace WindowsFormsApp1
                 for (int j = 0; j < Column; j++)
                 {
 
-
                     if (!isEmptyTile(tiles[(i*Row)+j])) tiles2D[i, j] = '0';
                     if (isEmptyTile(tiles[(i * Row)+ j])) tiles2D[i, j] = '*';
                     if (i == Clicked1.x && j == Clicked1.y) tiles2D[i, j] = 's';
@@ -169,22 +187,23 @@ namespace WindowsFormsApp1
                 }
             }
 
-
             QItem source = new QItem(0, 0, 0);
 
-            // To keep track of visited QItems. Marking
-            // blocked cells as visited.
-            bool[,] visited = new bool[Row, Column];
+            bool[,] visitedTiles = new bool[Row, Column];
             for (int i = 0; i < Row; i++)
             {
                 for (int j = 0; j < Column; j++)
                 {
                     if (tiles2D[i, j] == '0')
-                        visited[i, j] = true;
+                    {
+                        visitedTiles[i, j] = true;
+                    }
                     else
-                        visited[i, j] = false;
+                    { 
+                        visitedTiles[i, j] = false; 
+                    }
 
-                    // Finding source
+    
                     if (tiles2D[i, j] == 's')
                     {
                         source.row = i;
@@ -193,16 +212,15 @@ namespace WindowsFormsApp1
                 }
             }
 
-            // applying BFS on matrix cells starting from source
+            
             List<QItem> list = new List<QItem>();
             list.Add(source);
-            visited[source.row, source.col] = true;
+            visitedTiles[source.row, source.col] = true;
             while (list.Any())
             {
                 QItem p = list[0];
                 list.RemoveAt(0);
 
-                // Destination found;
                 if (tiles2D[p.row, p.col] == 'd')
                 {
                     while (p != null)
@@ -212,46 +230,37 @@ namespace WindowsFormsApp1
                     }
                     return true;
                 }
-
-
-                // moving up
-                if (p.row - 1 >= 0 &&
-                    visited[p.row - 1, p.col] == false)
+                
+                if (p.row - 1 >= 0 && visitedTiles[p.row - 1, p.col] == false)
                 {
                     QItem q = new QItem(p.row - 1, p.col, p.dist + 1);
                     q.prev = p;
                     list.Add(q);
-                    visited[p.row - 1, p.col] = true;
+                    visitedTiles[p.row - 1, p.col] = true;
                 }
 
-                // moving down
-                if (p.row + 1 < Row &&
-                    visited[p.row + 1, p.col] == false)
+                if (p.row + 1 < Row && visitedTiles[p.row + 1, p.col] == false)
                 {
                     QItem q = new QItem(p.row + 1, p.col, p.dist + 1);
                     q.prev = p;
                     list.Add(q);
-                    visited[p.row + 1, p.col] = true;
+                    visitedTiles[p.row + 1, p.col] = true;
                 }
 
-                // moving left
-                if (p.col - 1 >= 0 &&
-                    visited[p.row, p.col - 1] == false)
+                if (p.col - 1 >= 0 && visitedTiles[p.row, p.col - 1] == false)
                 {
                     QItem q = new QItem(p.row, p.col - 1, p.dist + 1);
                     q.prev = p;
                     list.Add(q);
-                    visited[p.row, p.col - 1] = true;
+                    visitedTiles[p.row, p.col - 1] = true;
                 }
-
-                // moving right
-                if (p.col + 1 < Column &&
-                    visited[p.row, p.col + 1] == false)
+                
+                if (p.col + 1 < Column && visitedTiles[p.row, p.col + 1] == false)
                 {
                     QItem q = new QItem(p.row, p.col + 1, p.dist + 1);
                     q.prev = p;
                     list.Add(q);
-                    visited[p.row, p.col + 1] = true;
+                    visitedTiles[p.row, p.col + 1] = true;
                 }
             }
             return false;
@@ -294,13 +303,7 @@ namespace WindowsFormsApp1
                 }
             }
            
-
-
-
-
         }
-
-
 
         private bool isEmptyTile(Tile tile)
         {
@@ -328,6 +331,7 @@ namespace WindowsFormsApp1
                 
                 tiles[sourceIndex].Pb.BackColor = Color.White;
                 tiles[destinationIndex].Pb.BackColor = Color.Gray;
+                soundMove.Play();
                 
             }
             int sayi = tilesAdd[Clicked1.x, Clicked1.y];
@@ -336,15 +340,10 @@ namespace WindowsFormsApp1
 
             //Task.Delay(sleepTime).Wait();
 
-
             tiles[(list[list.Count-1].row*Row)+ (list[list.Count-1].col)].Pb.BackColor = Color.White;
             list.Clear();
-
-            
-            RandomShapes();
-            
-
-
+           
+            //RandomShapes();           
         }
         void scoreCheck()
         {
@@ -414,7 +413,8 @@ namespace WindowsFormsApp1
 
        void removeShape(int[,] arr)
         {
-            
+            int sleepTime = 1000;
+
             for (int i = 0; i < 5; i++)
             {
                 Task.Delay(50).Wait();
@@ -422,6 +422,9 @@ namespace WindowsFormsApp1
                 tiles[(arr[i, 0] * Row) + arr[i, 1]].Pb.Image = default;
                 
             }
+            countRemove++;
+            Task.Delay(sleepTime).Wait();     
+            soundRemove.Play();
             
             sumScore();
             playGround.labelCurrent.Text = "Current Score: "+score.ToString();
@@ -437,11 +440,9 @@ namespace WindowsFormsApp1
                 xdosya.Save(@"usersInfo.xml");
 
             }
-
-
-        }
-            public void sumScore()
-        {
+       }
+       public void sumScore()
+       {
             Settings st = new Settings();
             
 
@@ -468,7 +469,6 @@ namespace WindowsFormsApp1
             }
  
         }
-
         public void RandomShapes()
         {
             Random random = new Random();
