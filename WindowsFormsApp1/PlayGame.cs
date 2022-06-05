@@ -24,10 +24,6 @@ namespace WindowsFormsApp1
         String connetionString = @"workstation id=OOPGAME.mssql.somee.com;packet size=4096;user id=pastace_SQLLogin_1;pwd=7xbcp7q2cu;data source=OOPGAME.mssql.somee.com;persist security info=False;initial catalog=OOPGAME";
         SqlConnection cnn;
 
-        SoundPlayer soundMove = new SoundPlayer(@"C:\Repostorie\OOPgame\WindowsFormsApp1\Resources\sound.wav");
-        SoundPlayer soundRemove = new SoundPlayer(@"C:\Repostorie\OOPgame\WindowsFormsApp1\Resources\soundRemove.wav");
-
-
         private int score  { get; set; }
 
 
@@ -108,8 +104,8 @@ namespace WindowsFormsApp1
 
                                     if (countRemove == 0)
                                     {
-
                                         RandomShapes();
+                                        scoreCheck();
                                     }
                                     if (countRemove > 0)
                                     {
@@ -331,6 +327,9 @@ namespace WindowsFormsApp1
                 
                 tiles[sourceIndex].Pb.BackColor = Color.White;
                 tiles[destinationIndex].Pb.BackColor = Color.Gray;
+                
+                //Move Sound
+                System.Media.SoundPlayer soundMove = new System.Media.SoundPlayer("../../Resources/sound.wav");
                 soundMove.Play();
                 
             }
@@ -423,7 +422,10 @@ namespace WindowsFormsApp1
                 
             }
             countRemove++;
-            Task.Delay(sleepTime).Wait();     
+            Task.Delay(sleepTime).Wait();
+            
+            //Remove Sound
+            System.Media.SoundPlayer soundRemove = new System.Media.SoundPlayer("../../Resources/soundRemove.wav");
             soundRemove.Play();
             
             sumScore();
@@ -471,11 +473,12 @@ namespace WindowsFormsApp1
         }
         public void RandomShapes()
         {
+            Settings st = new Settings();
             Random random = new Random();
             for (int i = 0; i < 3; i++)
             {
                 int tile = random.Next(0, Row*Column);
-                int shape = random.Next(1, 10);
+                //int shape = random.Next(1, 10);
                 Tile t;
                 int r, c;
                 t = tiles[tile];
@@ -484,56 +487,868 @@ namespace WindowsFormsApp1
 
                 if (tiles[tile].Pb.Image == default)
                 {
-
-                    switch (shape)
+                    // square check
+                    if (st.squareBox.Checked)
                     {
-                        case 1:
-                            tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redcircle;
-                           
+                        if (st.checkBoxBlue.Checked && st.checkBoxGreen.Checked)
+                        {
+                            int shape = random.Next(1, 3);
+                            switch (shape)
+                            {
+                                case 1:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluesquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 2:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greensquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
 
-                            tilesAdd[r, c] = shape;
-                            break;
+                            }
+                        }
+                        if (st.checkBoxBlue.Checked && st.checkBoxRed.Checked)
+                        {
+                            int shape = random.Next(1, 3);
+                            switch (shape)
+                            {
+                                case 1:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluesquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 2:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redsquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
 
-                        case 2:
-                            tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redsquare;
-                            tilesAdd[r, c] = shape;
-                            break;
+                            }
+                        }
+                        if (st.checkBoxGreen.Checked && st.checkBoxRed.Checked)
+                        {
+                            int shape = random.Next(1, 3);
+                            switch (shape)
+                            {
+                                case 1:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greensquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 2:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redsquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
 
-                        case 3:
-                            tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redtriangle;
-                            tilesAdd[r, c] = shape; ;
-                            break;
+                            }
+                        }
+                        if (st.checkBoxGreen.Checked && st.checkBoxRed.Checked && st.checkBoxBlue.Checked)
+                        {
+                            int shape = random.Next(1, 4);
+                            switch (shape)
+                            {
+                                case 1:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greensquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 2:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redsquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 3:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluesquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
 
-                        case 4:
-                            tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluecircle;
-                            tilesAdd[r, c] = shape;
-                            break;
-
-                        case 5:
-                            tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluesquare;
-                            tilesAdd[r, c] = shape;
-                            break;
-
-                        case 6:
-                            tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluetriangle;
-                            tilesAdd[r, c] = shape;
-                            break;
-
-                        case 7:
-                            tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greencircle;
-                            tilesAdd[r, c] = shape;
-                            break;
-
-                        case 8:
-                            tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greensquare;
-                            tilesAdd[r, c] = shape;
-                            break;
-
-                        case 9:
-                            tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greentriangle;
-                            tilesAdd[r, c] = shape;
-                            break;
+                            }
+                        }
                     }
+
+                    //triangle check
+                    if (st.triangleBox.Checked)
+                    {
+                        if (st.checkBoxBlue.Checked && st.checkBoxGreen.Checked)
+                        {
+                            int shape = random.Next(1, 3);
+                            switch (shape)
+                            {
+                                case 1:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluetriangle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 2:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greentriangle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+
+                            }
+                        }
+                        if (st.checkBoxBlue.Checked && st.checkBoxRed.Checked)
+                        {
+                            int shape = random.Next(1, 3);
+                            switch (shape)
+                            {
+                                case 1:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluetriangle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 2:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redtriangle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+
+                            }
+                        }
+                        if (st.checkBoxGreen.Checked && st.checkBoxRed.Checked)
+                        {
+                            int shape = random.Next(1, 3);
+                            switch (shape)
+                            {
+                                case 1:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greentriangle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 2:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redtriangle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+
+                            }
+                        }
+                        if (st.checkBoxGreen.Checked && st.checkBoxRed.Checked && st.checkBoxBlue.Checked)
+                        {
+                            int shape = random.Next(1, 4);
+                            switch (shape)
+                            {
+                                case 1:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greentriangle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 2:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redtriangle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 3:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluetriangle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+
+                            }
+                        }
+                    }
+
+                    //circle check
+                    if (st.roundBox.Checked)
+                    {
+                        if (st.checkBoxBlue.Checked && st.checkBoxGreen.Checked)
+                        {
+                            int shape = random.Next(1, 3);
+                            switch (shape)
+                            {
+                                case 1:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluecircle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 2:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greencircle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+
+                            }
+                        }
+                        if (st.checkBoxBlue.Checked && st.checkBoxRed.Checked)
+                        {
+                            int shape = random.Next(1, 3);
+                            switch (shape)
+                            {
+                                case 1:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluecircle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 2:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redcircle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+
+                            }
+                        }
+                        if (st.checkBoxGreen.Checked && st.checkBoxRed.Checked)
+                        {
+                            int shape = random.Next(1, 3);
+                            switch (shape)
+                            {
+                                case 1:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greencircle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 2:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redcircle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+
+                            }
+                        }
+                        if (st.checkBoxGreen.Checked && st.checkBoxRed.Checked && st.checkBoxBlue.Checked)
+                        {
+                            int shape = random.Next(1, 4);
+                            switch (shape)
+                            {
+                                case 1:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greencircle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 2:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redcircle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 3:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluecircle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+
+                            }
+                        }
+                    }
+
+
+                    //Blue check
+                    if (st.checkBoxBlue.Checked)
+                    {
+                        if (st.squareBox.Checked && st.triangleBox.Checked)
+                        {
+                            int shape = random.Next(1, 3);
+                            switch (shape)
+                            {
+                                case 1:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluesquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 2:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluetriangle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+
+                            }
+                        }
+
+                        if (st.squareBox.Checked && st.roundBox.Checked)
+                        {
+                            int shape = random.Next(1, 3);
+                            switch (shape)
+                            {
+                                case 1:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluesquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 2:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluecircle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+
+                            }
+                        }
+
+                        if (st.triangleBox.Checked && st.roundBox.Checked)
+                        {
+                            int shape = random.Next(1, 3);
+                            switch (shape)
+                            {
+                                case 1:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluetriangle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 2:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluecircle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+
+                            }
+                        }
+
+                        if (st.triangleBox.Checked && st.roundBox.Checked && st.squareBox.Checked)
+                        {
+                            int shape = random.Next(1, 4);
+                            switch (shape)
+                            {
+                                case 1:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluetriangle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 2:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluecircle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 3:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluesquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+
+                            }
+                        }
+                    }
+                    // check green
+                    if (st.checkBoxGreen.Checked)
+                    {
+                        if (st.squareBox.Checked && st.triangleBox.Checked)
+                        {
+                            int shape = random.Next(1, 3);
+                            switch (shape)
+                            {
+                                case 1:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greensquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 2:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greentriangle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+
+                            }
+                        }
+
+                        if (st.squareBox.Checked && st.roundBox.Checked)
+                        {
+                            int shape = random.Next(1, 3);
+                            switch (shape)
+                            {
+                                case 1:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greensquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 2:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greencircle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+
+                            }
+                        }
+
+                        if (st.triangleBox.Checked && st.roundBox.Checked)
+                        {
+                            int shape = random.Next(1, 3);
+                            switch (shape)
+                            {
+                                case 1:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greentriangle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 2:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greencircle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+
+                            }
+                        }
+
+                        if (st.triangleBox.Checked && st.roundBox.Checked && st.squareBox.Checked)
+                        {
+                            int shape = random.Next(1, 4);
+                            switch (shape)
+                            {
+                                case 1:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greentriangle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 2:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greencircle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 3:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greensquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+
+                            }
+                        }
+                    }
+
+                    // check red
+                    if (st.checkBoxRed.Checked)
+                    {
+                        if (st.squareBox.Checked && st.triangleBox.Checked)
+                        {
+                            int shape = random.Next(1, 3);
+                            switch (shape)
+                            {
+                                case 1:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redsquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 2:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redtriangle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+
+                            }
+                        }
+
+                        if (st.squareBox.Checked && st.roundBox.Checked)
+                        {
+                            int shape = random.Next(1, 3);
+                            switch (shape)
+                            {
+                                case 1:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redsquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 2:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redcircle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+
+                            }
+                        }
+
+                        if (st.triangleBox.Checked && st.roundBox.Checked)
+                        {
+                            int shape = random.Next(1, 3);
+                            switch (shape)
+                            {
+                                case 1:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redtriangle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 2:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redcircle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+
+                            }
+                        }
+
+                        if (st.triangleBox.Checked && st.roundBox.Checked && st.squareBox.Checked)
+                        {
+                            int shape = random.Next(1, 4);
+                            switch (shape)
+                            {
+                                case 1:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redtriangle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 2:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redcircle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 3:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redsquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+
+                            }
+                        }
+                    }
+
+                    //check sq+tr
+                    if (st.squareBox.Checked && st.triangleBox.Checked)
+                    {
+                        if (st.checkBoxBlue.Checked && st.checkBoxGreen.Checked)
+                        {
+                            int shape = random.Next(1, 5);
+
+                            switch (shape)
+                            {
+                                case 1:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluesquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 2:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluetriangle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 3:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greensquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 4:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greentriangle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+
+                            }
+                        }
+
+                        if (st.checkBoxBlue.Checked && st.checkBoxRed.Checked)
+                        {
+                            int shape = random.Next(1, 5);
+
+                            switch (shape)
+                            {
+                                case 1:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluesquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 2:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluetriangle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 3:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redsquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 4:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redtriangle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+
+                            }
+
+
+                        }
+
+                        if (st.checkBoxGreen.Checked && st.checkBoxRed.Checked)
+                        {
+                            int shape = random.Next(1, 5);
+
+                            switch (shape)
+                            {
+                                case 1:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greensquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 2:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greentriangle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 3:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redsquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 4:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redtriangle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+
+                            }
+                        }
+
+                        if (st.checkBoxGreen.Checked && st.checkBoxRed.Checked && st.checkBoxBlue.Checked)
+                        {
+                            int shape = random.Next(1, 7);
+
+                            switch (shape)
+                            {
+                                case 1:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greensquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 2:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greentriangle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 3:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redsquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 4:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redtriangle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 5:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluesquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 6:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluetriangle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+
+
+                            }
+                        }
+                    }
+
+                    //check tr+cir
+                    if (st.roundBox.Checked && st.triangleBox.Checked)
+                    {
+                        if (st.checkBoxBlue.Checked && st.checkBoxGreen.Checked)
+                        {
+                            int shape = random.Next(1, 5);
+
+                            switch (shape)
+                            {
+                                case 1:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluecircle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 2:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluetriangle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 3:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greencircle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 4:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greentriangle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+
+                            }
+                        }
+
+                        if (st.checkBoxBlue.Checked && st.checkBoxRed.Checked)
+                        {
+                            int shape = random.Next(1, 5);
+
+                            switch (shape)
+                            {
+                                case 1:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluecircle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 2:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluetriangle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 3:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redcircle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 4:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redtriangle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+
+                            }
+
+
+                        }
+
+                        if (st.checkBoxGreen.Checked && st.checkBoxRed.Checked)
+                        {
+                            int shape = random.Next(1, 5);
+
+                            switch (shape)
+                            {
+                                case 1:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greencircle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 2:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greentriangle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 3:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redcircle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 4:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redtriangle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+
+                            }
+                        }
+
+                        if (st.checkBoxGreen.Checked && st.checkBoxRed.Checked && st.checkBoxBlue.Checked)
+                        {
+                            int shape = random.Next(1, 7);
+
+                            switch (shape)
+                            {
+                                case 1:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greensquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 2:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greentriangle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 3:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redsquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 4:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redtriangle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 5:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluesquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 6:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluetriangle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+
+
+                            }
+                        }
+                    }
+
+                    // check cir+sq
+                    if (st.roundBox.Checked && st.squareBox.Checked)
+                    {
+                        if (st.checkBoxBlue.Checked && st.checkBoxGreen.Checked)
+                        {
+                            int shape = random.Next(1, 5);
+
+                            switch (shape)
+                            {
+                                case 1:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluecircle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 2:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluesquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 3:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greencircle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 4:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greensquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+
+                            }
+                        }
+
+                        if (st.checkBoxBlue.Checked && st.checkBoxRed.Checked)
+                        {
+                            int shape = random.Next(1, 5);
+
+                            switch (shape)
+                            {
+                                case 1:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluecircle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 2:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluesquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 3:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redcircle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 4:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redsquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+
+                            }
+
+
+                        }
+
+                        if (st.checkBoxGreen.Checked && st.checkBoxRed.Checked)
+                        {
+                            int shape = random.Next(1, 5);
+
+                            switch (shape)
+                            {
+                                case 1:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greencircle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 2:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greensquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 3:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redcircle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 4:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redsquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+
+                            }
+                        }
+
+                        if (st.checkBoxGreen.Checked && st.checkBoxRed.Checked && st.checkBoxBlue.Checked)
+                        {
+                            int shape = random.Next(1, 7);
+
+                            switch (shape)
+                            {
+                                case 1:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greensquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 2:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greencircle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 3:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redsquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 4:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redcircle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 5:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluesquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                                case 6:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluecircle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+
+
+                            }
+                        }
+                    }
+
+                    if(st.squareBox.Checked && st.roundBox.Checked && st.triangleBox.Checked)
+                    {
+                        int shape = random.Next(1, 10);
+
+                        if (st.checkBoxGreen.Checked && st.checkBoxRed.Checked && st.checkBoxBlue.Checked)
+                        {
+                            switch (shape)
+                            {
+                                case 1:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redcircle;
+
+
+                                    tilesAdd[r, c] = shape;
+                                    break;
+
+                                case 2:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redsquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+
+                                case 3:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redtriangle;
+                                    tilesAdd[r, c] = shape; ;
+                                    break;
+
+                                case 4:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluecircle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+
+                                case 5:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluesquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+
+                                case 6:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.bluetriangle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+
+                                case 7:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greencircle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+
+                                case 8:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greensquare;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+
+                                case 9:
+                                    tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.greentriangle;
+                                    tilesAdd[r, c] = shape;
+                                    break;
+                            }
+                        }
+                    }
+
                 }
                 else i--;
             }
