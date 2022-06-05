@@ -168,6 +168,36 @@ namespace WindowsFormsApp1
             {
                 File.Delete(path);
             }
+            
+            
+            int countCheckShape = 0;
+            if (squareBox.Checked) countCheckShape++;
+            if (triangleBox.Checked) countCheckShape++;
+            if (roundBox.Checked) countCheckShape++;
+            
+            int countCheckColor = 0;
+            if (checkBoxBlue.Checked) countCheckColor++;
+            if (checkBoxGreen.Checked) countCheckColor++;
+            if (checkBoxRed.Checked) countCheckColor++;
+
+            if (countCheckShape <= 1)
+            {
+                if (countCheckColor <= 1)
+                {
+                    DialogResult error = new DialogResult();
+                    error = MessageBox.Show("You must click at least three options to play the game!!!", "Error", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    MessageBox.Show("Successful Save ");
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Successful Save ");
+            }
+
 
             string shape="";
             if (squareBox.Checked) shape += "Square ";
@@ -200,6 +230,8 @@ namespace WindowsFormsApp1
             {
                 Console.WriteLine(ex.ToString());
             }
+
+            //MessageBox.Show("Successful Save ");
         }
 
     }

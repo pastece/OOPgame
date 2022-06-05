@@ -176,6 +176,8 @@
     <None Include="Resources\open.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\sound.wav" />
+    <Resource Include="Resources\soundRemove.wav" />
     <None Include="Resources\visibility.png" />
   </ItemGroup>
   <ItemGroup>
@@ -210,10 +212,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bluecircle.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Resources\sound.wav" />
-    <Content Include="Resources\soundRemove.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
