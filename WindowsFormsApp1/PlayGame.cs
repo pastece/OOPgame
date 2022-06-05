@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,9 +25,9 @@ namespace WindowsFormsApp1
         String connetionString = @"workstation id=OOPGAME.mssql.somee.com;packet size=4096;user id=pastace_SQLLogin_1;pwd=7xbcp7q2cu;data source=OOPGAME.mssql.somee.com;persist security info=False;initial catalog=OOPGAME";
         SqlConnection cnn;
 
-        SoundPlayer soundMove = new SoundPlayer(@"C:\Repostorie\OOPgame\WindowsFormsApp1\Resources\sound.wav");
-        SoundPlayer soundRemove = new SoundPlayer(@"C:\Repostorie\OOPgame\WindowsFormsApp1\Resources\soundRemove.wav");
 
+        SoundPlayer soundMove = new SoundPlayer(@"C:\Repositories\OOPgame\WindowsFormsApp1\Resources\sound.wav");
+        SoundPlayer soundRemove = new SoundPlayer(@"C:\Repositories\OOPgame\WindowsFormsApp1\Resources\soundRemove.wav");
 
         private int score  { get; set; }
 
@@ -313,7 +314,7 @@ namespace WindowsFormsApp1
 
         private void MoveTile(List<QItem> list)
         {
-            int sleepTime = 1;
+            int sleepTime = 1000;
             list.Reverse();
             for (int i = 0; i < list.Count - 1; i++)
             {
