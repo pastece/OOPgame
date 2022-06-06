@@ -1313,7 +1313,7 @@ namespace WindowsFormsApp1
 
                                 case 3:
                                     tiles[tile].Pb.Image = global::WindowsFormsApp1.Properties.Resources.redtriangle;
-                                    tilesAdd[r, c] = shape; ;
+                                    tilesAdd[r, c] = shape; 
                                     break;
 
                                 case 4:
