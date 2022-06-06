@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Net;
+using System.Net.Sockets;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -45,7 +47,134 @@ namespace WindowsFormsApp1
             Row = r;
             Column = c;
             score = 0;
-            
+
+            IPHostEntry ipHost = Dns.GetHostEntry(Dns.GetHostName());
+            IPAddress ipAddress = ipHost.AddressList[0];
+            IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 11000);
+
+            DialogResult dialogResult = MessageBox.Show("Multiplayer", "Press yes for listener, no for client", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                try
+                {
+
+                    // Create a Socket that will use Tcp protocol
+                    Socket listener = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+                    // A Socket must be associated with an endpoint using the Bind method
+                    listener.Bind(localEndPoint);
+                    // Specify how many requests a Socket can listen before it gives Server busy response.
+                    // We will listen 10 requests at a time
+                    listener.Listen(10);
+
+                    MessageBox.Show("Waiting for a connection...");
+                    Socket handler = listener.Accept();
+
+                    // Incoming data from the client.
+                    string data = null;
+                    byte[] bytes = null;
+
+                    while (true)
+                    {
+                        bytes = new byte[1024];
+                        int bytesRec = handler.Receive(bytes);
+                        data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
+                        if (data.IndexOf("<EOF>") > -1)
+                        {
+                            break;
+                        }
+                    }
+
+                    MessageBox.Show("Waiting for a connection...", data);
+
+
+                    byte[] msg = Encoding.ASCII.GetBytes(data);
+                    handler.Send(msg);
+                    handler.Shutdown(SocketShutdown.Both);
+                    handler.Close();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.ToString());
+
+                }
+
+                MessageBox.Show("Press any key to continue...");
+
+                
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                byte[] bytes = new byte[1024];
+
+                try
+                {
+                    // Connect to a Remote server
+                    // Get Host IP Address that is used to establish a connection
+                    // In this case, we get one IP address of localhost that is IP : 127.0.0.1
+                    // If a host has multiple addresses, you will get a list of addresses
+                    IPHostEntry host = Dns.GetHostEntry("localhost");
+                    IPEndPoint remoteEP = new IPEndPoint(ipAddress, 11000);
+
+                    // Create a TCP/IP  socket.
+                    Socket sender = new Socket(ipAddress.AddressFamily,
+                        SocketType.Stream, ProtocolType.Tcp);
+
+                    // Connect the socket to the remote endpoint. Catch any errors.
+                    try
+                    {
+                        // Connect to Remote EndPoint
+                        sender.Connect(remoteEP);
+
+                        MessageBox.Show("Socket connected to {0}",
+                            sender.RemoteEndPoint.ToString());
+
+                       
+
+                        // Encode the data string into a byte array.
+                        byte[] msg = Encoding.ASCII.GetBytes("This is a test<EOF>");
+
+                        // Send the data through the socket.
+                        int bytesSent = sender.Send(msg);
+
+                        // Receive the response from the remote device.
+                        int bytesRec = sender.Receive(bytes);
+                        MessageBox.Show("Echoed test = {0}",
+                            Encoding.ASCII.GetString(bytes, 0, bytesRec));
+
+                       
+
+                        // Release the socket.
+                        sender.Shutdown(SocketShutdown.Both);
+                        sender.Close();
+
+                    }
+                    catch (ArgumentNullException ane)
+                    {
+                        MessageBox.Show("ArgumentNullException : {0}", ane.ToString());
+
+                    }
+                    catch (SocketException se)
+                    {
+                        MessageBox.Show("SocketException : {0}", se.ToString());
+
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show("Unexpected exception : {0}", e.ToString());
+
+                        
+                    }
+
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.ToString());
+
+                    
+                }
+            }
+           
+
             CreateGameBoard();
             RandomShapes();
         }
@@ -129,15 +258,7 @@ namespace WindowsFormsApp1
                             }
                             if (gameOverControl())
                             {
-                                cnn = new SqlConnection(connetionString);
-                                cnn.Open();
-                                SqlCommand sqlCommand = new SqlCommand("Update oopUsers set Score = @score  where UserName = @uname", cnn);
-                                sqlCommand.CommandType = CommandType.Text;
-                                sqlCommand.Parameters.AddWithValue("@uname", profileScreen.username);
-                                sqlCommand.Parameters.AddWithValue("@score", bestScore);
-                                sqlCommand.ExecuteNonQuery();
-                                cnn.Close();
-
+                                UptadeScore();
                                 repeatGame();
                                 CreateGameBoard();
                                 RandomShapes();
@@ -154,6 +275,17 @@ namespace WindowsFormsApp1
             }
         }
       
+        public void UptadeScore()
+        {
+            cnn = new SqlConnection(connetionString);
+            cnn.Open();
+            SqlCommand sqlCommand = new SqlCommand("Update oopUsers set Score = @score  where UserName = @uname", cnn);
+            sqlCommand.CommandType = CommandType.Text;
+            sqlCommand.Parameters.AddWithValue("@uname", profileScreen.username);
+            sqlCommand.Parameters.AddWithValue("@score", bestScore);
+            sqlCommand.ExecuteNonQuery();
+            cnn.Close();
+        }
         class QItem
         {
             public int row;
@@ -437,8 +569,8 @@ namespace WindowsFormsApp1
                 profileScreen.score = bestScore.ToString();
                 XDocument xdosya = XDocument.Load(@"usersInfo.xml");
                 XElement node = xdosya.Element("Users").Elements("User").FirstOrDefault(a => a.Element("UserName").Value.Trim() == profileScreen.username);
-                node.SetElementValue("Score", bestScore);          
-
+                node.SetElementValue("Score", bestScore);
+                UptadeScore();
                 xdosya.Save(@"usersInfo.xml");
 
             }
