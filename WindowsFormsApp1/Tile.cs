@@ -35,10 +35,8 @@ namespace WindowsFormsApp1
                     BackColor = Color.White,
                     Cursor = Cursors.Hand,
                     Anchor = AnchorStyles.None,
-                    //BorderStyle = BorderStyle.FixedSingle,
                     Size = new Size(45, 45),
                     Location = new Point(48 * (y + 1), 48 * (x + 1)),
-                    //SizeMode = PictureBoxSizeMode.StretchImage            
                 };
 
 

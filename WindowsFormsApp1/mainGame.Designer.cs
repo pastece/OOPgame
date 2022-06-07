@@ -38,12 +38,13 @@ namespace WindowsFormsApp1
             this.HelpScreenBtn = new System.Windows.Forms.Button();
             this.buttonUserControl = new System.Windows.Forms.Button();
             this.buttonScore = new System.Windows.Forms.Button();
+            this.buttonMultiplayer = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // settingb
             // 
             this.settingb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.settingb.Location = new System.Drawing.Point(347, 180);
+            this.settingb.Location = new System.Drawing.Point(347, 192);
             this.settingb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.settingb.Name = "settingb";
             this.settingb.Size = new System.Drawing.Size(196, 55);
@@ -56,7 +57,7 @@ namespace WindowsFormsApp1
             // btnExitMain
             // 
             this.btnExitMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnExitMain.Location = new System.Drawing.Point(347, 364);
+            this.btnExitMain.Location = new System.Drawing.Point(347, 499);
             this.btnExitMain.Margin = new System.Windows.Forms.Padding(4);
             this.btnExitMain.Name = "btnExitMain";
             this.btnExitMain.Size = new System.Drawing.Size(196, 55);
@@ -69,7 +70,7 @@ namespace WindowsFormsApp1
             // logoutb
             // 
             this.logoutb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.logoutb.Location = new System.Drawing.Point(347, 240);
+            this.logoutb.Location = new System.Drawing.Point(347, 252);
             this.logoutb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.logoutb.Name = "logoutb";
             this.logoutb.Size = new System.Drawing.Size(196, 55);
@@ -82,7 +83,7 @@ namespace WindowsFormsApp1
             // buttonProfile
             // 
             this.buttonProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.buttonProfile.Location = new System.Drawing.Point(347, 118);
+            this.buttonProfile.Location = new System.Drawing.Point(347, 131);
             this.buttonProfile.Margin = new System.Windows.Forms.Padding(4);
             this.buttonProfile.Name = "buttonProfile";
             this.buttonProfile.Size = new System.Drawing.Size(196, 55);
@@ -95,7 +96,7 @@ namespace WindowsFormsApp1
             // buttonAbout
             // 
             this.buttonAbout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.buttonAbout.Location = new System.Drawing.Point(347, 302);
+            this.buttonAbout.Location = new System.Drawing.Point(347, 314);
             this.buttonAbout.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAbout.Name = "buttonAbout";
             this.buttonAbout.Size = new System.Drawing.Size(196, 55);
@@ -108,7 +109,7 @@ namespace WindowsFormsApp1
             // buttonPlay
             // 
             this.buttonPlay.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.buttonPlay.Location = new System.Drawing.Point(347, 57);
+            this.buttonPlay.Location = new System.Drawing.Point(347, 11);
             this.buttonPlay.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonPlay.Name = "buttonPlay";
             this.buttonPlay.Size = new System.Drawing.Size(196, 55);
@@ -121,7 +122,7 @@ namespace WindowsFormsApp1
             // HelpScreenBtn
             // 
             this.HelpScreenBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.HelpScreenBtn.Location = new System.Drawing.Point(347, 427);
+            this.HelpScreenBtn.Location = new System.Drawing.Point(347, 377);
             this.HelpScreenBtn.Margin = new System.Windows.Forms.Padding(4);
             this.HelpScreenBtn.Name = "HelpScreenBtn";
             this.HelpScreenBtn.Size = new System.Drawing.Size(196, 53);
@@ -133,7 +134,7 @@ namespace WindowsFormsApp1
             // buttonUserControl
             // 
             this.buttonUserControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.buttonUserControl.Location = new System.Drawing.Point(347, 549);
+            this.buttonUserControl.Location = new System.Drawing.Point(347, 562);
             this.buttonUserControl.Margin = new System.Windows.Forms.Padding(4);
             this.buttonUserControl.Name = "buttonUserControl";
             this.buttonUserControl.Size = new System.Drawing.Size(196, 55);
@@ -147,7 +148,7 @@ namespace WindowsFormsApp1
             // buttonScore
             // 
             this.buttonScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.buttonScore.Location = new System.Drawing.Point(347, 488);
+            this.buttonScore.Location = new System.Drawing.Point(347, 438);
             this.buttonScore.Margin = new System.Windows.Forms.Padding(4);
             this.buttonScore.Name = "buttonScore";
             this.buttonScore.Size = new System.Drawing.Size(196, 53);
@@ -156,12 +157,26 @@ namespace WindowsFormsApp1
             this.buttonScore.UseVisualStyleBackColor = true;
             this.buttonScore.Click += new System.EventHandler(this.buttonScore_Click);
             // 
+            // buttonMultiplayer
+            // 
+            this.buttonMultiplayer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.buttonMultiplayer.Location = new System.Drawing.Point(347, 70);
+            this.buttonMultiplayer.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonMultiplayer.Name = "buttonMultiplayer";
+            this.buttonMultiplayer.Size = new System.Drawing.Size(196, 55);
+            this.buttonMultiplayer.TabIndex = 10;
+            this.buttonMultiplayer.TabStop = false;
+            this.buttonMultiplayer.Text = "Multiplayer";
+            this.buttonMultiplayer.UseVisualStyleBackColor = true;
+            this.buttonMultiplayer.Click += new System.EventHandler(this.buttonMultiplayer_Click);
+            // 
             // mainGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Info;
             this.ClientSize = new System.Drawing.Size(901, 625);
+            this.Controls.Add(this.buttonMultiplayer);
             this.Controls.Add(this.buttonScore);
             this.Controls.Add(this.buttonUserControl);
             this.Controls.Add(this.HelpScreenBtn);
@@ -190,5 +205,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button HelpScreenBtn;
         private System.Windows.Forms.Button buttonUserControl;
         private System.Windows.Forms.Button buttonScore;
+        private System.Windows.Forms.Button buttonMultiplayer;
     }
 }
