@@ -123,5 +123,12 @@ namespace WindowsFormsApp1
             Scores scores = new Scores();
             scores.Show();
         }
+
+        private void buttonMultiplayer_Click(object sender, EventArgs e)
+        {
+            Multiplayer multiplayer = new Multiplayer();
+            multiplayer.Show();
+            this.Hide();
+        }
     }
 }

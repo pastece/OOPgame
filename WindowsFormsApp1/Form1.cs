@@ -88,6 +88,7 @@ namespace WindowsFormsApp1
             {
                 mainGame.un = "admin";
                 mainGame skip = new mainGame();
+                profileScreen.score = "0";
                 this.Hide();
                 skip.Show();
             }

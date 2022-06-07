@@ -82,6 +82,12 @@
     <Compile Include="managerScreen.Designer.cs">
       <DependentUpon>managerScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Multiplayer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Multiplayer.Designer.cs">
+      <DependentUpon>Multiplayer.cs</DependentUpon>
+    </Compile>
     <Compile Include="PlayGame.cs" />
     <Compile Include="PlayGround.cs">
       <SubType>Form</SubType>
@@ -89,6 +95,7 @@
     <Compile Include="PlayGround.Designer.cs">
       <DependentUpon>PlayGround.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlayOnline.cs" />
     <Compile Include="profileScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="managerScreen.resx">
       <DependentUpon>managerScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Multiplayer.resx">
+      <DependentUpon>Multiplayer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlayGround.resx">
       <DependentUpon>PlayGround.cs</DependentUpon>
