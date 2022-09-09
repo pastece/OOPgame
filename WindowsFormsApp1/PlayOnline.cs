@@ -267,7 +267,7 @@ namespace WindowsFormsApp1
         {
             playGround = new PlayGround();
             bestScore = 0;
-            playGround.labelBest.Text = "buse: 0";
+            playGround.labelBest.Text = "ömer: 0";
             playGround.labelCurrent.Text = "pastace: 0 " ;
 
             playGround.Show();

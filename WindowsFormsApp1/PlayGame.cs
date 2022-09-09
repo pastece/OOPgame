@@ -318,7 +318,7 @@ namespace WindowsFormsApp1
 
         private void MoveTile(List<QItem> list)
         {
-            int sleepTime = 1000;
+            int sleepTime =0;
             list.Reverse();
             for (int i = 0; i < list.Count - 1; i++)
             {
